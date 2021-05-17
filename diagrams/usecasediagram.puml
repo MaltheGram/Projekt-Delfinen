@@ -1,0 +1,51 @@
+@startuml
+
+' left to right direction
+skinparam Linetype PolyLine
+
+actor "Formand" as f
+actor "Træner" as t
+actor "Kasserer" as k
+
+rectangle "Use Cases" as UC {
+    package "User management" as P1 {
+        usecase "Add member" as UC1
+        usecase "Change member data" as UC2
+        usecase "Remove member" as UC3
+    }
+    usecase "Manage training disciplines" as UC4
+    package "Competition management" as P2 {
+        usecase "Manage training group members" as UC5
+        usecase "Add competition result" as UC6
+        usecase "View top swimmers" as UC7
+    }
+    usecase "Manage teams" as UC8
+    package "Memebership management" as P3 {
+        usecase "Change membership fee" as UC9
+        usecase "View annual income" as UC10
+        usecase "View overdue payments" as UC11
+    }
+}
+
+f --> P1
+f --> UC4
+
+t --> UC4
+t --> P2
+t --> UC8
+
+k --> UC8
+k --> P3
+
+
+UC1 -[hidden]d-> UC2
+UC2 -[hidden]d-> UC3
+
+UC5 -[hidden]d-> UC6
+UC6 -[hidden]d-> UC7
+
+UC9 -[hidden]d-> UC10
+UC10 -[hidden]d-> UC11
+
+
+@enduml
