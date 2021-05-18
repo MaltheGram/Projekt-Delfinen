@@ -9,11 +9,11 @@ public class Member {
     private boolean isActiveMember;
 
 
-    public Member(String name, String birthDate, String phoneNumber, boolean activeMember, int memberId){
+    public Member(String name, String birthDate, String phoneNumber, boolean isActiveMember, int memberId){
         this.name = name;
         this.birthDate = birthDate;
         this.address = phoneNumber;
-        this.isActiveMember = activeMember;
+        this.isActiveMember = isActiveMember;
         this.memberId = memberId;
     }
 
@@ -53,8 +53,7 @@ public class Member {
         return isActiveMember;
     }
 
-    public void setActiveMember(boolean activeMember) {
-        this.isActiveMember = activeMember;
+    public void setActiveMember(boolean isActiveMember) {
+        this.isActiveMember = isActiveMember;
     }
-
 }
