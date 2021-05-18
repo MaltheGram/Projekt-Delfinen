@@ -4,9 +4,11 @@ import Membership.Membership;
 
 import Service.MemberIdGenerator;
 
+import java.time.LocalDate;
+
 public class Member {
 
-    private String birthDate;
+    private LocalDate birthDate;
     private String name;
     private String address;
     private Membership membership;
@@ -16,7 +18,7 @@ public class Member {
 
 
 
-    public Member(String name, String birthDate, String address, String phoneNumber, boolean isActiveMember, MemberIdGenerator memberIdGenerator){
+    public Member(String name, LocalDate birthDate, String address, String phoneNumber, boolean isActiveMember, MemberIdGenerator memberIdGenerator){
         this.name = name;
         this.birthDate = birthDate;
         this.address = address;
@@ -35,11 +37,11 @@ public class Member {
         this.memberIdGenerator = memberIdGenerator;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -62,7 +64,6 @@ public class Member {
     public Membership getMembership() {
         return membership;
     }
-
 
     public boolean isActiveMember() {
         return isActiveMember;
