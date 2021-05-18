@@ -1,0 +1,66 @@
+@startuml
+
+left to right direction
+skinparam classAttributeIconSize 0
+hide enum methods
+hide class methods
+
+
+class "Swim club" as swimclub {
+
+}
+
+class "Membership Fee" as memberfee {
+    startDate
+    endDate
+    Price
+    isPaid
+}
+
+class "Member" as member {
+    MemberIDNumber
+    Name
+    Address
+    Birthday
+    isActive
+}
+
+class "Coach" as coach {
+
+}
+
+class "Result" as result {
+    Date
+    Time
+}
+
+enum "ResultType" as resulttype {
+    Competition
+    Training
+}
+
+enum "Discipline" as discipline {
+    "Freestyle (front crawl)"
+    "Back crawl"
+    "Butterfly"
+    "Breaststroke"
+}
+
+class "Team" as team {
+    Name
+}
+
+
+
+swimclub "1" --- "0..*" memberfee
+swimclub "1" --d- "0..*" member
+swimclub "1" --d- "0..*" coach
+coach "0..*" --- "0..*" team
+member "0..*" --- "0..*" team
+member "1" --l- "0..*" memberfee 
+result "0..*" --- "1" resulttype
+member "1" --d- "0..*" result
+result "0..*" --d- "1" discipline
+
+
+@enduml
