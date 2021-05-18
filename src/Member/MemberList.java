@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class MemberList {
 
-   /* private static final Map<Integer, Member> members = new HashMap<>();
+    private static final Map<Integer, Member> members = new HashMap<>();
 
     public static Collection<Member> getAllMembers() {
         return Collections.unmodifiableCollection(
@@ -25,5 +25,5 @@ public class MemberList {
         );
     }
 
-    */
+
 }

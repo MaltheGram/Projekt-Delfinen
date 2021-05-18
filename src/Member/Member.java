@@ -1,3 +1,11 @@
+/*
+ * @author Malthe
+ * 18/05/2021 13.26
+ *
+ * DAT21V2-Projekt-Delfinen
+ *
+ */
+
 package Member;
 
 import Membership.Membership;
