@@ -34,7 +34,7 @@ class "Result" as result {
     Time
 }
 
-enum "ResultType" as resulttype {
+enum "Competition.ResultType" as resulttype {
     Competition
     Training
 }
