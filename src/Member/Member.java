@@ -1,5 +1,7 @@
 package Member;
 
+import Membership.Membership;
+
 import Service.MemberIdGenerator;
 
 public class Member {
@@ -7,6 +9,8 @@ public class Member {
     private String birthDate;
     private String name;
     private String address;
+    private int memberId;
+    private Membership membership;
     private String phoneNumber;
     private boolean isActiveMember;
     private MemberIdGenerator memberIdGenerator;
@@ -18,6 +22,8 @@ public class Member {
         this.birthDate = birthDate;
         this.address = address;
         this.isActiveMember = isActiveMember;
+        this.membership = new Membership();
+        this.memberId = memberId;
         this.phoneNumber = phoneNumber;
         this.memberIdGenerator = memberIdGenerator;
     }
@@ -53,6 +59,18 @@ public class Member {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Membership getMembership() {
+        return membership;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public boolean isActiveMember() {
