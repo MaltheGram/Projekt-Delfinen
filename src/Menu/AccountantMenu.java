@@ -32,7 +32,7 @@ public class AccountantMenu {
             System.out.println("Overdue payments coming soon");
         }
         if (input == 3){
-            Menu.runMenu();
+            MainMenu.runMenu();
         }
         else if (input == 9)
             System.out.println("Terminating.....");

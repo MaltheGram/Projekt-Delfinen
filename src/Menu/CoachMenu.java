@@ -8,6 +8,8 @@
 
 package Menu;
 
+import Member.MemberList;
+
 import java.util.Scanner;
 
 public class CoachMenu {
@@ -33,7 +35,7 @@ public class CoachMenu {
             System.out.println("Manage teams coming soon");
         }
         if (input == 3){
-            Menu.runMenu();
+            MainMenu.runMenu();
         }
         else if (input == 9)
             System.out.println("Terminating.....");

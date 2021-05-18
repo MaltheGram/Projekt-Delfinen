@@ -8,4 +8,6 @@ class MainTest {
     void myMethod() {
         assertEquals(Main.myMethod(), true);
     }
+
+
 }

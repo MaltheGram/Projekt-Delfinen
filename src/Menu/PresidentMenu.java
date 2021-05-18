@@ -39,7 +39,7 @@ public class PresidentMenu {
             System.out.println("Update member coming soon");
         }
         if (input == 4){
-            Menu.runMenu();
+            MainMenu.runMenu();
         }
         else if (input == 9)
             isRunning = false;
