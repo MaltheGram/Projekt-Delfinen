@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="329px" preserveAspectRatio="none" style="width:764px;height:329px;" version="1.1" viewBox="0 0 764 329" width="764px" zoomAndPan="magnify"><defs><filter height="300%" id="f1trj60x9pfk85" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[a45925f7ce190be40455844ac0d5a9fd]
+class swimclub--><rect codeLine="8" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="40" id="swimclub" style="stroke:#A80036;stroke-width:1.5;" width="89" x="7" y="167"/><ellipse cx="22" cy="183" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24.4731,189.1431 Q23.8921,189.4419 23.2529,189.5913 Q22.6138,189.7407 21.9082,189.7407 Q19.4014,189.7407 18.0815,188.0889 Q16.7617,186.437 16.7617,183.3159 Q16.7617,180.1865 18.0815,178.5347 Q19.4014,176.8828 21.9082,176.8828 Q22.6138,176.8828 23.2612,177.0322 Q23.9087,177.1816 24.4731,177.4805 L24.4731,180.2031 Q23.8423,179.6221 23.2488,179.3523 Q22.6553,179.0825 22.0244,179.0825 Q20.6797,179.0825 19.9949,180.1492 Q19.3101,181.2158 19.3101,183.3159 Q19.3101,185.4077 19.9949,186.4744 Q20.6797,187.541 22.0244,187.541 Q22.6553,187.541 23.2488,187.2712 Q23.8423,187.0015 24.4731,186.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57" x="36" y="187.5352">Swim club</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="95" y1="199" y2="199"/><!--MD5=[31fb3d2907dcf33804a19d76de452de6]
+class memberfee--><rect codeLine="12" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="91.8203" id="memberfee" style="stroke:#A80036;stroke-width:1.5;" width="128" x="217" y="7"/><ellipse cx="232" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M234.4731,29.1431 Q233.8921,29.4419 233.2529,29.5913 Q232.6138,29.7407 231.9082,29.7407 Q229.4014,29.7407 228.0815,28.0889 Q226.7617,26.437 226.7617,23.3159 Q226.7617,20.1865 228.0815,18.5347 Q229.4014,16.8828 231.9082,16.8828 Q232.6138,16.8828 233.2612,17.0322 Q233.9087,17.1816 234.4731,17.4805 L234.4731,20.2031 Q233.8423,19.6221 233.2488,19.3523 Q232.6553,19.0825 232.0244,19.0825 Q230.6797,19.0825 229.9949,20.1492 Q229.3101,21.2158 229.3101,23.3159 Q229.3101,25.4077 229.9949,26.4744 Q230.6797,27.541 232.0244,27.541 Q232.6553,27.541 233.2488,27.2712 Q233.8423,27.0015 234.4731,26.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="96" x="246" y="27.5352">Membership Fee</text><line style="stroke:#A80036;stroke-width:1.5;" x1="218" x2="344" y1="39" y2="39"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="223" y="53.6348">startDate</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="223" y="66.5898">endDate</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="223" y="79.5449">Price</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="31" x="223" y="92.5">isPaid</text><!--MD5=[c1ab94e7e41838408b6a4d073da94126]
+class member--><rect codeLine="19" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="104.7754" id="member" style="stroke:#A80036;stroke-width:1.5;" width="109" x="226.5" y="134.5"/><ellipse cx="254.55" cy="150.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M257.0231,156.6431 Q256.4421,156.9419 255.8029,157.0913 Q255.1638,157.2407 254.4582,157.2407 Q251.9514,157.2407 250.6315,155.5889 Q249.3117,153.937 249.3117,150.8159 Q249.3117,147.6865 250.6315,146.0347 Q251.9514,144.3828 254.4582,144.3828 Q255.1638,144.3828 255.8112,144.5322 Q256.4587,144.6816 257.0231,144.9805 L257.0231,147.7031 Q256.3923,147.1221 255.7988,146.8523 Q255.2053,146.5825 254.5744,146.5825 Q253.2297,146.5825 252.5449,147.6492 Q251.8601,148.7158 251.8601,150.8159 Q251.8601,152.9077 252.5449,153.9744 Q253.2297,155.041 254.5744,155.041 Q255.2053,155.041 255.7988,154.7712 Q256.3923,154.5015 257.0231,153.9204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48" x="271.45" y="155.0352">Member</text><line style="stroke:#A80036;stroke-width:1.5;" x1="227.5" x2="334.5" y1="166.5" y2="166.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="232.5" y="181.1348">MemberIDNumber</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="30" x="232.5" y="194.0898">Name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="45" x="232.5" y="207.0449">Address</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="232.5" y="220">Birthday</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="42" x="232.5" y="232.9551">isActive</text><!--MD5=[360228731910ba7f3e7a03d7425140dc]
+class coach--><rect codeLine="27" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="40" id="coach" style="stroke:#A80036;stroke-width:1.5;" width="67" x="247.5" y="275"/><ellipse cx="262.5" cy="291" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M264.9731,297.1431 Q264.3921,297.4419 263.7529,297.5913 Q263.1138,297.7407 262.4082,297.7407 Q259.9014,297.7407 258.5815,296.0889 Q257.2617,294.437 257.2617,291.3159 Q257.2617,288.1865 258.5815,286.5347 Q259.9014,284.8828 262.4082,284.8828 Q263.1138,284.8828 263.7612,285.0322 Q264.4087,285.1816 264.9731,285.4805 L264.9731,288.2031 Q264.3423,287.6221 263.7488,287.3523 Q263.1553,287.0825 262.5244,287.0825 Q261.1797,287.0825 260.4949,288.1492 Q259.8101,289.2158 259.8101,291.3159 Q259.8101,293.4077 260.4949,294.4744 Q261.1797,295.541 262.5244,295.541 Q263.1553,295.541 263.7488,295.2712 Q264.3423,295.0015 264.9731,294.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="35" x="276.5" y="295.5352">Coach</text><line style="stroke:#A80036;stroke-width:1.5;" x1="248.5" x2="313.5" y1="307" y2="307"/><!--MD5=[1f8c55469e73e1501fa74a15e33d6737]
+class result--><rect codeLine="31" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="65.9102" id="result" style="stroke:#A80036;stroke-width:1.5;" width="67" x="466" y="120"/><ellipse cx="481" cy="136" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M483.4731,142.1431 Q482.8921,142.4419 482.2529,142.5913 Q481.6138,142.7407 480.9082,142.7407 Q478.4014,142.7407 477.0815,141.0889 Q475.7617,139.437 475.7617,136.3159 Q475.7617,133.1865 477.0815,131.5347 Q478.4014,129.8828 480.9082,129.8828 Q481.6138,129.8828 482.2612,130.0322 Q482.9087,130.1816 483.4731,130.4805 L483.4731,133.2031 Q482.8423,132.6221 482.2488,132.3523 Q481.6553,132.0825 481.0244,132.0825 Q479.6797,132.0825 478.9949,133.1492 Q478.3101,134.2158 478.3101,136.3159 Q478.3101,138.4077 478.9949,139.4744 Q479.6797,140.541 481.0244,140.541 Q481.6553,140.541 482.2488,140.2712 Q482.8423,140.0015 483.4731,139.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="35" x="495" y="140.5352">Result</text><line style="stroke:#A80036;stroke-width:1.5;" x1="467" x2="532" y1="152" y2="152"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="472" y="166.6348">Date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="472" y="179.5898">Time</text><!--MD5=[bf63aecc0b9b48654fd3bbeb0962153b]
+class resulttype--><rect codeLine="36" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="65.9102" id="resulttype" style="stroke:#A80036;stroke-width:1.5;" width="96" x="654" y="66"/><ellipse cx="669" cy="82" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M672.6143,88.5 L664.8945,88.5 L664.8945,76.1069 L672.6143,76.1069 L672.6143,78.2651 L667.3433,78.2651 L667.3433,80.938 L672.1162,80.938 L672.1162,83.0962 L667.3433,83.0962 L667.3433,86.3418 L672.6143,86.3418 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="64" x="683" y="86.5352">ResultType</text><line style="stroke:#A80036;stroke-width:1.5;" x1="655" x2="749" y1="98" y2="98"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="66" x="660" y="112.6348">Competition</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="45" x="660" y="125.5898">Training</text><!--MD5=[e3fdc18fb12b7844233442fb0fa81fc9]
+class discipline--><rect codeLine="41" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="78.8652" id="discipline" style="stroke:#A80036;stroke-width:1.5;" width="87" x="658.5" y="167.5"/><ellipse cx="673.5" cy="183.5" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M677.1143,190 L669.3945,190 L669.3945,177.6069 L677.1143,177.6069 L677.1143,179.7651 L671.8433,179.7651 L671.8433,182.438 L676.6162,182.438 L676.6162,184.5962 L671.8433,184.5962 L671.8433,187.8418 L677.1143,187.8418 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="687.5" y="188.0352">Discipline</text><line style="stroke:#A80036;stroke-width:1.5;" x1="659.5" x2="744.5" y1="199.5" y2="199.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="664.5" y="214.1348">"Back crawl"</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="664.5" y="227.0898">"Butterfly"</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="75" x="664.5" y="240.0449">"Breaststroke"</text><!--MD5=[c079dbd049ac4a56efeb0accc82af28c]
+class team--><rect codeLine="48" fill="#FEFECE" filter="url(#f1trj60x9pfk85)" height="52.9551" id="team" style="stroke:#A80036;stroke-width:1.5;" width="65" x="467" y="244.5"/><ellipse cx="482" cy="260.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M484.4731,266.6431 Q483.8921,266.9419 483.2529,267.0913 Q482.6138,267.2407 481.9082,267.2407 Q479.4014,267.2407 478.0815,265.5889 Q476.7617,263.937 476.7617,260.8159 Q476.7617,257.6865 478.0815,256.0347 Q479.4014,254.3828 481.9082,254.3828 Q482.6138,254.3828 483.2612,254.5322 Q483.9087,254.6816 484.4731,254.9805 L484.4731,257.7031 Q483.8423,257.1221 483.2488,256.8523 Q482.6553,256.5825 482.0244,256.5825 Q480.6797,256.5825 479.9949,257.6492 Q479.3101,258.7158 479.3101,260.8159 Q479.3101,262.9077 479.9949,263.9744 Q480.6797,265.041 482.0244,265.041 Q482.6553,265.041 483.2488,264.7712 Q483.8423,264.5015 484.4731,263.9204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="496" y="265.0352">Team</text><line style="stroke:#A80036;stroke-width:1.5;" x1="468" x2="531" y1="276.5" y2="276.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="30" x="473" y="291.1348">Name</text><!--MD5=[95c5e23861d36463ae832e1fe56d3b43]
+link swimclub to memberfee--><path codeLine="54" d="M86.56,166.94 C120.89,146.71 174.7,115.02 216.85,90.19 " fill="none" id="swimclub-memberfee" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="88.0721" y="156.1157">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="187.1002" y="107.3923">0..*</text><!--MD5=[09cc5727675ce3e1b237788e82275a81]
+link swimclub to member--><path codeLine="55" d="M96.1,187 C133.12,187 186.43,187 226.12,187 " fill="none" id="swimclub-member" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="104.1494" y="200.8363">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="196.5026" y="200.4665">0..*</text><!--MD5=[f4249b3c6d53180633115410c1c2255a]
+link swimclub to coach--><path codeLine="56" d="M94.76,207.06 C138.83,227.98 206.99,260.34 247.18,279.42 " fill="none" id="swimclub-coach" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="97.8019" y="227.4233">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="217.4766" y="290.6263">0..*</text><!--MD5=[465881b5a19e2b64667a7138c941916c]
+link coach to team--><path codeLine="57" d="M314.88,291.35 C356.05,286.79 426.08,279.03 466.72,274.52 " fill="none" id="coach-team" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="322.5938" y="304.6068">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="436.9217" y="289.083">0..*</text><!--MD5=[2908eb25bea4f82ca0b326f8f5cc4dc9]
+link member to team--><path codeLine="58" d="M335.52,207.76 C376.71,223.75 432.26,245.3 466.71,258.67 " fill="none" id="member-team" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="343.5053" y="223.8052">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="436.9099" y="270.4097">0..*</text><!--MD5=[be834e0d4fe01422302af6d0171be37f]
+link memberfee to member--><path codeLine="59" d="M281,99.1 C281,110.87 281,122.63 281,134.39 " fill="none" id="memberfee-member" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="257.4531" y="119.2403">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="272.4625" y="123.917">1</text><!--MD5=[a85f8c90e0fc1d905700673328d14090]
+link result to resulttype--><path codeLine="60" d="M533.16,144.2 C565.89,135.39 616.63,121.72 653.75,111.73 " fill="none" id="result-resulttype" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="541.1151" y="156.5725">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="638.0758" y="127.299">1</text><!--MD5=[be44bc837a37282879bdbb58ffd7cca6]
+link member to result--><path codeLine="61" d="M335.52,178.6 C376.34,172.18 431.25,163.56 465.76,158.14 " fill="none" id="member-result" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="343.3836" y="191.0834">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="436.0703" y="172.9153">0..*</text><!--MD5=[608475e818bf34f447af729bccd4f3a6]
+link result to discipline--><path codeLine="62" d="M533.16,161.8 C567.23,170.97 620.78,185.4 658.21,195.48 " fill="none" id="result-discipline" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="541.1151" y="177.3075">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="642.5935" y="207.4432">1</text><!--MD5=[2d706472a315d7de1f5c34c2307d9d09]
+@startuml
+
+left to right direction
+skinparam classAttributeIconSize 0
+hide enum methods
+hide class methods
+
+
+class "Swim club" as swimclub {
+
+}
+
+class "Membership Fee" as memberfee {
+    startDate
+    endDate
+    Price
+    isPaid
+}
+
+class "Member" as member {
+    MemberIDNumber
+    Name
+    Address
+    Birthday
+    isActive
+}
+
+class "Coach" as coach {
+
+}
+
+class "Result" as result {
+    Date
+    Time
+}
+
+enum "ResultType" as resulttype {
+    Competition
+    Training
+}
+
+enum "Discipline" as discipline {
+    "Freestyle (front crawl)"
+    "Back crawl"
+    "Butterfly"
+    "Breaststroke"
+}
+
+class "Team" as team {
+    Name
+}
+
+
+
+swimclub "1" - - - "0..*" memberfee
+swimclub "1" - -d- "0..*" member
+swimclub "1" - -d- "0..*" coach
+coach "0..*" - - - "0..*" team
+member "0..*" - - - "0..*" team
+member "1" - -l- "0..*" memberfee 
+result "0..*" - - - "1" resulttype
+member "1" - -d- "0..*" result
+result "0..*" - -d- "1" discipline
+
+
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
