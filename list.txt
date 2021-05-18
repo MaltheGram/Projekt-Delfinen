@@ -1,0 +1,12 @@
+1=Member data:
+BirthDate: 1998-01-30
+Name: Malthe
+Address: Hoffmeyersvej 67
+Member id: 1106e
+Active member: true
+2=Member data:
+BirthDate: 1996-10-30
+Name: Mark
+Address: Lygten 37
+Member id: 271b
+Active member: true

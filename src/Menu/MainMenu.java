@@ -29,11 +29,11 @@ public class MainMenu {
     Scanner sc = new Scanner(System.in);
 
 
-        System.out.println("Welcome to \"Delfinen\" system menu\n" +
+       String UIOptions = "Welcome to \"Delfinen\" system menu\n" +
                 "1: See president options.\n" +
                 "2: See accountant options.\n" +
                 "3: See coach options\n" +
-                "9: Exit");
+                "9: Exit";
 
         int input = sc.nextInt();
         //while (isRunning)
