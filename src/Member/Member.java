@@ -91,6 +91,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member data:\n" + "BirthDate: " + birthDate + "\nName: " + name + "\nAddress: " + address + "\nMember id: " + memberIdGenerator + "\nActive member: " + isActiveMember;
+
+        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + "," + memberIdGenerator;
     }
 }
