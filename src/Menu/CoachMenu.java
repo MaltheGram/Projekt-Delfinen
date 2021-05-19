@@ -40,10 +40,13 @@ public class CoachMenu {
 
     // TODO: implement viewLeaderboards
     private static void viewLeaderboards(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*
         if (input == 1) {
 
             System.out.println("Leaderboard coming soon");
         }
+         */
     }
 
     // TODO: implement manageTeams
