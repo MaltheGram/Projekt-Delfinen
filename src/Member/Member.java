@@ -1,3 +1,5 @@
+
+
 /**
  * @author Malthe
  * 18/05/2021 13.26
@@ -6,13 +8,13 @@
  *
  */
 
-package Member;
+        package Member;
 
-import Membership.Membership;
+        import Membership.Membership;
 
-import Service.MemberIdGenerator;
+        import Service.MemberIdGenerator;
 
-import java.time.LocalDate;
+        import java.time.LocalDate;
 
 public class Member {
     private LocalDate birthDate;
@@ -30,7 +32,7 @@ public class Member {
         this.birthDate = birthDate;
         this.address = address;
         this.isActiveMember = isActiveMember;
-        this.membership = new Membership();
+        //this.membership = new Membership();
         this.phoneNumber = phoneNumber;
 
     }

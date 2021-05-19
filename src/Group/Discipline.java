@@ -1,3 +1,5 @@
+package Group;
+
 public enum Discipline {
 
     // only first four are must have

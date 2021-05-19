@@ -26,14 +26,14 @@ public class MemberList {
         );
     }
 
-    public static Collection<Member> getOverdueMembers() {
+ /*   public static Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
                 members.values()
                         .stream()
                         .filter(member -> member.getMembership().isOverdue())
                         .toList()
         );
-    }
+    }*/
 
 
 

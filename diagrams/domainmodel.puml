@@ -39,7 +39,7 @@ enum "Competition.ResultType" as resulttype {
     Training
 }
 
-enum "Discipline" as discipline {
+enum "Group.Discipline" as discipline {
     "Freestyle (front crawl)"
     "Back crawl"
     "Butterfly"
