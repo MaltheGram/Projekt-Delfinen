@@ -34,12 +34,13 @@ public class CoachMenu {
             // TODO: Manage teams
             System.out.println("Manage teams coming soon");
         }
-        if (input == 3){
+        /*if (input == 3){
             MainMenu.runMenu();
-        }
-        else if (input == 9)
-            System.out.println("Terminating.....");
+        }*/
+        else if (input == 9 || input == 3) {
+            //System.out.println("Terminating.....");
             isRunning = false;
+        }
 
 
     }

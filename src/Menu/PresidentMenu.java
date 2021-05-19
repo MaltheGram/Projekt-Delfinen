@@ -41,7 +41,7 @@ public class PresidentMenu {
                     MemberHandler.addMember();
                 } else
                     isRunning = false;
-                    MainMenu.runMenu();
+                    //MainMenu.runMenu();
 
             }
         }
@@ -53,10 +53,10 @@ public class PresidentMenu {
         if (input == 3){
             MemberHandler.updateMemberInformation();
         }
-        if (input == 4){
+        /*if (input == 4){
             MainMenu.runMenu();
-        }
-        else if (input == 9)
+        }*/
+        else if (input == 9 || input == 4)
             System.out.println("Terminating....");
         }
 
