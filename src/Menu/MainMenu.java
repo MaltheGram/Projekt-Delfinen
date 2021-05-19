@@ -29,24 +29,21 @@ public class MainMenu {
     Scanner sc = new Scanner(System.in);
 
 
-       String UIOptions = "Welcome to \"Delfinen\" system menu\n" +
+        System.out.println("Welcome to \"Delfinen\" system menu\n" +
                 "1: See president options.\n" +
                 "2: See accountant options.\n" +
                 "3: See coach options\n" +
-                "9: Exit";
+                "9: Exit");
 
         int input = sc.nextInt();
         //while (isRunning)
         if (input == 1){
-            // TODO: SEE MEMBER OPTIONS
             PresidentMenu.runPresidentMenu();
         }
         if (input == 2){
-            // TODO: SEE ACCOUNTANT OPTIONS
             AccountantMenu.runAccountantMenu();
         }
         if (input == 3){
-            // TODO: SEE COACH OPTIONS
             CoachMenu.runCoachMenu();
         }
         else if (input == 9)

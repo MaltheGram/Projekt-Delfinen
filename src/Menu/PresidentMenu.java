@@ -8,27 +8,42 @@
 
 package Menu;
 
+
+import Member.MemberHandler;
 import java.util.Scanner;
 
 public class PresidentMenu {
 
     public static void runPresidentMenu(){
         boolean isRunning = true;
+        String addMoreMembers;
+
         Scanner sc = new Scanner(System.in);
 
 
-        System.out.println("Welcome to President menu\n" +
-                "1: Add member.\n" +
-                "2: Remove member.\n" +
-                "3: Update member information.\n" +
-                "4: Go back to main menu\n" +
-                "9: Exit");
+        System.out.println("""
+                Welcome to President menu
+                1: Add member.
+                2: Remove member.
+                3: Update member information.
+                4: Go back to main menu
+                9: Exit""");
 
-        int input = sc.nextInt();
+        var input = sc.nextInt();
 
         if (input == 1){
-            // TODO: Add member
-            System.out.println("adding coming soon");
+            MemberHandler.addMember();
+            while (isRunning) {
+                System.out.println("Add more members? Yes/No");
+                sc.nextLine();
+                addMoreMembers = sc.nextLine();
+                if (addMoreMembers.equalsIgnoreCase("yes")) {
+                    MemberHandler.addMember();
+                } else
+                    isRunning = false;
+                    MainMenu.runMenu();
+
+            }
         }
         if (input == 2){
             // TODO: Remove member
@@ -42,9 +57,7 @@ public class PresidentMenu {
             MainMenu.runMenu();
         }
         else if (input == 9)
-            isRunning = false;
-
-
+            System.out.println("Terminating....");
         }
 
     }
