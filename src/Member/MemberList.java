@@ -4,12 +4,13 @@
 
 package Member;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemberList {
+public class MemberList implements Serializable {
 
     private static final Map<Integer, Member> members = new HashMap<>();
 

@@ -21,7 +21,6 @@ public class Main {
 
         LocalDate MaltheDate = LocalDate.of(1998, 1, 30);
         LocalDate MarkDate = LocalDate.of(1996, 10, 30);
-        FileHandler fileHandler = new FileHandler();
 
         Member Malthe = new Member("Malthe", MaltheDate, "Hoffmeyersvej 67", "61331776", true);
         Member Mark = new Member("Mark", MarkDate, "Lygten 37", "8888888", true);
@@ -30,8 +29,8 @@ public class Main {
         hashMap.put(1,Malthe);
         hashMap.put(2,Mark);
 
-        fileHandler.writeFile(hashMap,"list");
-        FileHandler.readFile("list");
+        FileControl.writeMemberListToFile(hashMap,"list");
+        FileControl.readMemberListfromFile("list");
 
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);

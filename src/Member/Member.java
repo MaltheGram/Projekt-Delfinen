@@ -14,9 +14,10 @@
 
         import Service.MemberIdGenerator;
 
+        import java.io.Serializable;
         import java.time.LocalDate;
 
-public class Member {
+public class Member implements Serializable {
     private LocalDate birthDate;
     private String name;
     private String address;
