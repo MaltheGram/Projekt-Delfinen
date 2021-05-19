@@ -15,34 +15,28 @@ import Service.MemberIdGenerator;
 import java.time.LocalDate;
 
 public class Member {
-
     private LocalDate birthDate;
     private String name;
     private String address;
     private Membership membership;
     private String phoneNumber;
     private boolean isActiveMember;
-    private MemberIdGenerator memberIdGenerator;
+    private final String memberId = new MemberIdGenerator().toString();
 
 
 
-    public Member(String name, LocalDate birthDate, String address, String phoneNumber, boolean isActiveMember, MemberIdGenerator memberIdGenerator){
+    public Member(String name, LocalDate birthDate, String address, String phoneNumber, boolean isActiveMember){
         this.name = name;
         this.birthDate = birthDate;
         this.address = address;
         this.isActiveMember = isActiveMember;
         this.membership = new Membership();
         this.phoneNumber = phoneNumber;
-        this.memberIdGenerator = memberIdGenerator;
+
     }
 
-
-    public MemberIdGenerator getMemberIdGenerator() {
-        return memberIdGenerator;
-    }
-
-    public void setMemberIdGenerator(MemberIdGenerator memberIdGenerator) {
-        this.memberIdGenerator = memberIdGenerator;
+    public String getMemberId() {
+        return memberId;
     }
 
     public LocalDate getBirthDate() {
@@ -92,6 +86,6 @@ public class Member {
     @Override
     public String toString() {
 
-        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + "," + memberIdGenerator;
+        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + ", " + getMemberId();
     }
 }

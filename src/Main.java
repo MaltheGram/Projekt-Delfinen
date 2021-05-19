@@ -15,14 +15,15 @@ public class Main {
         LocalDate MarkDate = LocalDate.of(1996, 10, 30);
         FileHandler fileHandler = new FileHandler();
 
-        Member Malthe = new Member("Malthe", MaltheDate, "Hoffmeyersvej 67", "61331776", true, memberIdGenerator);
-        Member Mark = new Member("Mark", MarkDate, "Lygten 37", "8888888", true, memberIdGenerator2);
+        Member Malthe = new Member("Malthe", MaltheDate, "Hoffmeyersvej 67", "61331776", true);
+        Member Mark = new Member("Mark", MarkDate, "Lygten 37", "8888888", true);
 
         HashMap<Integer,Member> hashMap = new HashMap<>();
         hashMap.put(1,Malthe);
         hashMap.put(2,Mark);
 
         fileHandler.writeFile(hashMap,"list");
+        FileHandler.readFile("list");
         MainMenu.runMenu();
 
 
