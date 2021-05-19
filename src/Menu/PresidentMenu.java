@@ -45,13 +45,13 @@ public class PresidentMenu {
 
             }
         }
+
         if (input == 2){
             // TODO: Remove member
             System.out.println("Remove coming soon");
         }
         if (input == 3){
-            // TODO: Update member information
-            System.out.println("Update member coming soon");
+            MemberHandler.updateMemberInformation();
         }
         if (input == 4){
             MainMenu.runMenu();
