@@ -8,41 +8,54 @@
 
 package Menu;
 
-import Member.MemberList;
-
-import java.util.Scanner;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
 
 public class CoachMenu {
+    private static Boolean isRunning = true;
+    private static final String menuText = "Welcome to Coach menu!";
+    private static final String[] menuOptions = {
+            "See leaderboard",
+            "Manage teams",
+            "Go back to main menu.",
+        };
 
-    public static void runCoachMenu(){
-        boolean isRunning = true;
-        Scanner sc = new Scanner(System.in);
+    public static void runCoachMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = true;
+        console.resetToBookmark("CLEAR");
 
-        System.out.println("Welcome to Coach menu\n" +
-                "1: See leaderboard\n" +
-                "2: Manage teams\n" +
-                "3: Go back to main menu.\n" +
-                "9: Exit");
+        while (isRunning) {
+            Integer menuChoice = textio.newIntInputReader()
+                    .withNumberedPossibleValues(0, 1, 2)
+                    .withValueFormatter(index -> menuOptions[index])
+                    .read(menuText);
 
-        int input = sc.nextInt();
-
-        if (input == 1){
-            // TODO: See leaderborad
-            System.out.println("Leaderboard coming soon");
+            switch (menuChoice) {
+                case 0 -> viewLeaderboards(textio, console);
+                case 1 -> manageTeams(textio, console);
+                case 2 -> exitMenu(textio, console);
+            }
         }
-        if (input == 2){
-            // TODO: Manage teams
-            System.out.println("Manage teams coming soon");
-        }
-        /*if (input == 3){
-            MainMenu.runMenu();
-        }*/
-        else if (input == 9 || input == 3) {
-            //System.out.println("Terminating.....");
-            isRunning = false;
-        }
-
-
     }
 
+    // TODO: implement viewLeaderboards
+    private static void viewLeaderboards(TextIO textio, TextTerminal<?> console) {
+        if (input == 1) {
+
+            System.out.println("Leaderboard coming soon");
+        }
+    }
+
+    // TODO: implement manageTeams
+    private static void manageTeams(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*if (input == 2) {
+
+            System.out.println("Manage teams coming soon");
+        }*/
+    }
+
+    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = false;
+    }
 }

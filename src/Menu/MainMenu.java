@@ -12,32 +12,36 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 
 public class MainMenu {
-    private static boolean isRunning = true;
-    private static String menuText = "Welcome to “Delfinen” system menu";
-    private static String[] menuOptions = {
-            "See president options.",
-            "See accountant options",
-            "See coach options.",
-            "Exit."
+    private static Boolean isRunning = true;
+    private static final String menuText = "Welcome to “Delfinen” system menu!ß";
+    private static final String[] menuOptions = {
+        "See president options.",
+        "See accountant options",
+        "See coach options.",
+        "Exit."
     };
 
     public static void runMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = true;
         console.resetToBookmark("CLEAR");
-        Integer menuChoice = textio.newIntInputReader()
-                .withNumberedPossibleValues(0,1,2,3)
-                .withValueFormatter( index -> menuOptions[index] )
-                .read(menuText);
 
         while (isRunning) {
+            Integer menuChoice = textio.newIntInputReader()
+                    .withNumberedPossibleValues(0,1,2,3)
+                    .withValueFormatter( index -> menuOptions[index] )
+                    .read(menuText);
+
             switch (menuChoice) {
-                case 0 -> PresidentMenu.runPresidentMenu();
-                case 1 -> AccountantMenu.runAccountantMenu();
-                case 2 -> CoachMenu.runCoachMenu();
-                case 3 -> {
-                    console.println("Exiting...");
-                    isRunning = false;
-                }
+                case 0 -> PresidentMenu.runPresidentMenu(textio, console);
+                case 1 -> AccountantMenu.runAccountantMenu(textio, console);
+                case 2 -> CoachMenu.runCoachMenu(textio, console);
+                case 3 -> exitMenu(textio, console);
             }
         }
     }
+
+    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = false;
+    }
 }
+

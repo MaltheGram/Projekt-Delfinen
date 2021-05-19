@@ -1,4 +1,5 @@
 import Member.Member;
+import Member.MemberList;
 import Menu.MainMenu;
 import Service.MemberIdGenerator;
 import org.beryx.textio.TextIO;
@@ -14,7 +15,6 @@ public class Main {
     private static final TextTerminal<?> console = textio.getTextTerminal();
 
     public static void main(String[] args) {
-        console.setBookmark("CLEAR");
 
         MemberIdGenerator memberIdGenerator = new MemberIdGenerator();
         MemberIdGenerator memberIdGenerator2 = new MemberIdGenerator();
@@ -32,15 +32,10 @@ public class Main {
 
         fileHandler.writeFile(hashMap,"list");
         FileHandler.readFile("list");
+
+        console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
-
-
-
+        textio.dispose();
 
     }
-        public static Boolean myMethod() {
-            return true;
-        }
-
-
 }
