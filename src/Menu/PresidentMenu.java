@@ -9,8 +9,10 @@
 package Menu;
 
 
+import Member.Member;
 import Member.MemberHandler;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 
 public class PresidentMenu {
 
@@ -51,7 +53,10 @@ public class PresidentMenu {
             System.out.println("Remove coming soon");
         }
         if (input == 3){
-            MemberHandler.updateMemberInformation();
+            System.out.println("Input member ID update");
+            sc.nextLine();
+            String memberId = sc.nextLine();
+            MemberHandler.updateMemberInformation(memberId);
         }
         /*if (input == 4){
             MainMenu.runMenu();
