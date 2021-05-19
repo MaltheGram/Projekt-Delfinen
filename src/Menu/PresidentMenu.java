@@ -1,4 +1,4 @@
-/*
+/**
  * @author Malthe
  * 18/05/2021 15.07
  *
@@ -8,30 +8,42 @@
 
 package Menu;
 
-
-import Member.MemberHandler;
-import java.util.Scanner;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
 
 public class PresidentMenu {
+    private static Boolean isRunning = true;
+    private static final String menuText = "Welcome to President menu!";
+    private static final String[] menuOptions = {
+            "Add new member.",
+            "Remove member.",
+            "Update member information.",
+            "Go back to main menu",
+    };
 
-    public static void runPresidentMenu(){
-        boolean isRunning = true;
-        String addMoreMembers;
+    public static void runPresidentMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = true;
+        console.resetToBookmark("CLEAR");
 
-        Scanner sc = new Scanner(System.in);
+        while (isRunning) {
+            Integer menuChoice = textio.newIntInputReader()
+                    .withNumberedPossibleValues(0, 1, 2, 3)
+                    .withValueFormatter(index -> menuOptions[index])
+                    .read(menuText);
 
+            switch (menuChoice) {
+                case 0 -> AddMember(textio, console);
+                case 1 -> RemoveMember(textio, console);
+                case 2 -> UpdateMember(textio, console);
+                case 3 -> ExitMenu(textio, console);
+            }
+        }
+    }
 
-        System.out.println("""
-                Welcome to President menu
-                1: Add member.
-                2: Remove member.
-                3: Update member information.
-                4: Go back to main menu
-                9: Exit""");
-
-        var input = sc.nextInt();
-
-        if (input == 1){
+    // TODO: Implement AddMember
+    private static void AddMember(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*if (input == 1){
             MemberHandler.addMember();
             while (isRunning) {
                 System.out.println("Add more members? Yes/No");
@@ -41,25 +53,40 @@ public class PresidentMenu {
                     MemberHandler.addMember();
                 } else
                     isRunning = false;
-                    MainMenu.runMenu();
+                //MainMenu.runMenu();
 
             }
-        }
-
-        if (input == 2){
-            // TODO: Remove member
-            System.out.println("Remove coming soon");
-        }
-        if (input == 3){
-            MemberHandler.updateMemberInformation();
-        }
-        if (input == 4){
-            MainMenu.runMenu();
-        }
-        else if (input == 9)
-            System.out.println("Terminating....");
-        }
-
+        }*/
     }
 
+    // TODO: Implement RemoveMember
+    private static void RemoveMember(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*
+        if (input == 3) {
+            System.out.println("Input member ID update");
+            sc.nextLine();
+            String memberId = sc.nextLine();
+            MemberHandler.updateMemberInformation(memberId);
+        }
+         */
+    }
+
+    // TODO: Implement UpdateMember
+    private static void UpdateMember(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*
+        if (input == 3) {
+            System.out.println("Input member ID update");
+            sc.nextLine();
+            String memberId = sc.nextLine();
+            MemberHandler.updateMemberInformation(memberId);
+        }
+         */
+    }
+
+    private static void ExitMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = false;
+    }
+}
 

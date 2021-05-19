@@ -8,16 +8,16 @@
 
 package Member;
 
-import Service.MemberIdGenerator;
-
-import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
 import java.time.LocalDate;
 
+
+
 public class MemberHandler {
+
     private static Scanner sc = new Scanner(System.in);
 
     // TODO: ADD MEMBER TO THE FILE
@@ -53,13 +53,16 @@ public class MemberHandler {
 
         LocalDate localDate = LocalDate.of(yearInput,monthInput,dateInput);
         Member member = new Member(nameInput,localDate,addressInput,phoneInput,isActiveMember);
-
+        System.out.println("Member added.");
     }
 
-    public static void updateMemberInformation(){
+    public static void updateMemberInformation(String memberId) {
 
-        System.out.println("Input member ID to update");
-        // TODO: Choose member by member id
+
+        Member member = new Member(null,null,null,null,false);
+        Scanner sc = new Scanner(System.in);
+        String input;
+
         System.out.println("""
                 What will you update?
                 1: Name.
@@ -71,30 +74,50 @@ public class MemberHandler {
                 9: Exit""");
 
         int chooseMenu = sc.nextInt();
+        sc.nextLine();
 
         if (chooseMenu == 1){
-            System.out.println("");
+            System.out.println("New name\n_______________");
+            input = sc.nextLine();
+            member.setName(input);
         }
         if (chooseMenu == 2){
-            System.out.println("");
+            System.out.println("New address\n_______________");
+            input = sc.nextLine();
+            member.setAddress(input);
         }
         if (chooseMenu == 3){
-            System.out.println("");
+            System.out.println("New birthdate\n_______________");
+            System.out.println("Birth year");
+            var yearInput = sc.nextInt();
+            System.out.println("Birth month");
+            var monthInput = sc.nextInt();
+            System.out.println("Birth day");
+            var dateInput = sc.nextInt();
+            sc.nextLine();
+
+            LocalDate setLocalDate = LocalDate.of(yearInput,monthInput,dateInput);
+            member.setBirthDate(setLocalDate);
         }
         if (chooseMenu == 4){
-            System.out.println("");
+            System.out.println("New phone number\n_______________");
+            input = sc.nextLine();
+            member.setPhoneNumber(input);
         }
         if (chooseMenu == 5){
-            System.out.println("");
+            boolean isActiveMember = false;
+            System.out.println("New membership status\n_______________");
+            input = sc.nextLine();
+            if (input.equalsIgnoreCase("active"))
+            member.setActiveMember(isActiveMember = true);
         }
         if (chooseMenu == 9){
-            System.out.println("");
+            System.out.println("Terminating....");
         }
-
-
 
 
     }
+
 
     public static void removeMember(){
         System.out.println("Input member ID to remove");

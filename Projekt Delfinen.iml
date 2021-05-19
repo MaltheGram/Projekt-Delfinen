@@ -24,5 +24,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.beryx:text-io:3.4.1" level="project" />
+    <orderEntry type="library" name="log4j:log4j:1.2.17" level="project" />
   </component>
 </module>

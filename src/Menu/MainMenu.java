@@ -6,51 +6,42 @@
  *
  */
 
-/*
- * @author Malthe
- * 18/05/2021 14.45
- *
- * DAT21V2-Projekt-Delfinen
- *
- */
-
 package Menu;
 
-import java.io.PrintStream;
-import java.util.Random;
-import java.util.Scanner;
-
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
 
 public class MainMenu {
+    private static Boolean isRunning = true;
+    private static final String menuText = "Welcome to “Delfinen” system menu!ß";
+    private static final String[] menuOptions = {
+        "See president options.",
+        "See accountant options",
+        "See coach options.",
+        "Exit."
+    };
 
-    public static void runMenu() {
+    public static void runMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = true;
+        console.resetToBookmark("CLEAR");
 
-    boolean isRunning = true;
-    Scanner sc = new Scanner(System.in);
+        while (isRunning) {
+            Integer menuChoice = textio.newIntInputReader()
+                    .withNumberedPossibleValues(0,1,2,3)
+                    .withValueFormatter( index -> menuOptions[index] )
+                    .read(menuText);
 
-
-        System.out.println("Welcome to \"Delfinen\" system menu\n" +
-                "1: See president options.\n" +
-                "2: See accountant options.\n" +
-                "3: See coach options\n" +
-                "9: Exit");
-
-        int input = sc.nextInt();
-        //while (isRunning)
-        if (input == 1){
-            PresidentMenu.runPresidentMenu();
+            switch (menuChoice) {
+                case 0 -> PresidentMenu.runPresidentMenu(textio, console);
+                case 1 -> AccountantMenu.runAccountantMenu(textio, console);
+                case 2 -> CoachMenu.runCoachMenu(textio, console);
+                case 3 -> exitMenu(textio, console);
+            }
         }
-        if (input == 2){
-            AccountantMenu.runAccountantMenu();
-        }
-        if (input == 3){
-            CoachMenu.runCoachMenu();
-        }
-        else if (input == 9)
-            System.out.println("Terminating.....");
-            isRunning = false;
+    }
 
-
-
+    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = false;
     }
 }
+

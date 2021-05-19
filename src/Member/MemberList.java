@@ -1,3 +1,7 @@
+/**
+    @author Simon Gredal
+ */
+
 package Member;
 
 import java.util.Collection;
@@ -9,12 +13,18 @@ public class MemberList {
 
     private static final Map<Integer, Member> members = new HashMap<>();
 
+    /**
+     * Watch out! Might return null.
+     */
+    public static Member getMemberByID(Integer memberID) {
+        return members.getOrDefault(memberID, null);
+    }
+
     public static Collection<Member> getAllMembers() {
         return Collections.unmodifiableCollection(
                 members.values()
         );
     }
-
 
     public static Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
@@ -24,6 +34,8 @@ public class MemberList {
                         .toList()
         );
     }
+
+
 
 
 }

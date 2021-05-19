@@ -8,35 +8,57 @@
 
 package Menu;
 
-import java.util.Scanner;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
 
 public class AccountantMenu {
-    public static void runAccountantMenu(){
-        boolean isRunning = true;
-        Scanner sc = new Scanner(System.in);
+    private static Boolean isRunning = true;
+    private static final String menuText = "Welcome to Accountant menu!";
+    private static final String[] menuOptions = {
+            "See expected income from subscriptions.",
+            "See overdue payment.",
+            "Go back to main menu.",
+    };
 
-        System.out.println("Welcome to Accountant menu\n" +
-                "1: See expected income from subscriptions.\n" +
-                "2: See overdue payment.\n" +
-                "3: Go back to main menu.\n" +
-                "9: Exit");
+    public static void runAccountantMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = true;
+        console.resetToBookmark("CLEAR");
 
-        int input = sc.nextInt();
+        while (isRunning) {
+            Integer menuChoice = textio.newIntInputReader()
+                    .withNumberedPossibleValues(0, 1, 2)
+                    .withValueFormatter(index -> menuOptions[index])
+                    .read(menuText);
 
-        if (input == 1){
-            // TODO: See expected income
-            System.out.println("Expected income coming soon");
+            switch (menuChoice) {
+                case 0 -> viewAnnualIncome(textio, console);
+                case 1 -> viewOverduePayments(textio, console);
+                case 2 -> exitMenu(textio, console);
+            }
         }
-        if (input == 2){
-            // TODO: See overdue payments
+    }
+
+    // TODO: implement expected income
+    private static void viewAnnualIncome(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*
+        if (input == 1) {
+        System.out.println("Expected income coming soon");
+        }
+         */
+    }
+
+    // TODO: Implement overdue payments
+    private static void viewOverduePayments(TextIO textio, TextTerminal<?> console) {
+        console.println("Not implemented yet");
+        /*
+        if (input == 2) {
             System.out.println("Overdue payments coming soon");
-        }
-        if (input == 3){
-            MainMenu.runMenu();
-        }
-        else if (input == 9)
-            System.out.println("Terminating.....");
-            isRunning = false;
+         */
+    }
+
+    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+        isRunning = false;
 
     }
 }
