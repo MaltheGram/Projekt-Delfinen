@@ -1,8 +1,10 @@
 package Member;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberAgeTest {
 
@@ -11,8 +13,7 @@ public class MemberAgeTest {
     public void acceptableAgeTest() {
         LocalDate tenYrsPrior = LocalDate.of(2011, 5, 19);
         Member member = new Member(null, tenYrsPrior, null, null, true);
-
-        // assertEquals(10, new MemberAge(member).getAge()); why doesn't assertEquals work?
+        assertEquals(10, new MemberAge(member).getAge());
     }
 
     @Test
@@ -31,7 +32,5 @@ public class MemberAgeTest {
     }
 
         // bd is after today's date
-
-
 
 }
