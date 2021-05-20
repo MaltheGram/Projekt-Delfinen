@@ -12,12 +12,11 @@ package Member;
 import Service.UserInput;
 
 import java.time.*;
-import java.util.Scanner;
+import java.util.Arrays;
 import DelfinMain.DelfinMain;
 
 
 public class MemberHandler {
-    public static final Scanner sc = new Scanner(System.in);
 
     public static void addMember(){
         LocalDate birthDate = UserInput.askForBirthdate();
@@ -33,69 +32,74 @@ public class MemberHandler {
     }
 
     public static void updateMemberInformation() {
+        boolean isRunning = true;
+
         Member memberToUpdate = UserInput.askForMember();
         // TODO: maybe print member here
+        String menuText = "What will you update?";
+        String[] menuOptions = new String[] {
+                "Name",
+                "Address",
+                "Birthdate",
+                "Phone number",
+                "Membership status",
+                "Competition status",
+                "Go back to president menu",
+        };
 
-        Scanner sc = new Scanner(System.in);
-        String input;
+        while (isRunning) {
 
-        System.out.println("""
-                What will you update?
-                1: Name.
-                2: Address.
-                3: Birthdate.
-                4: Phone number
-                5: Membership status
-                6: Competition status
-                9: Exit""");
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
-        int chooseMenu = sc.nextInt();
-        sc.nextLine();
-
-        if (chooseMenu == 1){
-            System.out.println("New name\n_______________");
-            String newName = UserInput.askForName();
-            memberToUpdate.setName(newName);
-        }
-        if (chooseMenu == 2){
-            System.out.println("New address\n_______________");
-            input = sc.nextLine();
-            memberToUpdate.setAddress(input);
-        }
-        if (chooseMenu == 3){
-            System.out.println("New birthday\n_______________");
-            LocalDate birthDate = UserInput.askForBirthdate();
-            memberToUpdate.setBirthDate(birthDate);
-        }
-        if (chooseMenu == 4){
-            System.out.println("New phone number\n_______________");
-            String newPhoneNumber = UserInput.askForPhoneNumber();
-            memberToUpdate.setPhoneNumber(newPhoneNumber);
-        }
-        if (chooseMenu == 5){
-            System.out.println("New membership status\n_______________");
-            Boolean newMembershipStatus = UserInput.askForActiveMembership();
-            memberToUpdate.setActiveMember(newMembershipStatus);
-        }
-
-        if (chooseMenu == 9){
-            System.out.println("Terminating....");
+            switch (menuChoice) {
+                // TODO: maybe show change and ask for confirmation before changing
+                case 0 -> {
+                    UserInput.console.println("New name\n_______________");
+                    String newName = UserInput.askForName();
+                    memberToUpdate.setName(newName);
+                }
+                case 1 -> {
+                    UserInput.console.println("New address\n_______________");
+                    String newAddress = UserInput.askForAddress();
+                    memberToUpdate.setAddress(newAddress);
+                }
+                case 2 -> {
+                    UserInput.console.println("New birthday\n_______________");
+                    LocalDate birthDate = UserInput.askForBirthdate();
+                    memberToUpdate.setBirthDate(birthDate);
+                }
+                case 3 -> {
+                    UserInput.console.println("New phone number\n_______________");
+                    String newPhoneNumber = UserInput.askForPhoneNumber();
+                    memberToUpdate.setPhoneNumber(newPhoneNumber);
+                }
+                case 4 -> {
+                    UserInput.console.println("New membership status\n_______________");
+                    Boolean newMembershipStatus = UserInput.askForActiveMembership();
+                    memberToUpdate.setActiveMember(newMembershipStatus);
+                }
+                case 5 -> {
+                    // TODO competition status
+                }
+                case 6 -> {
+                    isRunning = false;
+                    UserInput.clearConsole();
+                }
+            }
         }
     }
 
     public static void removeMember() {
-        System.out.println("Input member ID to remove");
+        UserInput.console.println("Input member ID to remove");
         Member memberToRemove = UserInput.askForMember();
 
-        System.out.println("Confirm removal of: " + memberToRemove.getName() + "\nYes/No");
-        String input = sc.nextLine();
-        if (UserInput.isYes(input)){
+        Boolean confirmRemoval = UserInput.textio.newBooleanInputReader()
+                .read("Confirm removal of: " + memberToRemove.getName());
+
+        if (confirmRemoval){
             DelfinMain.listOfMembers.removeMember(memberToRemove.getMemberId());
-        }
-        if (UserInput.isNo(input)){
-            System.out.println("Terminating....");
+        } else {
+            UserInput.console.println("Terminating....");
         }
     }
-
-
 }
