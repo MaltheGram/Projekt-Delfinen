@@ -12,40 +12,40 @@ import java.util.Map;
 
 public class MemberList implements Serializable {
 
-    private static final Map<String, Member> members = new HashMap<>();
+    private final Map<String, Member> members = new HashMap<>();
 
-    public static void addNewMember(Member member) {
-        MemberList.members.put(member.getMemberId(), member);
+    public void addNewMember(Member member) {
+        this.members.put(member.getMemberId(), member);
     }
 
-    public static void addNewMembers(Map<String, Member> members) {
-        MemberList.members.putAll(members);
+    public void addNewMembers(Map<String, Member> members) {
+        this.members.putAll(members);
     }
 
     /**
      * Watch out! Might return null.
      */
-    public static Member getMemberByID(String memberID) {
+    public Member getMemberByID(String memberID) {
         return members.getOrDefault(memberID, null);
     }
 
-    public static Collection<Member> getAllMembers() {
+    public Collection<Member> getAllMembers() {
         return Collections.unmodifiableCollection(
-                MemberList.members.values()
+                this.members.values()
         );
     }
 
-    public static Collection<Member> getOverdueMembers() {
+    public Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
-                MemberList.members.values()
+                this.members.values()
                         .stream()
                         .filter(member -> member.getMembership().isOverdue())
                         .toList()
         );
     }
 
-    public static void removeMember(String memberID) {
-        MemberList.members.remove(memberID);
+    public void removeMember(String memberID) {
+        this.members.remove(memberID);
     }
 
 }
