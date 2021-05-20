@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class FileControl {
-    public static void writeObjectToFile(MemberList serializableObject, String filename){
+    public static void writeMemberListToFile(MemberList serializableObject, String filename){
         try {
             //WRITE FILE
             FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
@@ -32,6 +32,10 @@ public class FileControl {
             //CLEAN UP
             o.close();
             write.close();
+
+            //PRINT LOADED
+            System.out.println("memberlist added to file:");
+            System.out.println(serializableObject);
 
         } catch(Exception e) {
             System.out.println(e);
@@ -49,6 +53,7 @@ public class FileControl {
             f.close();
             in.close();
 
+            System.out.println("memberlist loaded from file:");
             System.out.println(mapInFile);
             return mapInFile;
 

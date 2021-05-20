@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PresidentMenu {
-    private static final HashMap<String, Member> list = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to President menu!";

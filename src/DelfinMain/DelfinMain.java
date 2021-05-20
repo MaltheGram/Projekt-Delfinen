@@ -39,7 +39,7 @@ public class DelfinMain {
 
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
-        FileControl.writeObjectToFile(listOfMembers,"list");
+        FileControl.writeMemberListToFile(listOfMembers,"list");
         FileControl.readMemberListfromFile("list");
         textio.dispose();
 
