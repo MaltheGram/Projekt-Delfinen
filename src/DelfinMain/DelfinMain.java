@@ -7,6 +7,8 @@ import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Member.MemberList;
 
+import java.awt.*;
+
 public class DelfinMain {
 
     private static final TextIO textio = TextIoFactory.getTextIO();
@@ -36,7 +38,12 @@ public class DelfinMain {
         */
 
 
+        console.getProperties().setPaneBackgroundColor(Color.WHITE);
+        console.getProperties().setInputBackgroundColor(Color.WHITE);
+        console.getProperties().setPromptBackgroundColor(Color.WHITE);
 
+        console.getProperties().setPromptColor(Color.DARK_GRAY);
+        console.getProperties().setInputColor(Color.BLACK);
 
         console.println(
                 """
@@ -46,11 +53,15 @@ public class DelfinMain {
                                    / .----.`_.'----'
                                    ;/     `
                                   /_;
-                                                
+                """);
+        console.getProperties().setPromptColor(Color.BLUE);
+        console.println(
+                """
                                ._      ._      ._      ._
                            _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
                 """
         );
+        console.getProperties().setPromptColor(Color.DARK_GRAY);
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
         FileControl.writeMemberListToFile(listOfMembers,"list");

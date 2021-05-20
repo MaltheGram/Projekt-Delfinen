@@ -3,7 +3,7 @@ package Finance;
 import Member.Member;
 
 public class MembershipFeeCalc {
-    // TODO: read prices from a settings-file
+    // TODO: maybe read prices from a settings-file?
     private static final double passive = 500;
     private static final double junior = 1000;
     private static final double normal = 1600;
