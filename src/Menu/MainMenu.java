@@ -8,15 +8,12 @@
 
 package Menu;
 
-import Member.Member;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 
-import java.util.HashMap;
-
 public class MainMenu {
     private static Boolean isRunning = true;
-    private static final String menuText = "Welcome to “Delfinen” system menu!ß";
+    private static final String menuText = "Welcome to “Delfinen” system menu!";
     private static final String[] menuOptions = {
         "See president options.",
         "See accountant options",
