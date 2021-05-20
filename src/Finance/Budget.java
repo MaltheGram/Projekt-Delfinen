@@ -1,17 +1,17 @@
 package Finance;
 
 import Member.Member;
-import java.util.HashMap;
-import java.util.Map;
+import Member.MemberList;
+import java.util.Collection;
 
 public class Budget {
-    private Map<Integer, Member> members = new HashMap<>(); // must use actual MemberList
+    private Collection<Member> members = new MemberList().getAllMembers(); // must use actual MemberList
 
     private double calculateAnnualBudget() {
         var total = 0.0;
 
-        for (var member : members.values()) {
-            total += MembershipFeeCalc.determinePrice(member);
+        for (var member : members) {
+            total += new MembershipFeeCalc().determinePrice(member);
         }
         return total;
     }

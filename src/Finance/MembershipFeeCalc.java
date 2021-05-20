@@ -1,25 +1,56 @@
 package Finance;
-
 import Member.Member;
 
 public class MembershipFeeCalc {
-    // TODO: maybe read prices from a settings-file?
-    private static final double passive = 500;
-    private static final double junior = 1000;
-    private static final double normal = 1600;
-    private static final double pensionist = normal * 0.75; // (1200)
+    private double passiveFee = 500;
+    private double juniorFee = 1000;
+    private double seniorFee = 1600;
+    private double pensionistFee = seniorFee * 0.75;
 
-    public static double determinePrice(Member member) {
+    public double getPassiveFee() {
+        return passiveFee;
+    }
+
+    public void setPassiveFee(double passiveFee) {
+        this.passiveFee = passiveFee;
+    }
+
+    public double getJuniorFee() {
+        return juniorFee;
+    }
+
+    public void setJuniorFee(double juniorFee) {
+        this.juniorFee = juniorFee;
+    }
+
+    public double getSeniorFee() {
+        return seniorFee;
+    }
+
+    public void setSeniorFee(double seniorFee) {
+        this.seniorFee = seniorFee;
+    }
+
+    public double getPensionistFee() {
+        return pensionistFee;
+    }
+
+    public void setPensionistFee(double pensionistFee) {
+        this.pensionistFee = pensionistFee;
+    }
+
+    public double determinePrice(Member member) {
+        int age = member.getAge();
         if(!member.isActiveMember()) {
-            return passive;
+            return passiveFee;
         }
-        if (member.getAge() < 18) {
-            return junior;
+        if (age < 18) {
+            return juniorFee;
         }
-        if (member.getAge() >= 18 && member.getAge() < 60) {
-            return normal;
+        if (age >= 18 && age < 60) {
+            return seniorFee;
         } else {
-            return pensionist;
+            return pensionistFee;
         }
     }
 }
