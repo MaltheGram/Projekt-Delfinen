@@ -1,5 +1,6 @@
 /*
  * @author Malthe
+ * + a little spice of @author Mark
  * 19/05/2021 10.15
  *
  * DAT21V2-Projekt-Delfinen
@@ -10,6 +11,7 @@ package Member;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import java.time.LocalDate;
@@ -21,7 +23,7 @@ public class MemberHandler {
     private static Scanner sc = new Scanner(System.in);
 
     // TODO: ADD MEMBER TO THE FILE
-    public static void addMember(){
+    public static void addMember(HashMap<String,Member> mapOfMembers){
         boolean isActiveMember = false;
 
         System.out.println("Birth year");
@@ -53,6 +55,7 @@ public class MemberHandler {
 
         LocalDate localDate = LocalDate.of(yearInput,monthInput,dateInput);
         Member member = new Member(nameInput,localDate,addressInput,phoneInput,isActiveMember);
+        mapOfMembers.put(member.getMemberId(),member);
         System.out.println("Member added.");
     }
 

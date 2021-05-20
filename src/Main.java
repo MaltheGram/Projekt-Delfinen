@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         //INIT MEMBER LIST
-        HashMap<Integer,Member> listOfMembers = new HashMap<>();
+        HashMap<String,Member> listOfMembers = new HashMap<>();
         listOfMembers = FileControl.readMemberListfromFile("list");
         //
         FileControl.writeMemberListToFile(listOfMembers,"list");
@@ -32,8 +32,8 @@ public class Main {
         Member Mark = new Member("Mark", MarkDate, "Lygten 37", "8888888", true);
 
 
-        listOfMembers.put(1,Malthe);
-        listOfMembers.put(2,Mark);
+        listOfMembers.put("1",Malthe);
+        listOfMembers.put("2",Mark);
 
 
 
