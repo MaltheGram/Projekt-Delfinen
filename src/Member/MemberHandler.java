@@ -180,7 +180,7 @@ public class MemberHandler {
             memberId = sc.nextLine();
             memberToRemove = DelfinMain.listOfMembers.getMemberByID(memberId);
         }
-        System.out.println("Confirm removal of: " + memberToRemove.getName() + " Yes/No");
+        System.out.println("Confirm removal of: " + memberToRemove.getName() + "\nYes/No");
         String input = sc.nextLine();
         if (UserInput.isYes(input)){
             DelfinMain.listOfMembers.removeMember(memberId);
