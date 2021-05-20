@@ -37,6 +37,20 @@ public class DelfinMain {
 
 
 
+
+        console.println(
+                """
+                                        ,-._
+                                      _.-'  '--.
+                                    .'      _  -`\\_
+                                   / .----.`_.'----'
+                                   ;/     `
+                                  /_;
+                                                
+                               ._      ._      ._      ._
+                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
+                """
+        );
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
         FileControl.writeMemberListToFile(listOfMembers,"list");
