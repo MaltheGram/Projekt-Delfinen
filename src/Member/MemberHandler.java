@@ -9,16 +9,19 @@
 
 package Member;
 
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Year;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import java.time.LocalDate;
-
 
 
 public class MemberHandler {
@@ -28,20 +31,18 @@ public class MemberHandler {
     private static Scanner sc = new Scanner(System.in);
 
     // TODO: ADD MEMBER TO THE FILE
-        //
     // public static void addMember(HashMap<String,Member> mapOfMembers){
-        public static void addMember(){
+    public static void addMember(){
 
         boolean isActiveMember = false;
 
 
         System.out.println("Birth year");
-            int yearInput = sc.nextInt();
-            while(yearInput > yearNow) {
-                if (yearInput > Year.now().getValue() || yearInput < Year.now().getValue() - 150) {
-                    System.out.println("Year cannot be greater than current year or less than " + (Year.now().getValue() - 150)
-                        + "\nTry again.");
-                    yearInput = sc.nextInt();
+        int yearInput = sc.nextInt();
+        while(yearInput > yearNow) {
+            if (yearInput > Year.now().getValue() || yearInput < Year.now().getValue() - 150) {
+                System.out.println("Year cannot be greater than current year or less than " + (Year.now().getValue() - 150) + "\nTry again.");
+                yearInput = sc.nextInt();
             }
         }
 
@@ -168,12 +169,11 @@ public class MemberHandler {
     }
 
 
-    public static void removeMember(){
+    public static void removeMember(TextIO textio, TextTerminal<?> console) {
         System.out.println("Input member ID to remove");
         String memberId = sc.nextLine();
-        var removeId = MemberList.getMemberByID(memberId);
-        MemberList.getAllMembers().remove(removeId);
-
+        Member memberToRemove = MemberList.getMemberByID(memberId);
+        MemberList.removeMember(memberToRemove.getMemberId());
     }
 
 
