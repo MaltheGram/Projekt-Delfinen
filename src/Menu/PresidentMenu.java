@@ -8,6 +8,7 @@ package Menu;
 
 import Member.Member;
 import Member.MemberHandler;
+import Service.FileControl;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 
@@ -16,8 +17,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PresidentMenu {
-    private static HashMap<String, Member> test = new HashMap<>();
-
+    private static final HashMap<String, Member> list = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to President menu!";
@@ -29,6 +29,7 @@ public class PresidentMenu {
     };
 
     public static void runPresidentMenu(TextIO textio, TextTerminal<?> console) {
+
         isRunning = true;
         console.resetToBookmark("CLEAR");
 
@@ -70,7 +71,7 @@ public class PresidentMenu {
     // TODO: Implement RemoveMember
     private static void RemoveMember(TextIO textio, TextTerminal<?> console) {
         console.println("Not implemented yet");
-        MemberHandler.removeMember();
+      //  MemberHandler.removeMember();
         /*
         if (input == 3) {
             System.out.println("Input member ID update");

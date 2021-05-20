@@ -1,5 +1,6 @@
 /*
  * @author Mark "Massive Legend" Larsen
+ * spiced up @author Malthe
  * 20/05/2021 10.41
  *
  * DAT21V2-Projekt-Delfinen
@@ -20,7 +21,9 @@ public class UserInput {
     public static Boolean isNo(String str) {
         return ( str.toLowerCase().contains("No") ||
                 str.toLowerCase().contains("x") ||
-                str.toLowerCase().contains("stop")
+                str.toLowerCase().contains("stop") ||
+                str.isBlank() ||
+                str.isEmpty()
         );
     }
 }

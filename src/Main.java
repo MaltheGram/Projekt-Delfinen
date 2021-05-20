@@ -1,22 +1,21 @@
 import Member.Member;
-import Member.MemberList;
 import Menu.MainMenu;
-import Service.MemberIdGenerator;
+import Service.FileControl;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
+import Member.MemberList;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 
 public class Main {
 
     private static final TextIO textio = TextIoFactory.getTextIO();
     private static final TextTerminal<?> console = textio.getTextTerminal();
+    public static MemberList listOfMembers = new MemberList();
 
     public static void main(String[] args) {
         //INIT MEMBER LIST
-        HashMap<String,Member> listOfMembers = new HashMap<>();
         listOfMembers = FileControl.readMemberListfromFile("list");
 
         //
