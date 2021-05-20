@@ -14,6 +14,14 @@ public class MemberList implements Serializable {
 
     private static final Map<String, Member> members = new HashMap<>();
 
+    public static void addNewMember(Member member) {
+        MemberList.members.put(member.getMemberId(), member);
+    }
+
+    public static void addNewMembers(Map<String, Member> members) {
+        MemberList.members.putAll(members);
+    }
+
     /**
      * Watch out! Might return null.
      */
@@ -23,13 +31,13 @@ public class MemberList implements Serializable {
 
     public static Collection<Member> getAllMembers() {
         return Collections.unmodifiableCollection(
-                members.values()
+                MemberList.members.values()
         );
     }
 
     public static Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
-                members.values()
+                MemberList.members.values()
                         .stream()
                         .filter(member -> member.getMembership().isOverdue())
                         .toList()
@@ -37,7 +45,7 @@ public class MemberList implements Serializable {
     }
 
     public static void removeMember(String memberID) {
-        members.remove(memberID);
+        MemberList.members.remove(memberID);
     }
 
 }
