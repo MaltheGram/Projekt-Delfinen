@@ -1,4 +1,5 @@
-import Member.Member;
+package DelfinMain;
+
 import Menu.MainMenu;
 import Service.FileControl;
 import org.beryx.textio.TextIO;
@@ -6,9 +7,7 @@ import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Member.MemberList;
 
-import java.util.HashMap;
-
-public class Main {
+public class DelfinMain {
 
     private static final TextIO textio = TextIoFactory.getTextIO();
     private static final TextTerminal<?> console = textio.getTextTerminal();

@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-
+import DelfinMain.DelfinMain;
 import java.time.LocalDate;
 
 
@@ -48,15 +48,15 @@ public class MemberHandler {
 
         System.out.println("Birth month");
         int monthInput = sc.nextInt();
-        while (monthInput > currentMonth.getValue() || monthInput > 12) { // Assuming this works?? Cannot test since we wont pass month 5
+        while (monthInput > 12) { // Assuming this works?? Cannot test since we wont pass month 5
             System.out.println("Month cannot be greater than current month or greater than 12.\nTry again");
             monthInput = sc.nextInt();
         }
 
         System.out.println("Birth day");
         int dateInput = sc.nextInt();
-        while (dateInput > currentDate.getDayOfMonth() || dateInput > 31){
-            System.out.println("Day cannot be greater than current date or greater than 31.\nTry again");
+        while (dateInput > 31){
+            System.out.println("Day cannot be greater than 31.\nTry again");
             dateInput = sc.nextInt();
         }
 
@@ -83,14 +83,14 @@ public class MemberHandler {
 
         LocalDate localDate = LocalDate.of(yearInput,monthInput,dateInput);
         Member member = new Member(nameInput,localDate,addressInput,phoneInput,isActiveMember);
-        //mapOfMembers.put(member.getMemberId(),member);
+        DelfinMain.listOfMembers.addNewMember(member);
         System.out.println("Member added.");
     }
 
     public static void updateMemberInformation(String memberId) {
         System.out.println("Choose member ID");
         String idToUpdate = sc.nextLine();
-        MemberList.getMemberByID(idToUpdate);
+      //  MemberList.getMemberByID(idToUpdate);
 
         Member member = new Member(null,null,null,null,false);
         Scanner sc = new Scanner(System.in);
@@ -134,14 +134,14 @@ public class MemberHandler {
 
             System.out.println("Birth month");
             int monthInput = sc.nextInt();
-            while (monthInput > currentMonth.getValue() || monthInput > 12){
-                System.out.println("Month cannot be greater than current month or greater than 12.\nTry again.");
+            while (monthInput > 12){
+                System.out.println("Month cannot be greater than 12.\nTry again.");
                 monthInput = sc.nextInt();
             }
             System.out.println("Birth day");
             int dateInput = sc.nextInt();
-            while (dateInput > currentDate.getDayOfMonth() || dateInput > 30) {
-                System.out.println("Day cannot be greater than current date or greater than 30.\nTry again.");
+            while (dateInput > 31) {
+                System.out.println("Day cannot be greater than 30.\nTry again.");
                 dateInput = sc.nextInt();
             }
             sc.nextLine();
@@ -172,8 +172,10 @@ public class MemberHandler {
     public static void removeMember() {
         System.out.println("Input member ID to remove");
         String memberId = sc.nextLine();
-        Member memberToRemove = MemberList.getMemberByID(memberId);
+        /*Member memberToRemove = MemberList.getMemberByID(memberId);
         MemberList.removeMember(memberToRemove.getMemberId());
+
+         */
     }
 
 
