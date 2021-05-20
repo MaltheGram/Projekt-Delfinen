@@ -35,7 +35,6 @@ public class Member implements Serializable {
         this.address = address;
         this.isActiveMember = isActiveMember;
         this.phoneNumber = phoneNumber;
-
     }
 
     public String getMemberId() {
@@ -47,7 +46,9 @@ public class Member implements Serializable {
         //  check if age seems completely wrong under 0 or over 120 kinda
 
         // running .normalized() so we don't get weird stuff like Period of 0 years+3000 days
-        return Period.between(this.birthDate, LocalDate.now()).normalized().getYears();
+        return Period.between(this.birthDate, LocalDate.now())
+                .normalized()
+                .getYears();
     }
 
     public LocalDate getBirthDate() {

@@ -6,14 +6,10 @@
 
 package Menu;
 
-import Member.Member;
 import Member.MemberHandler;
-import Service.FileControl;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class PresidentMenu {
@@ -39,7 +35,7 @@ public class PresidentMenu {
                     .read(menuText);
 
             switch (menuChoice) {
-                case 0 -> AddMember(textio, console);
+                case 0 -> AddMember();
                 case 1 -> RemoveMember(textio, console);
                 case 2 -> UpdateMember(textio, console);
                 case 3 -> ExitMenu(textio, console);
@@ -47,24 +43,8 @@ public class PresidentMenu {
         }
     }
 
-    // TODO: Implement AddMember
-    private static void AddMember(TextIO textio, TextTerminal<?> console) {
+    private static void AddMember() {
        MemberHandler.addMember();
-
-        /*if (input == 1){
-            MemberHandler.addMember();
-            while (isRunning) {
-                System.out.println("Add more members? Yes/No");
-                sc.nextLine();
-                addMoreMembers = sc.nextLine();
-                if (addMoreMembers.equalsIgnoreCase("yes")) {
-                    MemberHandler.addMember();
-                } else
-                    isRunning = false;
-                //MainMenu.runMenu();
-
-            }
-        }*/
     }
 
     // TODO: Implement RemoveMember

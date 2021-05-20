@@ -2,6 +2,7 @@ package DelfinMain;
 
 import Menu.MainMenu;
 import Service.FileControl;
+import Service.UserInput;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -11,8 +12,6 @@ import java.awt.*;
 
 public class DelfinMain {
 
-    private static final TextIO textio = TextIoFactory.getTextIO();
-    private static final TextTerminal<?> console = textio.getTextTerminal();
     public static MemberList listOfMembers = new MemberList();
 
     public static void main(String[] args) {
@@ -38,14 +37,14 @@ public class DelfinMain {
         */
 
 
-        console.getProperties().setPaneBackgroundColor(Color.WHITE);
-        console.getProperties().setInputBackgroundColor(Color.WHITE);
-        console.getProperties().setPromptBackgroundColor(Color.WHITE);
+        UserInput.console.getProperties().setPaneBackgroundColor(Color.WHITE);
+        UserInput.console.getProperties().setInputBackgroundColor(Color.WHITE);
+        UserInput.console.getProperties().setPromptBackgroundColor(Color.WHITE);
 
-        console.getProperties().setPromptColor(Color.DARK_GRAY);
-        console.getProperties().setInputColor(Color.BLACK);
+        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
+        UserInput.console.getProperties().setInputColor(Color.BLACK);
 
-        console.println(
+        UserInput.console.println(
                 """
                                         ,-._
                                       _.-'  '--.
@@ -54,18 +53,18 @@ public class DelfinMain {
                                    ;/     `
                                   /_;
                 """);
-        console.getProperties().setPromptColor(Color.BLUE);
-        console.println(
+        UserInput.console.getProperties().setPromptColor(Color.BLUE);
+        UserInput.console.println(
                 """
                                ._      ._      ._      ._
                            _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
                 """
         );
-        console.getProperties().setPromptColor(Color.DARK_GRAY);
-        console.setBookmark("CLEAR");
-        MainMenu.runMenu(textio, console);
+        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
+        UserInput.console.setBookmark("CLEAR");
+        MainMenu.runMenu(UserInput.textio, UserInput.console);
         FileControl.writeMemberListToFile(listOfMembers,"list");
-        textio.dispose();
+        UserInput.textio.dispose();
 
     }
 }
