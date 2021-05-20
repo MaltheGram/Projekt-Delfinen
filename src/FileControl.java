@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class FileControl {
-    public static void writeObjectToFile(Object serializableObject, String filename){
+    public static void writeObjectToFile(HashMap<String,Member> serializableObject, String filename){
         try {
             //WRITE FILE
             FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
