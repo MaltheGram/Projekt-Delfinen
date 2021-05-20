@@ -169,7 +169,7 @@ public class MemberHandler {
     }
 
 
-    public static void removeMember(TextIO textio, TextTerminal<?> console) {
+    public static void removeMember() {
         System.out.println("Input member ID to remove");
         String memberId = sc.nextLine();
         Member memberToRemove = MemberList.getMemberByID(memberId);
