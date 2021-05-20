@@ -69,8 +69,7 @@ public class PresidentMenu {
 
     // TODO: Implement RemoveMember
     private static void RemoveMember(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
-      //  MemberHandler.removeMember();
+        MemberHandler.removeMember();
         /*
         if (input == 3) {
             System.out.println("Input member ID update");
@@ -83,9 +82,7 @@ public class PresidentMenu {
 
     // TODO: Implement UpdateMember
     private static void UpdateMember(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
-        String idToUpdate = sc.nextLine();
-        MemberHandler.updateMemberInformation(idToUpdate);
+        MemberHandler.updateMemberInformation();
         /*
         if (input == 3) {
             System.out.println("Input member ID update");

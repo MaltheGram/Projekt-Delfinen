@@ -9,16 +9,10 @@
 
 package Member;
 
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextTerminal;
+import Service.UserInput;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Year;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 import DelfinMain.DelfinMain;
 import java.time.LocalDate;
@@ -30,8 +24,7 @@ public class MemberHandler {
     public static Month currentMonth = currentDate.getMonth();
     private static Scanner sc = new Scanner(System.in);
 
-    // TODO: ADD MEMBER TO THE FILE
-    // public static void addMember(HashMap<String,Member> mapOfMembers){
+
     public static void addMember(){
 
         boolean isActiveMember = false;
@@ -87,12 +80,17 @@ public class MemberHandler {
         System.out.println("Member added.");
     }
 
-    public static void updateMemberInformation(String memberId) {
-        System.out.println("Choose member ID");
-        String idToUpdate = sc.nextLine();
-      //  MemberList.getMemberByID(idToUpdate);
+    public static void updateMemberInformation() {
+        System.out.println("Choose member id to update");
+        String memberId = sc.nextLine();
+        Member memberToUpdate = DelfinMain.listOfMembers.getMemberByID(memberId);
+        while (memberToUpdate == null){
+            System.out.println("Invalid member id");
+            memberId = sc.nextLine();
+            memberToUpdate = DelfinMain.listOfMembers.getMemberByID(memberId);
+        }
 
-        Member member = new Member(null,null,null,null,false);
+       // Member member = new Member(null,null,null,null,false);
         Scanner sc = new Scanner(System.in);
         String input;
 
@@ -112,12 +110,12 @@ public class MemberHandler {
         if (chooseMenu == 1){
             System.out.println("New name\n_______________");
             input = sc.nextLine();
-            member.setName(input);
+            memberToUpdate.setName(input);
         }
         if (chooseMenu == 2){
             System.out.println("New address\n_______________");
             input = sc.nextLine();
-            member.setAddress(input);
+            memberToUpdate.setAddress(input);
         }
         if (chooseMenu == 3){
             System.out.println("New birthdate\n_______________");
@@ -147,20 +145,25 @@ public class MemberHandler {
             sc.nextLine();
 
             LocalDate setLocalDate = LocalDate.of(yearInput,monthInput,dateInput);
-            member.setBirthDate(setLocalDate);
+            memberToUpdate.setBirthDate(setLocalDate);
         }
         if (chooseMenu == 4){
             System.out.println("New phone number\n_______________");
             input = sc.nextLine();
-            member.setPhoneNumber(input);
+            memberToUpdate.setPhoneNumber(input);
         }
         if (chooseMenu == 5){
             boolean isActiveMember = false;
             System.out.println("New membership status\n_______________");
             input = sc.nextLine();
-            if (input.equalsIgnoreCase("active"))
-            member.setActiveMember(isActiveMember = true);
+            if (UserInput.isYes(input)){
+                memberToUpdate.setActiveMember(isActiveMember = true);
+            }
+            if (UserInput.isNo(input)){
+                memberToUpdate.setActiveMember(isActiveMember = false);
+            }
         }
+
         if (chooseMenu == 9){
             System.out.println("Terminating....");
         }
@@ -168,19 +171,24 @@ public class MemberHandler {
 
     }
 
-
     public static void removeMember() {
         System.out.println("Input member ID to remove");
         String memberId = sc.nextLine();
-        /*Member memberToRemove = MemberList.getMemberByID(memberId);
-        MemberList.removeMember(memberToRemove.getMemberId());
-
-         */
+        Member memberToRemove = DelfinMain.listOfMembers.getMemberByID(memberId);
+        while (memberToRemove == null) {
+            System.out.println("Invalid member id");
+            memberId = sc.nextLine();
+            memberToRemove = DelfinMain.listOfMembers.getMemberByID(memberId);
+        }
+        System.out.println("Confirm removal of: " + memberToRemove.getName() + " Yes/No");
+        String input = sc.nextLine();
+        if (UserInput.isYes(input)){
+            DelfinMain.listOfMembers.removeMember(memberId);
+        }
+        if (UserInput.isNo(input)){
+            System.out.println("Terminating....");
+        }
     }
 
-
-    public String dateFormat(){
-        return new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-    }
 
 }

@@ -34,7 +34,6 @@ public class Member implements Serializable {
         this.birthDate = birthDate;
         this.address = address;
         this.isActiveMember = isActiveMember;
-        //this.membership = new Membership();
         this.phoneNumber = phoneNumber;
 
     }

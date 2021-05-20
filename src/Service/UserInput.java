@@ -1,3 +1,6 @@
+
+package Service;
+
 /*
  * @author Mark "Massive Legend" Larsen
  * spiced up @author Malthe
@@ -11,7 +14,6 @@ public class UserInput {
         return (str.equalsIgnoreCase("yes") ||
                 str.equalsIgnoreCase("ye") ||
                 str.equalsIgnoreCase("y") ||
-                str.equalsIgnoreCase("") ||
                 str.equalsIgnoreCase("ja") ||
                 str.equalsIgnoreCase("ok") ||
                 str.equalsIgnoreCase("jep")
