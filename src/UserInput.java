@@ -19,7 +19,8 @@ public class UserInput {
 
     public static Boolean isNo(String str) {
         return ( str.toLowerCase().contains("No") ||
-                str.toLowerCase().contains("x")
+                str.toLowerCase().contains("x") ||
+                str.toLowerCase().contains("stop")
         );
     }
 }

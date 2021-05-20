@@ -13,13 +13,13 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class FileControl {
-    public static void writeMemberListToFile(HashMap<String,Member> map, String filename){
+    public static void writeObjectToFile(Object serializableObject, String filename){
         try {
             //WRITE FILE
             FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
             ObjectOutputStream o = new ObjectOutputStream(write);
 
-            o.writeObject(map);
+            o.writeObject(serializableObject);
 
             //CLEAN UP
             o.close();
