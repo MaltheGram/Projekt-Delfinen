@@ -28,18 +28,13 @@ public class MemberHandler {
 
         Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
         DelfinMain.listOfMembers.addNewMember(member);
-        System.out.println("Member added.");
+        UserInput.clearConsole();
+        UserInput.console.println("Member added.");
     }
 
     public static void updateMemberInformation() {
-        System.out.println("Choose member id to update");
-        String memberId = sc.nextLine();
-        Member memberToUpdate = DelfinMain.listOfMembers.getMemberByID(memberId);
-        while (memberToUpdate == null){
-            System.out.println("Invalid member id");
-            memberId = sc.nextLine();
-            memberToUpdate = DelfinMain.listOfMembers.getMemberByID(memberId);
-        }
+        Member memberToUpdate = UserInput.askForMember();
+        // TODO: maybe print member here
 
         Scanner sc = new Scanner(System.in);
         String input;
@@ -59,8 +54,8 @@ public class MemberHandler {
 
         if (chooseMenu == 1){
             System.out.println("New name\n_______________");
-            input = sc.nextLine();
-            memberToUpdate.setName(input);
+            String newName = UserInput.askForName();
+            memberToUpdate.setName(newName);
         }
         if (chooseMenu == 2){
             System.out.println("New address\n_______________");
@@ -68,45 +63,34 @@ public class MemberHandler {
             memberToUpdate.setAddress(input);
         }
         if (chooseMenu == 3){
+            System.out.println("New birthday\n_______________");
             LocalDate birthDate = UserInput.askForBirthdate();
             memberToUpdate.setBirthDate(birthDate);
         }
         if (chooseMenu == 4){
             System.out.println("New phone number\n_______________");
-            input = sc.nextLine();
-            memberToUpdate.setPhoneNumber(input);
+            String newPhoneNumber = UserInput.askForPhoneNumber();
+            memberToUpdate.setPhoneNumber(newPhoneNumber);
         }
         if (chooseMenu == 5){
             System.out.println("New membership status\n_______________");
-            input = sc.nextLine();
-            if (UserInput.isYes(input)){
-                memberToUpdate.setActiveMember(true);
-            }
-            if (UserInput.isNo(input)){
-                memberToUpdate.setActiveMember(false);
-            }
+            Boolean newMembershipStatus = UserInput.askForActiveMembership();
+            memberToUpdate.setActiveMember(newMembershipStatus);
         }
 
         if (chooseMenu == 9){
             System.out.println("Terminating....");
         }
-
-
     }
 
     public static void removeMember() {
         System.out.println("Input member ID to remove");
-        String memberId = sc.nextLine();
-        Member memberToRemove = DelfinMain.listOfMembers.getMemberByID(memberId);
-        while (memberToRemove == null) {
-            System.out.println("Invalid member id");
-            memberId = sc.nextLine();
-            memberToRemove = DelfinMain.listOfMembers.getMemberByID(memberId);
-        }
+        Member memberToRemove = UserInput.askForMember();
+
         System.out.println("Confirm removal of: " + memberToRemove.getName() + "\nYes/No");
         String input = sc.nextLine();
         if (UserInput.isYes(input)){
-            DelfinMain.listOfMembers.removeMember(memberId);
+            DelfinMain.listOfMembers.removeMember(memberToRemove.getMemberId());
         }
         if (UserInput.isNo(input)){
             System.out.println("Terminating....");
