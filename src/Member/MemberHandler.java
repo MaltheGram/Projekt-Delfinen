@@ -10,6 +10,9 @@
 package Member;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Year;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -19,19 +22,43 @@ import java.time.LocalDate;
 
 
 public class MemberHandler {
-
+    public static LocalDate currentDate = LocalDate.now();
+    public static int yearNow = Year.now().getValue();
+    public static Month currentMonth = currentDate.getMonth();
     private static Scanner sc = new Scanner(System.in);
 
     // TODO: ADD MEMBER TO THE FILE
-    public static void addMember(HashMap<String,Member> mapOfMembers){
+        //
+    // public static void addMember(HashMap<String,Member> mapOfMembers){
+        public static void addMember(){
+
         boolean isActiveMember = false;
 
+
         System.out.println("Birth year");
-        var yearInput = sc.nextInt();
+            int yearInput = sc.nextInt();
+            while(yearInput > yearNow) {
+                if (yearInput > Year.now().getValue() || yearInput < Year.now().getValue() - 150) {
+                    System.out.println("Year cannot be greater than current year or less than " + (Year.now().getValue() - 150)
+                        + "\nTry again.");
+                    yearInput = sc.nextInt();
+            }
+        }
+
         System.out.println("Birth month");
-        var monthInput = sc.nextInt();
+        int monthInput = sc.nextInt();
+        while (monthInput > currentMonth.getValue() || monthInput > 12) { // Assuming this works?? Cannot test since we wont pass month 5
+            System.out.println("Month cannot be greater than current month or greater than 12.\nTry again");
+            monthInput = sc.nextInt();
+        }
+
         System.out.println("Birth day");
-        var dateInput = sc.nextInt();
+        int dateInput = sc.nextInt();
+        while (dateInput > currentDate.getDayOfMonth() || dateInput > 31){
+            System.out.println("Day cannot be greater than current date or greater than 31.\nTry again");
+            dateInput = sc.nextInt();
+        }
+
         sc.nextLine();
 
         System.out.println("Enter name");
@@ -55,12 +82,14 @@ public class MemberHandler {
 
         LocalDate localDate = LocalDate.of(yearInput,monthInput,dateInput);
         Member member = new Member(nameInput,localDate,addressInput,phoneInput,isActiveMember);
-        mapOfMembers.put(member.getMemberId(),member);
+        //mapOfMembers.put(member.getMemberId(),member);
         System.out.println("Member added.");
     }
 
     public static void updateMemberInformation(String memberId) {
-
+        System.out.println("Choose member ID");
+        String idToUpdate = sc.nextLine();
+        MemberList.getMemberByID(idToUpdate);
 
         Member member = new Member(null,null,null,null,false);
         Scanner sc = new Scanner(System.in);
@@ -91,12 +120,29 @@ public class MemberHandler {
         }
         if (chooseMenu == 3){
             System.out.println("New birthdate\n_______________");
+
             System.out.println("Birth year");
-            var yearInput = sc.nextInt();
+            int yearInput = sc.nextInt();
+            while (yearInput > currentDate.getYear()) {
+                if (yearInput > Year.now().getValue() || yearInput < Year.now().getValue() - 150) {
+                    System.out.println("Year cannot be greater than current year or less than " + (Year.now().getValue() - 150)
+                            + "\nTry again.");
+                    yearInput = sc.nextInt();
+                }
+            }
+
             System.out.println("Birth month");
-            var monthInput = sc.nextInt();
+            int monthInput = sc.nextInt();
+            while (monthInput > currentMonth.getValue() || monthInput > 12){
+                System.out.println("Month cannot be greater than current month or greater than 12.\nTry again.");
+                monthInput = sc.nextInt();
+            }
             System.out.println("Birth day");
-            var dateInput = sc.nextInt();
+            int dateInput = sc.nextInt();
+            while (dateInput > currentDate.getDayOfMonth() || dateInput > 30) {
+                System.out.println("Day cannot be greater than current date or greater than 30.\nTry again.");
+                dateInput = sc.nextInt();
+            }
             sc.nextLine();
 
             LocalDate setLocalDate = LocalDate.of(yearInput,monthInput,dateInput);
@@ -124,7 +170,9 @@ public class MemberHandler {
 
     public static void removeMember(){
         System.out.println("Input member ID to remove");
-
+        String memberId = sc.nextLine();
+        var removeId = MemberList.getMemberByID(memberId);
+        MemberList.getAllMembers().remove(removeId);
 
     }
 

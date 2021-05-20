@@ -8,8 +8,11 @@
 
 package Menu;
 
+import Member.Member;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
+
+import java.util.HashMap;
 
 public class MainMenu {
     private static Boolean isRunning = true;

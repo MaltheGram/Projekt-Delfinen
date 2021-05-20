@@ -1,17 +1,24 @@
-/**
- * @author Malthe
- * 18/05/2021 15.07
- *
- * DAT21V2-Projekt-Delfinen
- *
- */
+// * @author Malthe
+// * 18/05/2021 15.07
+// *
+// * DAT21V2-Projekt-Delfinen
+// *
 
 package Menu;
 
+import Member.Member;
+import Member.MemberHandler;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 public class PresidentMenu {
+    private static HashMap<String, Member> test = new HashMap<>();
+
+    static Scanner sc = new Scanner(System.in);
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to President menu!";
     private static final String[] menuOptions = {
@@ -42,7 +49,8 @@ public class PresidentMenu {
 
     // TODO: Implement AddMember
     private static void AddMember(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
+       MemberHandler.addMember();
+
         /*if (input == 1){
             MemberHandler.addMember();
             while (isRunning) {
@@ -62,6 +70,7 @@ public class PresidentMenu {
     // TODO: Implement RemoveMember
     private static void RemoveMember(TextIO textio, TextTerminal<?> console) {
         console.println("Not implemented yet");
+        MemberHandler.removeMember();
         /*
         if (input == 3) {
             System.out.println("Input member ID update");
@@ -75,6 +84,8 @@ public class PresidentMenu {
     // TODO: Implement UpdateMember
     private static void UpdateMember(TextIO textio, TextTerminal<?> console) {
         console.println("Not implemented yet");
+        String idToUpdate = sc.nextLine();
+        MemberHandler.updateMemberInformation(idToUpdate);
         /*
         if (input == 3) {
             System.out.println("Input member ID update");

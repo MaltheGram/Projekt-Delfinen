@@ -18,11 +18,11 @@ public class Main {
         //INIT MEMBER LIST
         HashMap<String,Member> listOfMembers = new HashMap<>();
         listOfMembers = FileControl.readMemberListfromFile("list");
+
         //
-        FileControl.writeMemberListToFile(listOfMembers,"list");
         //
 
-        MemberIdGenerator memberIdGenerator = new MemberIdGenerator();
+       /* MemberIdGenerator memberIdGenerator = new MemberIdGenerator();
         MemberIdGenerator memberIdGenerator2 = new MemberIdGenerator();
 
         LocalDate MaltheDate = LocalDate.of(1998, 1, 30);
@@ -35,10 +35,14 @@ public class Main {
         listOfMembers.put("1",Malthe);
         listOfMembers.put("2",Mark);
 
+        */
+
 
 
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
+        FileControl.writeMemberListToFile(listOfMembers,"list");
+        FileControl.readMemberListfromFile("list");
         textio.dispose();
 
     }

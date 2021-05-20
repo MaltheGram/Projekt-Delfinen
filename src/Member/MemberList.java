@@ -12,12 +12,12 @@ import java.util.Map;
 
 public class MemberList implements Serializable {
 
-    private static final Map<Integer, Member> members = new HashMap<>();
+    private static final Map<String, Member> members = new HashMap<>();
 
     /**
      * Watch out! Might return null.
      */
-    public static Member getMemberByID(Integer memberID) {
+    public static Member getMemberByID(String memberID) {
         return members.getOrDefault(memberID, null);
     }
 
