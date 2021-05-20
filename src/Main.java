@@ -15,6 +15,12 @@ public class Main {
     private static final TextTerminal<?> console = textio.getTextTerminal();
 
     public static void main(String[] args) {
+        //INIT MEMBER LIST
+        HashMap<Integer,Member> listOfMembers = new HashMap<>();
+        listOfMembers = FileControl.readMemberListfromFile("list");
+        //
+        FileControl.writeMemberListToFile(listOfMembers,"list");
+        //
 
         MemberIdGenerator memberIdGenerator = new MemberIdGenerator();
         MemberIdGenerator memberIdGenerator2 = new MemberIdGenerator();
@@ -25,12 +31,11 @@ public class Main {
         Member Malthe = new Member("Malthe", MaltheDate, "Hoffmeyersvej 67", "61331776", true);
         Member Mark = new Member("Mark", MarkDate, "Lygten 37", "8888888", true);
 
-        HashMap<Integer,Member> hashMap = new HashMap<>();
-        hashMap.put(1,Malthe);
-        hashMap.put(2,Mark);
 
-        FileControl.writeMemberListToFile(hashMap,"list");
-        FileControl.readMemberListfromFile("list");
+        listOfMembers.put(1,Malthe);
+        listOfMembers.put(2,Mark);
+
+
 
         console.setBookmark("CLEAR");
         MainMenu.runMenu(textio, console);
