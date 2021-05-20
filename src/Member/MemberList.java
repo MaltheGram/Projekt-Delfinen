@@ -48,4 +48,8 @@ public class MemberList implements Serializable {
         this.members.remove(memberID);
     }
 
+    @Override public String toString() {
+        return members.toString();
+    }
+
 }
