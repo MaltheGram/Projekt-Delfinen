@@ -27,16 +27,17 @@ public class MemberList implements Serializable {
         );
     }
 
- /*   public static Collection<Member> getOverdueMembers() {
+    public static Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
                 members.values()
                         .stream()
                         .filter(member -> member.getMembership().isOverdue())
                         .toList()
         );
-    }*/
+    }
 
-
-
+    public static void removeMember(String memberID) {
+        members.remove(memberID);
+    }
 
 }
