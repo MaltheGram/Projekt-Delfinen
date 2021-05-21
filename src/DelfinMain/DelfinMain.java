@@ -10,6 +10,7 @@ import Member.MemberList;
 import org.slf4j.Logger;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class DelfinMain {
 
@@ -17,7 +18,7 @@ public class DelfinMain {
 
     public static void main(String[] args) {
         //INIT MEMBER LIST
-        listOfMembers = FileControl.readMemberListfromFile("list");
+        listOfMembers = FileControl.readSerializableFromFile("list");
 
         //
         //
@@ -37,11 +38,9 @@ public class DelfinMain {
 
         */
 
-
         UserInput.setupConsole();
         MainMenu.runMenu();
-        FileControl.writeMemberListToFile(listOfMembers,"list");
+        FileControl.writeSerializableToFile(listOfMembers,"list");
         UserInput.textio.dispose();
-
     }
 }

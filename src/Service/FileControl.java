@@ -1,18 +1,12 @@
 /*
- * @author Malthe
- * 20/05/2021 12.29
- *
- * DAT21V2-Projekt-Delfinen
- *
- */
-
-package Service;/*
  * @author Mark "Massive Legend" Larsen
  * 19/05/2021 11.24
  *
  * DAT21V2-Projekt-Delfinen
  *
  */
+
+package Service;
 import Member.Member;
 import Service.MemberIdGenerator;
 import Member.MemberList;
@@ -21,7 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class FileControl {
-    public static void writeMemberListToFile(MemberList serializableObject, String filename){
+    public static <T extends Serializable> void writeSerializableToFile(T serializableObject, String filename){
         try {
             //WRITE FILE
             FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
@@ -34,32 +28,32 @@ public class FileControl {
             write.close();
 
             //PRINT LOADED
-            System.out.println("memberlist added to file:");
+            System.out.println("Serializable added to file:");
             System.out.println(serializableObject);
 
         } catch(Exception e) {
             System.out.println(e);
         }
     }
-    public static MemberList readMemberListfromFile(String filename){
-        MemberList mapInFile = new MemberList();
+    //OBS - returns null on error!
+    public static <T> T readSerializableFromFile(String filename){
         try {
             //READ FILE
             FileInputStream f = new FileInputStream(new File(filename + ".ser"));
             ObjectInputStream in = new ObjectInputStream(f);
-            mapInFile = (MemberList)in.readObject();
+            T serializableObject = (T) in.readObject();
 
             //CLEAN UP
             f.close();
             in.close();
 
-            System.out.println("memberlist loaded from file:");
-            System.out.println(mapInFile);
-            return mapInFile;
+            System.out.println("Serializable loaded from file:");
+            System.out.println(serializableObject);
+            return serializableObject;
 
         } catch(Exception e) {
             System.out.println(e);
-            return mapInFile;
+            return null;
         }
     }
 }
