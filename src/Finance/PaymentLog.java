@@ -1,3 +1,9 @@
+/*
+ * @author He "Holy Warrior" Engelund
+ * 20/05/2021 18:53
+ *
+ * DAT21V2-Projekt-Delfinen
+ */
 package Finance;
 import Member.Member;
 import java.io.File;
@@ -11,7 +17,6 @@ public class PaymentLog {
     private final String dataDirectory = "delfinen-finans";
     private final String filename = "kontingenter.txt";
 
-    // use when new member is added, start value is zero
     public void addNewPayable(Member member) {
         Payment open = new Payment(member, 0.0);
         saveTransaction(open);
@@ -39,8 +44,8 @@ public class PaymentLog {
     }
 
     private String formatLine(Payment p) {
-        var template = "ID%s;NAME%s;AMOUNT%.2f;DATE%s\n";
-        var filled = String.format(template, p.getMember().getMemberId(), p.getMember().getName(), p.getAmount(), p.getCurrentDate());
+        var template = "ID%s;NAME%s;AMOUNT%.2f;DUE_DATE%s;DATE_OF_PAYMENT%s\n";
+        var filled = String.format(template, p.getMember().getMemberId(), p.getMember().getName(), p.getAmount(), p.getDueDate(), p.getCurrentDate());
 
         return filled;
     }
