@@ -37,9 +37,6 @@ public class Member implements Serializable {
     }
 
     public Integer getAge() {
-        // TODO:
-        //  check if age seems completely wrong under 0 or over 120 kinda
-
         // running .normalized() so we don't get weird stuff like Period of 0 years+3000 days
         return Period.between(this.birthDate, LocalDate.now())
                 .normalized()
