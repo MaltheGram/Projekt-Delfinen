@@ -55,6 +55,10 @@ public class PresidentMenu {
 
     public static void showMemberList(){
         var listOfIds = DelfinMain.listOfMembers.getAllMembers();
+        if (listOfIds.isEmpty()){
+            UserInput.console.println("There is currently no numbers");
+        }
+        else
         UserInput.console.println(String.valueOf(listOfIds));
     }
 
