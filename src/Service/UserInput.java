@@ -44,7 +44,6 @@ public class UserInput {
                 .withMaxVal(LocalDate.now().getYear())
                 .read("Enter birth year")
         );
-
         YearMonth birthMonth = birthYear.atMonth( textio.newEnumInputReader(Month.class)
                 .read("Enter birth month")
         );
