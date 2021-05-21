@@ -13,14 +13,16 @@ import Service.UserInput;
 
 import java.time.*;
 import java.util.Arrays;
+import java.util.List;
+
 import DelfinMain.DelfinMain;
 
 
 public class MemberHandler {
 
     public static void addMember(){
-        LocalDate birthDate = UserInput.askForBirthdate();
         String name = UserInput.askForName();
+        LocalDate birthDate = UserInput.askForBirthdate();
         String address = UserInput.askForAddress();
         String phoneNumber = UserInput.askForPhoneNumber();
         Boolean activeMembership = UserInput.askForActiveMembership();
@@ -50,7 +52,6 @@ public class MemberHandler {
         while (isRunning) {
 
             Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
-
             switch (menuChoice) {
                 // TODO: maybe show change and ask for confirmation before changing
                 case 0 -> {
