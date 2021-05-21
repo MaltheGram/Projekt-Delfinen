@@ -9,6 +9,7 @@
 
 package Member;
 
+import Menu.PresidentMenu;
 import Service.UserInput;
 
 import java.time.*;
@@ -35,6 +36,7 @@ public class MemberHandler {
 
     public static void updateMemberInformation() {
         boolean isRunning = true;
+        PresidentMenu.showMemberList();
 
         Member memberToUpdate = UserInput.askForMember();
         // TODO: maybe print member here
