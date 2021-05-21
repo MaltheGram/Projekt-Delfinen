@@ -4,23 +4,35 @@
 
 package Member;
 
+import Service.FileControl;
+
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 public class MemberList implements Serializable {
 
-    private final Map<String, Member> members = new HashMap<>();
+    private String filePath;
+    private HashMap<String, Member> members;
+
+    public MemberList(String filePath) {
+        this.filePath = filePath;
+        this.members = FileControl.readSerializableFromFile(this.filePath, new HashMap<String, Member>());
+    }
 
     public void addNewMember(Member member) {
         this.members.put(member.getMemberId(), member);
+        FileControl.writeSerializableToFile(this.members, this.filePath);
     }
 
     public void addNewMembers(Map<String, Member> members) {
         this.members.putAll(members);
+        FileControl.writeSerializableToFile(this.members, this.filePath);
+    }
+
+    public void removeMember(String memberID) {
+        this.members.remove(memberID);
+        FileControl.writeSerializableToFile(this.members, this.filePath);
     }
 
     /**
@@ -42,19 +54,6 @@ public class MemberList implements Serializable {
                 .map(methodReference)
                 .toList()
         );
-    }
-
-/*    public Collection<Member> getOverdueMembers() {
-        return Collections.unmodifiableCollection(
-                this.members.values()
-                        .stream()
-                        .filter(member -> member.getMembership().isOverdue())
-                        .toList()
-        );
-    }
-*/
-    public void removeMember(String memberID) {
-        this.members.remove(memberID);
     }
 
     @Override public String toString() {

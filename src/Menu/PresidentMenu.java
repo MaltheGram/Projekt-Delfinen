@@ -46,17 +46,14 @@ public class PresidentMenu {
 
     private static void AddMember() {
        MemberHandler.addMember();
-       FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     private static void RemoveMember() {
         MemberHandler.removeMember();
-        FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     private static void UpdateMember() {
         MemberHandler.updateMemberInformation();
-        FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     public static void showMemberList(){

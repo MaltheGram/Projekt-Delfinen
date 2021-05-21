@@ -8,11 +8,9 @@
  *
  */
 
-        package Member;
+package Member;
 
-        import Membership.Membership;
-
-        import Service.MemberIdGenerator;
+import Service.MemberIdGenerator;
 
         import java.io.Serializable;
         import java.time.LocalDate;
@@ -22,12 +20,9 @@ public class Member implements Serializable {
     private LocalDate birthDate;
     private String name;
     private String address;
-    private Membership membership;
     private String phoneNumber;
     private boolean isActiveMember;
     private final String memberId = new MemberIdGenerator().toString();
-
-
 
     public Member(String name, LocalDate birthDate, String address, String phoneNumber, boolean isActiveMember){
         this.name = name;
@@ -75,10 +70,6 @@ public class Member implements Serializable {
         this.address = address;
     }
 
-    public Membership getMembership() {
-        return membership;
-    }
-
     public boolean isActiveMember() {
         return isActiveMember;
     }
@@ -97,6 +88,6 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + ", " + getMemberId() + "\n";
+        return name + "," + birthDate + "," + address + "," + isActiveMember +"," + phoneNumber + ", " + getMemberId() + "\n";
     }
 }
