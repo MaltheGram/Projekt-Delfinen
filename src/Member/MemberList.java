@@ -30,6 +30,12 @@ public class MemberList implements Serializable {
         FileControl.writeSerializableToFile(this.members, this.filePath);
     }
 
+    public void updateMember(Member updatedMember) {
+        addNewMember(updatedMember);
+    }
+
+
+
     public void removeMember(String memberID) {
         this.members.remove(memberID);
         FileControl.writeSerializableToFile(this.members, this.filePath);

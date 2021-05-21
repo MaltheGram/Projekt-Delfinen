@@ -15,24 +15,25 @@ import Service.UserInput;
 import org.beryx.textio.TextIO;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class PresidentMenu {
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to President menu!";
-    private static final String[] menuOptions = {
+    private static final List<String> menuOptions = Arrays.asList(
             "Add new member.",
             "Remove member.",
             "Update member information.",
             "See list of members",
-            "Go back to main menu",
-    };
+            "Go back to main menu"
+    );
 
     public static void runPresidentMenu() {
         isRunning = true;
         UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
                 case 0 -> AddMember();

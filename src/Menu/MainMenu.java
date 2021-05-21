@@ -10,23 +10,24 @@ package Menu;
 
 import Service.UserInput;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainMenu {
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to “Delfinen” system menu!";
-    private static final String[] menuOptions = {
-        "See president options.",
-        "See accountant options",
-        "See coach options.",
-        "Exit."
-    };
+    private static final List<String> menuOptions = Arrays.asList(
+            "See president options.",
+            "See accountant options",
+            "See coach options.",
+            "Exit."
+    );
 
     public static void runMenu() {
         isRunning = true;
         UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
                 case 0 -> PresidentMenu.runPresidentMenu();

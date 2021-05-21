@@ -11,22 +11,23 @@ package Menu;
 import Finance.FinanceHandler;
 import Service.UserInput;
 import java.util.Arrays;
+import java.util.List;
 
 public class AccountantMenu {
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to Accountant menu!";
-    private static final String[] menuOptions = {
+    private static final List<String> menuOptions = Arrays.asList(
             "See expected income from subscriptions.",
             "See overdue payment.",
-            "Go back to main menu.",
-    };
+            "Go back to main menu."
+    );
 
     public static void runAccountantMenu() {
         isRunning = true;
         UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
                 case 0 -> viewAnnualBudget();

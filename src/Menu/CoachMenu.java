@@ -10,22 +10,23 @@ package Menu;
 
 import Service.UserInput;
 import java.util.Arrays;
+import java.util.List;
 
 public class CoachMenu {
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to Coach menu!";
-    private static final String[] menuOptions = {
+    private static final List<String> menuOptions = Arrays.asList(
             "See leaderboard",
             "Manage teams",
-            "Go back to main menu.",
-        };
+            "Go back to main menu."
+    );
 
     public static void runCoachMenu() {
         isRunning = true;
         UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
                 case 0 -> viewLeaderboards();

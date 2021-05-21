@@ -9,10 +9,9 @@
 
 package Member;
 
-import Finance.*;
 import Menu.PresidentMenu;
 import Service.UserInput;
-import Finance.FinanceHandler;
+
 import java.time.*;
 import java.util.Arrays;
 import java.util.List;
@@ -45,19 +44,19 @@ public class MemberHandler {
         Member memberToUpdate = UserInput.askForMember();
         // TODO: maybe print member here
         String menuText = "What will you update?";
-        String[] menuOptions = new String[] {
+        List<String> menuOptions = Arrays.asList(
                 "Name",
                 "Address",
                 "Birthdate",
                 "Phone number",
                 "Membership status",
                 "Competition status",
-                "Go back to president menu",
-        };
+                "Go back to president menu"
+        );
 
         while (isRunning) {
 
-            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
             switch (menuChoice) {
                 // TODO: maybe show change and ask for confirmation before changing
                 case 0 -> {
@@ -99,6 +98,7 @@ public class MemberHandler {
                 }
             }
 
+            DelfinMain.listOfMembers.updateMember(memberToUpdate);
         }
     }
 
