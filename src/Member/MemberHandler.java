@@ -98,10 +98,12 @@ public class MemberHandler {
                     UserInput.clearConsole();
                 }
             }
+
         }
     }
 
     public static void removeMember() {
+        PresidentMenu.showMemberList();
         UserInput.console.println("Input member ID to remove");
         Member memberToRemove = UserInput.askForMember();
 

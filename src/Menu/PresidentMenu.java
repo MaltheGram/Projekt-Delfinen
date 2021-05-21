@@ -50,20 +50,17 @@ public class PresidentMenu {
     }
 
     private static void RemoveMember() {
-        showMemberList();
         MemberHandler.removeMember();
         FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     private static void UpdateMember() {
-        showMemberList();
         MemberHandler.updateMemberInformation();
         FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     public static void showMemberList(){
-        //var listOfIds = DelfinMain.listOfMembers.getAllMembers();
-        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + "\n");
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
         if (listOfIds.isEmpty()){
             UserInput.console.println("There is currently no numbers");
         }
