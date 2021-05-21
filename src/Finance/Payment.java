@@ -1,11 +1,17 @@
+/*
+ * @author He "Holy Warrior" Engelund
+ * 20/05/2021 18:53
+ *
+ * DAT21V2-Projekt-Delfinen
+ */
 package Finance;
-
 import java.time.LocalDate;
 import Member.Member;
-
+// TODO: dueDate according to PaymentPlan. Upon Member creation, add empty payments for each deadline
 public class Payment {
 
     private Member member;
+    private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
     private LocalDate currentDate = LocalDate.now();
 
@@ -14,20 +20,23 @@ public class Payment {
         this.amount = amount;
     }
 
-    public Member getMember() {
-        return this.member;
+    public double getAmount() {
+        return this.amount;
     }
 
     public LocalDate getCurrentDate() {
         return this.currentDate;
     }
 
-    public double getAmount() {
-        return this.amount;
+    public Member getMember() {
+        return this.member;
     }
 
- /*   @Override
-    public String toString() {
-        return member.getMemberId() + ", " + member.getName() + "," + getAmount() + ", " + currentDate;
-    }*/
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
 }

@@ -35,7 +35,7 @@ public class MemberList implements Serializable {
         );
     }
 
-    public Collection<Member> getOverdueMembers() {
+/*    public Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
                 this.members.values()
                         .stream()
@@ -43,7 +43,7 @@ public class MemberList implements Serializable {
                         .toList()
         );
     }
-
+*/
     public void removeMember(String memberID) {
         this.members.remove(memberID);
     }

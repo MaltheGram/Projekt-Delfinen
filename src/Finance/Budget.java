@@ -1,11 +1,17 @@
-package Finance;
+/*
+ * @author He "Holy Warrior" Engelund
+ * 20/05/2021 18:53
+ *
+ * DAT21V2-Projekt-Delfinen
+ */
 
+package Finance;
 import Member.Member;
 import Member.MemberList;
 import java.util.Collection;
 
 public class Budget {
-    private Collection<Member> members = new MemberList().getAllMembers(); // must use actual MemberList
+    private Collection<Member> members = new MemberList().getAllMembers();
 
     private double calculateAnnualBudget() {
         var total = 0.0;
@@ -17,7 +23,6 @@ public class Budget {
     }
 
     // TODO: calculate budget part that comes from each member type, add to toString method
-
 
     @Override
     public String toString() {
