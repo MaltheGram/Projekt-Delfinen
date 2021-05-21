@@ -36,7 +36,7 @@ public class FileControl {
         }
     }
     //OBS - returns null on error!
-    public static <T> T readSerializableFromFile(String filename, T type){
+    public static <T> T readSerializableFromFile(String filename, T objectToStoreDataIn){
         try {
             //READ FILE
             FileInputStream f = new FileInputStream(new File(filename + ".ser"));
@@ -53,7 +53,7 @@ public class FileControl {
 
         } catch(Exception e) {
             System.out.println(e);
-            return type;
+            return objectToStoreDataIn;
         }
     }
 }
