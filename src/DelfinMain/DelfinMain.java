@@ -18,7 +18,7 @@ public class DelfinMain {
 
     public static void main(String[] args) {
         //INIT MEMBER LIST
-        listOfMembers = FileControl.readSerializableFromFile("list");
+        listOfMembers = FileControl.readSerializableFromFile("list",listOfMembers);
 
         //
         //
