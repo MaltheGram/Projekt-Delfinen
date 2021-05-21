@@ -7,7 +7,10 @@
 package Menu;
 
 import DelfinMain.DelfinMain;
+import Member.Member;
 import Member.MemberHandler;
+import Member.MemberList;
+import Service.FileControl;
 import Service.UserInput;
 import org.beryx.textio.TextIO;
 
@@ -43,18 +46,24 @@ public class PresidentMenu {
 
     private static void AddMember() {
        MemberHandler.addMember();
+       FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     private static void RemoveMember() {
+        showMemberList();
         MemberHandler.removeMember();
+        FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     private static void UpdateMember() {
+        showMemberList();
         MemberHandler.updateMemberInformation();
+        FileControl.writeSerializableToFile(DelfinMain.listOfMembers,"list");
     }
 
     public static void showMemberList(){
-        var listOfIds = DelfinMain.listOfMembers.getAllMembers();
+        //var listOfIds = DelfinMain.listOfMembers.getAllMembers();
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + "\n");
         if (listOfIds.isEmpty()){
             UserInput.console.println("There is currently no numbers");
         }
