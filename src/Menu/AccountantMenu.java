@@ -39,12 +39,12 @@ public class AccountantMenu {
 
     // TODO: implement expected income
     private static void viewAnnualBudget() {
-        FinanceHandler.viewAnnualBudget();
+        //FinanceHandler.viewAnnualBudget();
     }
 
     // TODO: Implement overdue payments
     private static void viewOverduePayments() {
-        FinanceHandler.viewOverduePayments();
+        //FinanceHandler.viewOverduePayments();
     }
 
     private static void exitMenu() {
