@@ -6,6 +6,7 @@
 
 package Menu;
 
+import DelfinMain.DelfinMain;
 import Member.MemberHandler;
 import Service.UserInput;
 import org.beryx.textio.TextIO;
@@ -19,6 +20,7 @@ public class PresidentMenu {
             "Add new member.",
             "Remove member.",
             "Update member information.",
+            "See list of members",
             "Go back to main menu",
     };
 
@@ -33,7 +35,8 @@ public class PresidentMenu {
                 case 0 -> AddMember();
                 case 1 -> RemoveMember();
                 case 2 -> UpdateMember();
-                case 3 -> ExitMenu();
+                case 3 -> showMemberList();
+                case 4 -> ExitMenu();
             }
         }
     }
@@ -48,6 +51,11 @@ public class PresidentMenu {
 
     private static void UpdateMember() {
         MemberHandler.updateMemberInformation();
+    }
+
+    public static void showMemberList(){
+        var listOfIds = DelfinMain.listOfMembers.getAllMembers();
+        UserInput.console.println(String.valueOf(listOfIds));
     }
 
     private static void ExitMenu() {

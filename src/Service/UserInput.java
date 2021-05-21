@@ -11,7 +11,8 @@ import java.util.List;
 
 /*
  * @author Mark "Massive Legend" Larsen
- * spiced up @author Malthe
+ * spiced up @author Malthe Gram
+ * modded @author Simon Gredal
  * 20/05/2021 10.41
  *
  * DAT21V2-Projekt-Delfinen
@@ -103,12 +104,15 @@ public class UserInput {
 
     // TODO: Implement askForName
     public static String askForName() {
-        return "UserInput.askForName() not implemented";
+
+        return textio.newStringInputReader()
+                .read("Enter name");
     }
 
     // TODO: Implement askForAddress
     public static String askForAddress() {
-        return "UserInput.askForAddress() not implemented";
+        return textio.newStringInputReader()
+                .read("Enter address");
     }
 
     public static void clearConsole() {
