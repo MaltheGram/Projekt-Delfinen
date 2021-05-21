@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class MemberList implements Serializable {
 
@@ -32,6 +33,22 @@ public class MemberList implements Serializable {
     public Collection<Member> getAllMembers() {
         return Collections.unmodifiableCollection(
                 this.members.values()
+        );
+    }
+
+    public Collection<String> getNameFromAllMembers() {
+        return Collections.unmodifiableCollection(
+                this.members.values().stream()
+                        .map( Member::getName )
+                        .toList()
+        );
+    }
+
+    public <R> Collection<R> getFieldFromAllMembers(Function<Member, R> methodReference) {
+        return Collections.unmodifiableCollection(
+                this.members.values().stream()
+                        .map( member -> methodReference(member) )
+                        .toList()
         );
     }
 
