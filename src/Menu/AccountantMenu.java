@@ -8,6 +8,7 @@
 
 package Menu;
 
+import Finance.FinanceHandler;
 import Service.UserInput;
 import java.util.Arrays;
 
@@ -28,7 +29,7 @@ public class AccountantMenu {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
             switch (menuChoice) {
-                case 0 -> viewAnnualIncome();
+                case 0 -> viewAnnualBudget();
                 case 1 -> viewOverduePayments();
                 case 2 -> exitMenu();
             }
@@ -36,22 +37,13 @@ public class AccountantMenu {
     }
 
     // TODO: implement expected income
-    private static void viewAnnualIncome() {
-        UserInput.console.println("Not implemented yet");
-        /*
-        if (input == 1) {
-        System.out.println("Expected income coming soon");
-        }
-         */
+    private static void viewAnnualBudget() {
+        FinanceHandler.viewAnnualBudget();
     }
 
     // TODO: Implement overdue payments
     private static void viewOverduePayments() {
-        UserInput.console.println("Not implemented yet");
-        /*
-        if (input == 2) {
-            System.out.println("Overdue payments coming soon");
-         */
+        FinanceHandler.viewOverduePayments();
     }
 
     private static void exitMenu() {

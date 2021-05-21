@@ -8,7 +8,7 @@ public class FinanceHandler {
         new PaymentLog().addNewPayable(member);
     }
 
-    public static void displayAnnualBudget() {
+    public static void viewAnnualBudget() {
         System.out.println(new Budget().toString());
     }
 
