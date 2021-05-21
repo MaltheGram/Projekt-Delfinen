@@ -7,12 +7,8 @@
  */
 
 package Service;
-import Member.Member;
-import Service.MemberIdGenerator;
-import Member.MemberList;
+
 import java.io.*;
-import java.time.LocalDate;
-import java.util.*;
 
 public class FileControl {
     public static <T extends Serializable> void writeSerializableToFile(T serializableObject, String filename){
@@ -32,15 +28,15 @@ public class FileControl {
             System.out.println(serializableObject);
 
         } catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
-    //OBS - returns null on error!
-    public static <T> T readSerializableFromFile(String filename, T objectToStoreDataIn){
+    public static <T extends Serializable> T readSerializableFromFile(String filename, T defaultReturn) {
         try {
             //READ FILE
             FileInputStream f = new FileInputStream(new File(filename + ".ser"));
             ObjectInputStream in = new ObjectInputStream(f);
+
             T serializableObject = (T) in.readObject();
 
             //CLEAN UP
@@ -51,9 +47,9 @@ public class FileControl {
             System.out.println(serializableObject);
             return serializableObject;
 
-        } catch(Exception e) {
-            System.out.println(e);
-            return objectToStoreDataIn;
+        } catch(IOException | ClassCastException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return defaultReturn;
         }
     }
 }

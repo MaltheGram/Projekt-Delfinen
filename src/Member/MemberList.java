@@ -6,18 +6,17 @@ package Member;
 
 import Service.FileControl;
 
-import java.io.Serializable;
 import java.util.*;
 import java.util.function.Function;
 
-public class MemberList implements Serializable {
+public class MemberList {
 
-    private String filePath;
-    private HashMap<String, Member> members;
+    private final String filePath;
+    private final HashMap<String, Member> members;
 
     public MemberList(String filePath) {
         this.filePath = filePath;
-        this.members = FileControl.readSerializableFromFile(this.filePath, new HashMap<String, Member>());
+        this.members = FileControl.readSerializableFromFile(this.filePath, new HashMap<String, Member>() );
     }
 
     public void addNewMember(Member member) {

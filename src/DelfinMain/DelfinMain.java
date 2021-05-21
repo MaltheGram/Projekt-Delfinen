@@ -6,7 +6,7 @@ import Member.MemberList;
 
 public class DelfinMain {
 
-    public static MemberList listOfMembers = new MemberList("list");
+    public static MemberList listOfMembers = new MemberList("memberlist");
 
     public static void main(String[] args) {
         UserInput.setupConsole();
