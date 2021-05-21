@@ -9,9 +9,10 @@
 
 package Member;
 
+import Finance.*;
 import Menu.PresidentMenu;
 import Service.UserInput;
-
+import Finance.FinanceHandler;
 import java.time.*;
 import java.util.Arrays;
 import java.util.List;
@@ -22,17 +23,20 @@ import DelfinMain.DelfinMain;
 public class MemberHandler {
 
     public static void addMember(){
-        String name = UserInput.askForName();
-        LocalDate birthDate = UserInput.askForBirthdate();
-        String address = UserInput.askForAddress();
-        String phoneNumber = UserInput.askForPhoneNumber();
-        Boolean activeMembership = UserInput.askForActiveMembership();
 
-        Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
-        DelfinMain.listOfMembers.addNewMember(member);
-        UserInput.clearConsole();
-        UserInput.console.println("Member added.");
+            String name = UserInput.askForName();
+            LocalDate birthDate = UserInput.askForBirthdate();
+            String address = UserInput.askForAddress();
+            String phoneNumber = UserInput.askForPhoneNumber();
+            Boolean activeMembership = UserInput.askForActiveMembership();
+            Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
+            FinanceHandler.addNewPayable(member);
+
+            DelfinMain.listOfMembers.addNewMember(member);
+            UserInput.clearConsole();
+            UserInput.console.println("Member added.");
     }
+
 
     public static void updateMemberInformation() {
         boolean isRunning = true;
@@ -60,26 +64,31 @@ public class MemberHandler {
                     UserInput.console.println("New name\n_______________");
                     String newName = UserInput.askForName();
                     memberToUpdate.setName(newName);
+                    UserInput.clearConsole();
                 }
                 case 1 -> {
                     UserInput.console.println("New address\n_______________");
                     String newAddress = UserInput.askForAddress();
                     memberToUpdate.setAddress(newAddress);
+                    UserInput.clearConsole();
                 }
                 case 2 -> {
                     UserInput.console.println("New birthday\n_______________");
                     LocalDate birthDate = UserInput.askForBirthdate();
                     memberToUpdate.setBirthDate(birthDate);
+                    UserInput.clearConsole();
                 }
                 case 3 -> {
                     UserInput.console.println("New phone number\n_______________");
                     String newPhoneNumber = UserInput.askForPhoneNumber();
                     memberToUpdate.setPhoneNumber(newPhoneNumber);
+                    UserInput.clearConsole();
                 }
                 case 4 -> {
                     UserInput.console.println("New membership status\n_______________");
                     Boolean newMembershipStatus = UserInput.askForActiveMembership();
                     memberToUpdate.setActiveMember(newMembershipStatus);
+                    UserInput.clearConsole();
                 }
                 case 5 -> {
                     // TODO competition status

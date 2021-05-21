@@ -97,7 +97,6 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-
-        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + ", " + getMemberId();
+        return name + "," + birthDate + "," + address + "," + isActiveMember + "," + membership +"," + phoneNumber + ", " + getMemberId() + "\n";
     }
 }

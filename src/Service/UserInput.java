@@ -4,6 +4,7 @@ import DelfinMain.DelfinMain;
 import Member.Member;
 import org.beryx.textio.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.time.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 /*
  * @author Mark "Massive Legend" Larsen
- * spiced up @author Malthe Gram
+ * spiced by @author Malthe Gram
  * modded @author Simon Gredal
  * 20/05/2021 10.41
  *
@@ -22,6 +23,7 @@ public class UserInput {
 
     public static final TextIO textio = TextIoFactory.getTextIO();
     public static final TextTerminal<?> console = TextIoFactory.getTextTerminal();
+    private static final String REGEXLETTERS = "(?i).*[a-z].";
 
     private static <T> List<Integer> getListIndices(List<T> list) {
         List<Integer> indices = new ArrayList<>();
@@ -82,6 +84,17 @@ public class UserInput {
         return member;
     }
 
+    public static String askForName() {
+        return textio.newStringInputReader()
+                .withPattern(REGEXLETTERS)
+                .read("Enter name");
+    }
+
+    public static String askForAddress() {
+        return textio.newStringInputReader()
+                .read("Enter address");
+    }
+
     public static Boolean isYes(String str) {
         return (str.equalsIgnoreCase("yes") ||
                 str.equalsIgnoreCase("ye") ||
@@ -93,25 +106,12 @@ public class UserInput {
     }
 
     public static Boolean isNo(String str) {
-        return ( str.toLowerCase().contains("No") ||
-                str.toLowerCase().contains("x") ||
-                str.toLowerCase().contains("stop") ||
+        return (str.equalsIgnoreCase("no") ||
+                str.equalsIgnoreCase("x") ||
+                str.equalsIgnoreCase("stop") ||
                 str.isBlank() ||
                 str.isEmpty()
         );
-    }
-
-    // TODO: Implement askForName
-    public static String askForName() {
-
-        return textio.newStringInputReader()
-                .read("Enter name");
-    }
-
-    // TODO: Implement askForAddress
-    public static String askForAddress() {
-        return textio.newStringInputReader()
-                .read("Enter address");
     }
 
     public static void clearConsole() {
