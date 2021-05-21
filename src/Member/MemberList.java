@@ -43,6 +43,14 @@ public class MemberList implements Serializable {
         );
     }
 
+    public Collection<String> getMemberIDFromAllMembers() {
+        return Collections.unmodifiableCollection(
+                this.members.values().stream()
+                .map( Member::getMemberId )
+                .toList()
+        );
+    }
+
 /*    public Collection<Member> getOverdueMembers() {
         return Collections.unmodifiableCollection(
                 this.members.values()
