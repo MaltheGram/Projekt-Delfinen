@@ -1,7 +1,13 @@
 package Service;
 
+import DelfinMain.DelfinMain;
+import Member.Member;
 import org.beryx.textio.*;
+
+import java.awt.*;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * @author Mark "Massive Legend" Larsen
@@ -15,6 +21,21 @@ public class UserInput {
 
     public static final TextIO textio = TextIoFactory.getTextIO();
     public static final TextTerminal<?> console = TextIoFactory.getTextTerminal();
+
+    private static <T> List<Integer> getListIndices(List<T> list) {
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i<list.size(); i++) {
+            indices.add(i);
+        }
+        return indices;
+    }
+
+    public static Integer askForMenuChoice(String menuText, List<String> menuOptions) {
+        return textio.newIntInputReader()
+                .withNumberedPossibleValues( getListIndices(menuOptions) )
+                .withValueFormatter(menuOptions::get)
+                .read(menuText);
+    }
 
     public static LocalDate askForBirthdate() {
         Year birthYear = Year.of( textio.newIntInputReader()
@@ -41,9 +62,24 @@ public class UserInput {
 
     public static String askForPhoneNumber() {
         return textio.newStringInputReader()
-                .withValueChecker(new DanishPhoneNumberValueChecker<String>())
-                .withPattern("\\d{8}")
+                .withMinLength(8)
+                .withMaxLength(8)
                 .read("Enter phone number");
+    }
+
+    public static Member askForMember() {
+        String memberId = textio.newStringInputReader()
+                .read("Enter member ID");
+
+        Member member = DelfinMain.listOfMembers.getMemberByID(memberId);
+        while (member == null){
+            System.out.println("Invalid member ID, please try again");
+            memberId = textio.newStringInputReader()
+                    .read("Enter member ID");
+            member = DelfinMain.listOfMembers.getMemberByID(memberId);
+        }
+
+        return member;
     }
 
     public static Boolean isYes(String str) {
@@ -73,5 +109,37 @@ public class UserInput {
     // TODO: Implement askForAddress
     public static String askForAddress() {
         return "UserInput.askForAddress() not implemented";
+    }
+
+    public static void clearConsole() {
+        console.resetToBookmark("CLEAR");
+    }
+
+    public static void setupConsole() {
+        UserInput.console.getProperties().setPaneBackgroundColor(Color.WHITE);
+        UserInput.console.getProperties().setInputBackgroundColor(Color.WHITE);
+        UserInput.console.getProperties().setPromptBackgroundColor(Color.WHITE);
+
+        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
+        UserInput.console.getProperties().setInputColor(Color.BLACK);
+
+        UserInput.console.println(
+                """
+                                        ,-._
+                                      _.-'  '--.
+                                    .'      _  -`\\_
+                                   / .----.`_.'----'
+                                   ;/     `
+                                  /_;
+                """);
+        UserInput.console.getProperties().setPromptColor(Color.BLUE);
+        UserInput.console.println(
+                """
+                               ._      ._      ._      ._
+                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
+                """
+        );
+        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
+        UserInput.console.setBookmark("CLEAR");
     }
 }

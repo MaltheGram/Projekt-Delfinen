@@ -8,8 +8,8 @@
 
 package Menu;
 
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextTerminal;
+import Service.UserInput;
+import java.util.Arrays;
 
 public class AccountantMenu {
     private static Boolean isRunning = true;
@@ -20,27 +20,24 @@ public class AccountantMenu {
             "Go back to main menu.",
     };
 
-    public static void runAccountantMenu(TextIO textio, TextTerminal<?> console) {
+    public static void runAccountantMenu() {
         isRunning = true;
-        console.resetToBookmark("CLEAR");
+        UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = textio.newIntInputReader()
-                    .withNumberedPossibleValues(0, 1, 2)
-                    .withValueFormatter(index -> menuOptions[index])
-                    .read(menuText);
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
             switch (menuChoice) {
-                case 0 -> viewAnnualIncome(textio, console);
-                case 1 -> viewOverduePayments(textio, console);
-                case 2 -> exitMenu(textio, console);
+                case 0 -> viewAnnualIncome();
+                case 1 -> viewOverduePayments();
+                case 2 -> exitMenu();
             }
         }
     }
 
     // TODO: implement expected income
-    private static void viewAnnualIncome(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
+    private static void viewAnnualIncome() {
+        UserInput.console.println("Not implemented yet");
         /*
         if (input == 1) {
         System.out.println("Expected income coming soon");
@@ -49,16 +46,16 @@ public class AccountantMenu {
     }
 
     // TODO: Implement overdue payments
-    private static void viewOverduePayments(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
+    private static void viewOverduePayments() {
+        UserInput.console.println("Not implemented yet");
         /*
         if (input == 2) {
             System.out.println("Overdue payments coming soon");
          */
     }
 
-    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+    private static void exitMenu() {
         isRunning = false;
-
+        UserInput.clearConsole();
     }
 }

@@ -8,8 +8,8 @@
 
 package Menu;
 
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextTerminal;
+import Service.UserInput;
+import java.util.Arrays;
 
 public class MainMenu {
     private static Boolean isRunning = true;
@@ -21,27 +21,26 @@ public class MainMenu {
         "Exit."
     };
 
-    public static void runMenu(TextIO textio, TextTerminal<?> console) {
+    public static void runMenu() {
         isRunning = true;
-        console.resetToBookmark("CLEAR");
+        UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = textio.newIntInputReader()
-                    .withNumberedPossibleValues(0,1,2,3)
-                    .withValueFormatter( index -> menuOptions[index] )
-                    .read(menuText);
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
             switch (menuChoice) {
-                case 0 -> PresidentMenu.runPresidentMenu(textio, console);
-                case 1 -> AccountantMenu.runAccountantMenu(textio, console);
-                case 2 -> CoachMenu.runCoachMenu(textio, console);
-                case 3 -> exitMenu(textio, console);
+                case 0 -> PresidentMenu.runPresidentMenu();
+                case 1 -> AccountantMenu.runAccountantMenu();
+                case 2 -> CoachMenu.runCoachMenu();
+                case 3 -> exitMenu();
             }
         }
     }
 
-    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+    private static void exitMenu() {
         isRunning = false;
+        UserInput.console.dispose();
+        UserInput.textio.dispose();
     }
 }
 

@@ -8,8 +8,8 @@
 
 package Menu;
 
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextTerminal;
+import Service.UserInput;
+import java.util.Arrays;
 
 public class CoachMenu {
     private static Boolean isRunning = true;
@@ -20,27 +20,24 @@ public class CoachMenu {
             "Go back to main menu.",
         };
 
-    public static void runCoachMenu(TextIO textio, TextTerminal<?> console) {
+    public static void runCoachMenu() {
         isRunning = true;
-        console.resetToBookmark("CLEAR");
+        UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = textio.newIntInputReader()
-                    .withNumberedPossibleValues(0, 1, 2)
-                    .withValueFormatter(index -> menuOptions[index])
-                    .read(menuText);
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
             switch (menuChoice) {
-                case 0 -> viewLeaderboards(textio, console);
-                case 1 -> manageTeams(textio, console);
-                case 2 -> exitMenu(textio, console);
+                case 0 -> viewLeaderboards();
+                case 1 -> manageTeams();
+                case 2 -> exitMenu();
             }
         }
     }
 
     // TODO: implement viewLeaderboards
-    private static void viewLeaderboards(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
+    private static void viewLeaderboards() {
+        UserInput.console.println("Not implemented yet");
         /*
         if (input == 1) {
 
@@ -50,15 +47,16 @@ public class CoachMenu {
     }
 
     // TODO: implement manageTeams
-    private static void manageTeams(TextIO textio, TextTerminal<?> console) {
-        console.println("Not implemented yet");
+    private static void manageTeams() {
+        UserInput.console.println("Not implemented yet");
         /*if (input == 2) {
 
             System.out.println("Manage teams coming soon");
         }*/
     }
 
-    private static void exitMenu(TextIO textio, TextTerminal<?> console) {
+    private static void exitMenu() {
         isRunning = false;
+        UserInput.clearConsole();
     }
 }

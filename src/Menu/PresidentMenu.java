@@ -7,13 +7,12 @@
 package Menu;
 
 import Member.MemberHandler;
+import Service.UserInput;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextTerminal;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class PresidentMenu {
-    static Scanner sc = new Scanner(System.in);
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to President menu!";
     private static final String[] menuOptions = {
@@ -23,22 +22,18 @@ public class PresidentMenu {
             "Go back to main menu",
     };
 
-    public static void runPresidentMenu(TextIO textio, TextTerminal<?> console) {
-
+    public static void runPresidentMenu() {
         isRunning = true;
-        console.resetToBookmark("CLEAR");
+        UserInput.clearConsole();
 
         while (isRunning) {
-            Integer menuChoice = textio.newIntInputReader()
-                    .withNumberedPossibleValues(0, 1, 2, 3)
-                    .withValueFormatter(index -> menuOptions[index])
-                    .read(menuText);
+            Integer menuChoice = UserInput.askForMenuChoice(menuText, Arrays.asList(menuOptions));
 
             switch (menuChoice) {
                 case 0 -> AddMember();
-                case 1 -> RemoveMember(textio, console);
-                case 2 -> UpdateMember(textio, console);
-                case 3 -> ExitMenu(textio, console);
+                case 1 -> RemoveMember();
+                case 2 -> UpdateMember();
+                case 3 -> ExitMenu();
             }
         }
     }
@@ -47,34 +42,17 @@ public class PresidentMenu {
        MemberHandler.addMember();
     }
 
-    // TODO: Implement RemoveMember
-    private static void RemoveMember(TextIO textio, TextTerminal<?> console) {
+    private static void RemoveMember() {
         MemberHandler.removeMember();
-        /*
-        if (input == 3) {
-            System.out.println("Input member ID update");
-            sc.nextLine();
-            String memberId = sc.nextLine();
-            MemberHandler.updateMemberInformation(memberId);
-        }
-         */
     }
 
-    // TODO: Implement UpdateMember
-    private static void UpdateMember(TextIO textio, TextTerminal<?> console) {
+    private static void UpdateMember() {
         MemberHandler.updateMemberInformation();
-        /*
-        if (input == 3) {
-            System.out.println("Input member ID update");
-            sc.nextLine();
-            String memberId = sc.nextLine();
-            MemberHandler.updateMemberInformation(memberId);
-        }
-         */
     }
 
-    private static void ExitMenu(TextIO textio, TextTerminal<?> console) {
+    private static void ExitMenu() {
         isRunning = false;
+        UserInput.clearConsole();
     }
 }
 

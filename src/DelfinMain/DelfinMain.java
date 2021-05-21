@@ -7,6 +7,7 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Member.MemberList;
+import org.slf4j.Logger;
 
 import java.awt.*;
 
@@ -37,32 +38,8 @@ public class DelfinMain {
         */
 
 
-        UserInput.console.getProperties().setPaneBackgroundColor(Color.WHITE);
-        UserInput.console.getProperties().setInputBackgroundColor(Color.WHITE);
-        UserInput.console.getProperties().setPromptBackgroundColor(Color.WHITE);
-
-        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
-        UserInput.console.getProperties().setInputColor(Color.BLACK);
-
-        UserInput.console.println(
-                """
-                                        ,-._
-                                      _.-'  '--.
-                                    .'      _  -`\\_
-                                   / .----.`_.'----'
-                                   ;/     `
-                                  /_;
-                """);
-        UserInput.console.getProperties().setPromptColor(Color.BLUE);
-        UserInput.console.println(
-                """
-                               ._      ._      ._      ._
-                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
-                """
-        );
-        UserInput.console.getProperties().setPromptColor(Color.DARK_GRAY);
-        UserInput.console.setBookmark("CLEAR");
-        MainMenu.runMenu(UserInput.textio, UserInput.console);
+        UserInput.setupConsole();
+        MainMenu.runMenu();
         FileControl.writeMemberListToFile(listOfMembers,"list");
         UserInput.textio.dispose();
 
