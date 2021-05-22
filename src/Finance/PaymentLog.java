@@ -14,8 +14,8 @@ import java.nio.file.StandardOpenOption;
 
 public class PaymentLog {
     private final String myDocuments = System.getenv("USERPROFILE") + "\\Documents\\";
-    private final String dataDirectory = "delfinen-finans";
-    private final String filename = "kontingenter.txt";
+    private final String dataDirectory = "delfinen_finance";
+    private final String filename = "member_payments.txt";
 
     public void addNewPayable(Member member) {
         Payment open = new Payment(member, 0.0);
@@ -45,9 +45,9 @@ public class PaymentLog {
 
     private String formatLine(Payment p) {
         var template = "ID%s;NAME%s;AMOUNT%.2f;DUE_DATE%s;DATE_OF_PAYMENT%s\n";
-        var filled = String.format(template, p.getMember().getMemberId(), p.getMember().getName(), p.getAmount(), p.getDueDate(), p.getCurrentDate());
+        var formatted = String.format(template, p.getMember().getMemberId(), p.getMember().getName(), p.getAmount(), p.getDueDate(), p.getCurrentDate());
 
-        return filled;
+        return formatted;
     }
 
     private void fileExistsCheck(File file) {

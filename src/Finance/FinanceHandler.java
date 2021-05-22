@@ -17,8 +17,7 @@ public class FinanceHandler {
     }
 
     public void makePayment(Member member, double amount) {
-        var payment = new Payment(member, amount);
-        new PaymentLog().makePayment(payment);
+        new PaymentLog().makePayment(new Payment(member, amount));
     }
 
     public void displayAnnualBudget() {
