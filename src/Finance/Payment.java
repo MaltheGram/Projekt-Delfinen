@@ -5,12 +5,13 @@
  * DAT21V2-Projekt-Delfinen
  */
 package Finance;
+import java.io.Serializable;
 import java.time.LocalDate;
 import Member.Member;
 // TODO: dueDate according to PaymentPlan. Upon Member creation, add empty payments for each deadline
-public class Payment {
+public class Payment implements Serializable {
 
-    private Member member;
+    private transient Member member;
     private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
     private LocalDate currentDate = LocalDate.now();

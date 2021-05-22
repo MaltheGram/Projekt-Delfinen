@@ -54,11 +54,13 @@ public class MemberList {
     }
 
     public <R> Collection<R> getFieldFromAllMembers(Function<Member, R> methodReference) {
-        return Collections.unmodifiableCollection(
+        return null;
+        //compile error: cannot find symbol method toList() r:60
+        /*return Collections.unmodifiableCollection(
                 members.values().stream()
                 .map(methodReference)
                 .toList()
-        );
+        );*/
     }
 
     @Override public String toString() {

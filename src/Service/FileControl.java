@@ -19,7 +19,9 @@ public class FileControl {
 
             o.writeObject(serializableObject);
 
+            // TODO: move closing statements to finally, because closing can also go wrong. Example below.
             //CLEAN UP
+            https://stackoverflow.com/questions/2699209/java-io-ugly-try-finally-block
             o.close();
             write.close();
 

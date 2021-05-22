@@ -6,58 +6,25 @@
  */
 package Finance;
 import Member.Member;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import Service.FileControl;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaymentLog {
+    private List<Payment> payments = new ArrayList<>();
     private final String myDocuments = System.getenv("USERPROFILE") + "\\Documents\\";
     private final String dataDirectory = "delfinen_finance";
     private final String filename = "member_payments.txt";
 
-    public void addNewPayable(Member member) {
-        Payment open = new Payment(member, 0.0);
-        saveTransaction(open);
+    public void writePaymentToLog(Payment payment) {
+        var paymentLog = Paths.get(myDocuments, dataDirectory, filename).toFile().toString();
+        FileControl.writeSerializableToFile(payment, paymentLog);
+        payments.add(payment);
     }
 
-    public void makePayment(Payment payment) {
-        saveTransaction(payment);
-    }
+    boolean memberHasLoggedPayments(Member member) {
 
-    private void saveTransaction(Payment payment) {
-        writePaymentToLog(payment);
-    }
-
-    private void writePaymentToLog(Payment payment) {
-        File paymentLog = Paths.get(myDocuments, dataDirectory, filename).toFile();
-        fileExistsCheck(paymentLog);
-
-        try {
-            var stringToAppend = formatLine(payment);
-            Files.write(paymentLog.toPath(), stringToAppend.getBytes(), StandardOpenOption.APPEND);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String formatLine(Payment p) {
-        var template = "ID%s;NAME%s;AMOUNT%.2f;DUE_DATE%s;DATE_OF_PAYMENT%s\n";
-        var formatted = String.format(template, p.getMember().getMemberId(), p.getMember().getName(), p.getAmount(), p.getDueDate(), p.getCurrentDate());
-
-        return formatted;
-    }
-
-    private void fileExistsCheck(File file) {
-        try {
-            if(!file.exists()) {
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return false;
     }
 }

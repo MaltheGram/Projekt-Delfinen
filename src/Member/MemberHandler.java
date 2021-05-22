@@ -29,7 +29,6 @@ public class MemberHandler {
             String phoneNumber = UserInput.askForPhoneNumber();
             Boolean activeMembership = UserInput.askForActiveMembership();
             Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
-            //FinanceHandler.addNewPayable(member);
 
             DelfinMain.listOfMembers.addNewMember(member);
             UserInput.clearConsole();

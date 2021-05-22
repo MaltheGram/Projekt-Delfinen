@@ -11,7 +11,7 @@ import Member.MemberList;
 import java.util.Collection;
 
 public class Budget {
-    private Collection<Member> members = new MemberList().getAllMembers();
+    private Collection<Member> members = null;// new MemberList().getAllMembers();
 
     private double calculateAnnualBudget() {
         var total = 0.0;

@@ -11,13 +11,8 @@ import Member.Member;
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
 
-    // use when new member is added, start value is zero
-    public void addNewPayable(Member member) {
-        new PaymentLog().addNewPayable(member);
-    }
-
     public void makePayment(Member member, double amount) {
-        new PaymentLog().makePayment(new Payment(member, amount));
+        new PaymentLog().writePaymentToLog(new Payment(member, amount));
     }
 
     public void displayAnnualBudget() {
