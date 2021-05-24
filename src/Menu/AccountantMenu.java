@@ -40,6 +40,7 @@ public class AccountantMenu {
 
 
     private static void viewAnnualBudget() {
+        UserInput.clearConsole();
         FINANCE_HANDLER.displayAnnualBudget();
     }
 
