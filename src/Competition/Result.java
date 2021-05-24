@@ -1,28 +1,21 @@
+/**
+ * @author Frederik
+ * @author Simon
+ *
+ */
 package Competition;
 
-public class Result {
-    private int date;
-    private int time;
+import Group.Discipline;
+import Member.Member;
+import java.time.Duration;
+import java.time.LocalDate;
 
-    public Result(int date, int time){
-        this.date = date;
-        this.time = time;
-    }
+record Result( Member memberID,
+               LocalDate date,
+               ResultType type,
+               Discipline discipline,
+               Duration time
+) {
 
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
-        this.date = date;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 }
 
