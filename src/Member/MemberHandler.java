@@ -41,7 +41,7 @@ public class MemberHandler {
         UserInput.console.println( tmpMember + splitter);
 
         String phoneNumber = UserInput.askForPhoneNumber();
-        tmpMember += "\nPhone number: " + address;
+        tmpMember += "\nPhone number: " + phoneNumber;
         UserInput.clearConsole();
         UserInput.console.println( tmpMember + splitter);
 
