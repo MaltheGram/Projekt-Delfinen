@@ -7,11 +7,15 @@
 
 package Finance;
 import Member.Member;
+import Service.UserInput;
 
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
 
-    public void makePayment(Member member, double amount) {
+    public void makePayment() {
+        Member member = UserInput.askForMember();
+        Double amount = UserInput.askForPaymentAmount();
+
         new PaymentLog().writePaymentToLog(new Payment(member, amount));
     }
 
