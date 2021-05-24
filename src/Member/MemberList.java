@@ -17,7 +17,7 @@ public class MemberList {
 
     public MemberList(String filePath) {
         this.filePath = filePath;
-        this.members = FileControl.readSerializableFromFile(this.filePath, new HashMap<String, Member>() );
+        this.members = FileControl.readSerializableFromFile(this.filePath, new HashMap<>() );
     }
 
     public void addNewMember(Member member) {
