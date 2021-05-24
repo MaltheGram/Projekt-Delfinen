@@ -7,8 +7,9 @@ package Competition;
 
 import Group.Discipline;
 import Member.Member;
-import java.time.Duration;
-import java.time.LocalDate;
+import Service.UserInput;
+
+import java.time.*;
 
 record Result( Member memberID,
                LocalDate date,
@@ -17,5 +18,18 @@ record Result( Member memberID,
                Duration time
 ) {
 
+    private static Result addResult(){
+        UserInput.askForDate();
+        UserInput.askForResultTime();
+
+        return null;
+    }
+
+
+
+
+
 }
+
+
 

@@ -1,6 +1,8 @@
 package Competition;
 
 
+import Service.UserInput;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +22,6 @@ public class Team {
         this.name = name;
     }
 
-
     private static void TeamCreation() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("list"));
 
@@ -35,5 +36,3 @@ public class Team {
         }
     }
 }
-
-

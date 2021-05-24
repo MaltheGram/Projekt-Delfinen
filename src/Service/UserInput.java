@@ -155,6 +155,21 @@ public class UserInput {
     }
 
     public static LocalDate askForDate() {
+        Year resultYear = Year.of(textio.newIntInputReader()
+                .withMinVal(LocalDate.now().getYear())
+                .withMaxVal(LocalDate.now().getYear())
+                .read("Enter result year")
+        );
+
+        YearMonth resultMonth = resultYear.atMonth(textio.newEnumInputReader(Month.class)
+                .read("Enter result month")
+        );
+
+        return resultMonth.atDay(textio.newIntInputReader()
+                .withMinVal(1)
+                .withMaxVal(resultMonth.lengthOfMonth() )
+                .read("Enter date of the result")
+        );
 
     }
 
@@ -169,6 +184,15 @@ public class UserInput {
     }
 
     public static Duration askForResultTime() {
+        Integer resultInMinutes = textio.newIntInputReader()
+                .withMinVal(0)
+                .read("Enter result");
+        Long resultInSeconds = textio.newLongInputReader()
+                .withMinVal(0L)
+                .read("Result in seconds");
+
+
+        return Duration.ofMinutes(resultInMinutes).plusSeconds(resultInSeconds);
 
     }
 }
