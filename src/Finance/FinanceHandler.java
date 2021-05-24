@@ -12,10 +12,7 @@ import Service.UserInput;
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
 
-    public void makePayment() {
-        Member member = UserInput.askForMember();
-        Double amount = UserInput.askForPaymentAmount();
-
+    public void makePayment(Member member, double amount) {
         new PaymentLog().writePaymentToLog(new Payment(member, amount));
     }
 
@@ -23,7 +20,11 @@ public class FinanceHandler {
         UserInput.console.println(new Budget().toString());
     }
 
+    public void displayAllPayments() {
+        new PaymentLog().displayAllPayments();
+    }
+
     public void viewOverduePayments() {
-        new FinanceReport().viewOverduePayments();
+        new FinanceReport().printOverduePayments();
     }
 }

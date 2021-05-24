@@ -3,11 +3,11 @@ package Finance;
 import java.time.LocalDate;
 
 public class DueDate {
-    private final LocalDate currentYear = LocalDate.parse(LocalDate.now().getYear() + "-01-01");
-    private LocalDate firstDeadline = currentYear.plusMonths(2);
-    private LocalDate secondDeadline = currentYear.plusMonths(4);
-    private LocalDate thirdDeadline = currentYear.plusMonths(6);
-    private LocalDate fourthDeadline = currentYear.plusMonths(8);
+    private final LocalDate periodStart = LocalDate.parse(LocalDate.now().getYear() + "-01-01");
+    private LocalDate firstDeadline = periodStart.plusMonths(2);
+    private LocalDate secondDeadline = periodStart.plusMonths(4);
+    private LocalDate thirdDeadline = periodStart.plusMonths(6);
+    private LocalDate fourthDeadline = periodStart.plusMonths(8);
 
     public LocalDate getFirstDeadline() {
         return firstDeadline;

@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AccountantMenu {
-    private static final FinanceHandler FINANCE_HANDLER = new FinanceHandler();
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to Accountant menu!";
+    private static final FinanceHandler financeHandler = new FinanceHandler();
     private static final List<String> menuOptions = Arrays.asList(
             "See expected income from subscriptions.",
             "See overdue payment.",
@@ -31,22 +31,35 @@ public class AccountantMenu {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
-                case 0 -> viewAnnualBudget();
-                case 1 -> viewOverduePayments();
-                case 2 -> exitMenu();
+                case 0 -> makePayment();
+                case 1 -> viewAllPayments();
+                case 2 -> viewAnnualBudget();
+                case 3 -> viewOverduePayments();
+                // TODO: ADD makePayment() method.
+                case 4 -> exitMenu();
             }
         }
     }
 
-
+    // TODO: implement expected income
     private static void viewAnnualBudget() {
-        UserInput.clearConsole();
-        FINANCE_HANDLER.displayAnnualBudget();
+        financeHandler.displayAnnualBudget();
     }
 
     // TODO: Implement overdue payments
     private static void viewOverduePayments() {
-        FINANCE_HANDLER.viewOverduePayments();
+        financeHandler.viewOverduePayments();
+    }
+
+    private static void makePayment() {
+        var userInput = new UserInput();
+        var member = userInput.askForMember();
+        var amount = userInput.askForAmount();
+        financeHandler.makePayment(member, amount);
+    }
+
+    private static void viewAllPayments() {
+        financeHandler.displayAllPayments();
     }
 
     private static void exitMenu() {

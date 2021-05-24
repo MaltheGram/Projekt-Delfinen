@@ -23,8 +23,20 @@ public class PaymentLog {
         payments.add(payment);
     }
 
+    public List<Payment> displayAllPayments() {
+        // TODO: read overdue from file, return as list
+        return new ArrayList<>();
+
+    }
+
     boolean memberHasLoggedPayments(Member member) {
 
         return false;
+    }
+
+    public List<Payment> fetchListOfOverduePayments() {
+        var overduePayments = new ArrayList<Payment>();
+        // TODO: send list of overdue payments to FinanceReport
+        return overduePayments;
     }
 }

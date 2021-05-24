@@ -11,19 +11,20 @@ import Member.Member;
 
 public class FinanceReport {
 
-    void viewPaymentsFromPeriod(LocalDate startDate) {
+    void printPaymentsFromPeriod(LocalDate startDate) {
 
     }
 
-    void viewPaymentsAllTime() {
+    void printPaymentsAllTime() {
 
     }
 
-    void viewOverduePayments() {
-
+    void printOverduePayments() {
+        var paymentLog = new PaymentLog().fetchListOfOverduePayments();
+        // TODO: print overdue payments
     }
 
-    void viewMemberPayments(Member member) {
+    void printMemberPayments(Member member) {
 
     }
 }

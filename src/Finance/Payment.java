@@ -40,4 +40,8 @@ public class Payment implements Serializable {
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
+
+    public String toString() {
+        return member.getMemberId() + ", " + member.getName() + ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
+    }
 }
