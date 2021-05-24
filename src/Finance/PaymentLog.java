@@ -1,6 +1,6 @@
 /*
  * @author He "Holy Warrior" Engelund
- * 20/05/2021 18:53
+ * 24/05/2021 21:04
  *
  * DAT21V2-Projekt-Delfinen
  */
@@ -29,35 +29,45 @@ public class PaymentLog {
     }
 
     boolean hasNoLoggedPayments(Member member) {
-
-        return false;
+        for (var payment : payments) {
+            if (payment.getMember().equals(member)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public Map<Member, Double> fetchOverdueAmounts(Collection<Member> allMembers) {
-
         var overduePayments = new HashMap<Member, Double>();
 
         for (var member : allMembers) {
             if (hasNoLoggedPayments(member)) {
                 overduePayments.put(member, 0.0);
             } else {
-                overduePayments.put(member, calculateBalance(member));
+                if (feeNotFullyPaid(member)) {
+                    overduePayments.put(member, calculateBalance(member));
+                }
             }
-
         }
         return overduePayments;
     }
 
-    private Double calculateBalance(Member member) {
-        // TODO: find payments for this member, add together, return result
+    private boolean feeNotFullyPaid(Member member) {
+        return calculateBalance(member) < new MembershipFeeCalc().determinePrice(member);
+    }
 
-        return 0.0;
+    private Double calculateBalance(Member member) {
+        var total = 0.0;
+
+        for (var payment : payments) {
+            if (payment.getMember().equals(member)) {
+                total += payment.getAmount();
+            }
+        }
+        return total;
     }
 
     public List<Payment> fetchAllPayments() {
-        // TODO: try catch file not found, is empty
-        var allPayments = FileControl.readSerializableFromFile(completeFilePath, new ArrayList<Payment>());
-
-        return allPayments;
+        return FileControl.readSerializableFromFile(completeFilePath, new ArrayList<>());
     }
 }
