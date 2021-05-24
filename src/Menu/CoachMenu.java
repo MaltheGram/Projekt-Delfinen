@@ -17,6 +17,7 @@ public class CoachMenu {
     private static final String menuText = "Welcome to Coach menu!";
     private static final List<String> menuOptions = Arrays.asList(
             "See leaderboard",
+            "Add result",
             "Manage teams",
             "Go back to main menu."
     );
@@ -30,8 +31,9 @@ public class CoachMenu {
 
             switch (menuChoice) {
                 case 0 -> viewLeaderboards();
-                case 1 -> manageTeams();
-                case 2 -> exitMenu();
+                case 1 -> addResult();
+                case 2 -> manageTeams();
+                case 3 -> exitMenu();
             }
         }
     }
@@ -45,6 +47,10 @@ public class CoachMenu {
             System.out.println("Leaderboard coming soon");
         }
          */
+    }
+
+    private static void addResult() {
+        ResultHandler.addResult();
     }
 
     // TODO: implement manageTeams
