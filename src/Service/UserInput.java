@@ -4,8 +4,7 @@ import DelfinMain.DelfinMain;
 import Member.Member;
 import org.beryx.textio.*;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -144,5 +143,12 @@ public class UserInput {
         );
         console.getProperties().setPromptColor(Color.DARK_GRAY);
         console.setBookmark("CLEAR");
+    }
+
+    public static Double askForPaymentAmount() {
+        return textio.newDoubleInputReader()
+                .withMinVal(0.0)
+                .read("Enter payment amount");
+
     }
 }
