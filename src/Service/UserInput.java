@@ -188,13 +188,12 @@ public class UserInput {
         Integer resultInMinutes = textio.newIntInputReader()
                 .withMinVal(0)
                 .read("Enter x amounts of minutes");
-        Integer resultInSeconds = textio.newIntInputReader()
-                .withMinVal(0)
-                .withMaxVal(59)
+        Double resultInSeconds = textio.newDoubleInputReader()
+                .withMinVal(0.0)
                 .read("Enter x amounts of seconds");
 
 
-        return Duration.ofMinutes(resultInMinutes).plusSeconds(resultInSeconds);
-
+        return Duration.ofMinutes(resultInMinutes)
+                .plusMillis((long) (resultInSeconds * 1000));
     }
 }
