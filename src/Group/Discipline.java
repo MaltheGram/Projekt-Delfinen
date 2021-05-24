@@ -1,17 +1,16 @@
 package Group;
 
 public enum Discipline {
-
     // only first four are must have
 
-    BACK_CRAWL("rygcrawl"),
-    CRAWL("crawl"),
-    BUTTERFLY("butterfly"),
-    BREAST_STROKE("brystsvømning"),
-    FREESTYLE(""),
+    BACK_CRAWL("Rygcrawl"),
+    CRAWL("Crawl"),
+    BUTTERFLY("Butterfly"),
+    BREAST_STROKE("Brystsvømning"),
+    /*FREESTYLE(""),
     MEDLEY(""),
     MEDLEY_RELAY(""),
-    OPEN_WATER("");
+    OPEN_WATER("");*/
 
     private final String discName;
 
@@ -19,7 +18,7 @@ public enum Discipline {
         this.discName = discName;
     }
 
-    public String getDisciplineName() {
+    public String toString() {
         return this.discName;
     }
 }

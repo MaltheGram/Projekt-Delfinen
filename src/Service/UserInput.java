@@ -155,14 +155,20 @@ public class UserInput {
     }
 
     public static LocalDate askForDate() {
+
     }
 
     public static ResultType askForResultType() {
+        return textio.newEnumInputReader(ResultType.class)
+                .read("Enter result type");
     }
 
     public static Discipline askForDiscipline() {
+        return textio.newEnumInputReader(Discipline.class)
+                .read("Enter swimming discipline");
     }
 
     public static Duration askForResultTime() {
+
     }
 }

@@ -1,5 +1,6 @@
 package Competition;
 
+import DelfinMain.DelfinMain;
 import Group.Discipline;
 import Member.Member;
 import Service.UserInput;
@@ -16,8 +17,8 @@ public class ResultHandler {
         Duration resultTime = UserInput.askForResultTime();
 
 
-        Result result = new Result(member, date, type, discipline, resultTime );
-        //TODO: do something with result, add to list
+        Result result = new Result(date, type, discipline, resultTime );
+        DelfinMain.resultList.addNewResult(member, result);
     }
 
     //TODO: implement viewLeaderboards
