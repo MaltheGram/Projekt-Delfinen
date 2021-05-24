@@ -1,5 +1,3 @@
-
-
 /**
  * @author Malthe
  * 18/05/2021 13.26
@@ -85,6 +83,6 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return name + "," + birthDate + "," + address + "," + isActiveMember +"," + phoneNumber + ", " + getMemberId() + "\n";
+        return String.format(" %-10s %-15s %-20s %-10s %-10s %-15s\n", name, birthDate, address, isActiveMember, phoneNumber, getMemberId());
     }
 }
