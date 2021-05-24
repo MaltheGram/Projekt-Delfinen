@@ -20,7 +20,7 @@ public class FinanceHandler {
     }
 
     public void displayAnnualBudget() {
-        System.out.println(new Budget().toString());
+        UserInput.console.println(new Budget().toString());
     }
 
     public void viewOverduePayments() {
