@@ -18,6 +18,8 @@ public class AccountantMenu {
     private static final String menuText = "Welcome to Accountant menu!";
     private static final FinanceHandler financeHandler = new FinanceHandler();
     private static final List<String> menuOptions = Arrays.asList(
+            "Make a payment",
+            "View all payments",
             "See expected income from subscriptions.",
             "See overdue payment.",
             "Go back to main menu."
@@ -35,7 +37,6 @@ public class AccountantMenu {
                 case 1 -> viewAllPayments();
                 case 2 -> viewAnnualBudget();
                 case 3 -> viewOverduePayments();
-                // TODO: ADD makePayment() method.
                 case 4 -> exitMenu();
             }
         }
@@ -52,9 +53,8 @@ public class AccountantMenu {
     }
 
     private static void makePayment() {
-        var userInput = new UserInput();
-        var member = userInput.askForMember();
-        var amount = userInput.askForAmount();
+        var member = UserInput.askForMember();
+        var amount = UserInput.askForPaymentAmount();
         financeHandler.makePayment(member, amount);
     }
 

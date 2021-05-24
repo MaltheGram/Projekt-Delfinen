@@ -197,10 +197,4 @@ public class UserInput {
                 .plusMillis((long) (resultInSeconds * 1000));
     }
 
-    public double askForAmount() {
-        var amount = 0.0;
-
-        // TODO: add asking for user input, payment amount
-        return amount;
-    }
 }
