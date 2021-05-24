@@ -6,6 +6,7 @@ import Member.Member;
 import Service.UserInput;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ResultHandler {
 
@@ -23,7 +24,7 @@ public class ResultHandler {
 
     //TODO: implement viewLeaderboards
     public static void viewLeaderboards() {
-        UserInput.console.println("Not implemented yet");
+        UserInput.console.println(DelfinMain.resultList.toString());
     }
 
     //TODO: implement manageTeams

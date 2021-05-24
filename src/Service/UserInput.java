@@ -9,6 +9,7 @@ import org.beryx.textio.*;
 import java.awt.Color;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -196,5 +197,4 @@ public class UserInput {
         return Duration.ofMinutes(resultInMinutes)
                 .plusMillis((long) (resultInSeconds * 1000));
     }
-
 }

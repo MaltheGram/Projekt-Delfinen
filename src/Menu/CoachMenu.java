@@ -50,6 +50,7 @@ public class CoachMenu {
                 + ": with member id: " + Member.getMemberId() + "\n");
         UserInput.console.println(String.valueOf(listOfIds));
         ResultHandler.addResult();
+
     }
 
     // TODO: implement manageTeams

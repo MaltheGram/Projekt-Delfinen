@@ -30,7 +30,7 @@ public class Result implements Serializable {
         return memberId;
     }
 
-    public void setMemberId(Member memberId) {
+    private void setMemberId(Member memberId) {
         this.memberId = memberId;
     }
 
@@ -38,7 +38,7 @@ public class Result implements Serializable {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -46,7 +46,7 @@ public class Result implements Serializable {
         return type;
     }
 
-    public void setType(ResultType type) {
+    private void setType(ResultType type) {
         this.type = type;
     }
 
