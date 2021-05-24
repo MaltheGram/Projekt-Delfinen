@@ -2,6 +2,8 @@ package Competition;
 
 import Member.Member;
 import Service.FileControl;
+
+import java.io.Serializable;
 import java.util.*;
 
 public class ResultList {

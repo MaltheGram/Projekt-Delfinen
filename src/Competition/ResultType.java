@@ -1,6 +1,8 @@
 package Competition;
 
-public enum ResultType {
+import java.io.Serializable;
+
+public enum ResultType implements Serializable {
     COMPETITION("Competition"),
     TRAINING("Training");
 

@@ -1,6 +1,8 @@
 package Group;
 
-public enum Discipline {
+import java.io.Serializable;
+
+public enum Discipline implements Serializable {
     // only first four are must have
 
     BACK_CRAWL("Rygcrawl"),
