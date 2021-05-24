@@ -20,7 +20,7 @@ public class FileControl {
             try {
                 //WRITE & PRINT LOADED
                 o.writeObject(serializableObject);
-                System.out.println("Serializable added to file:");
+                System.out.println("\nSerializable added to file \"" + filename + ".ser\"");
                 System.out.println(serializableObject);
             } finally {
                 //CLEANUP
@@ -28,7 +28,7 @@ public class FileControl {
                 write.close();
             }
 
-        } catch(Exception e) {
+        }  catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -42,7 +42,7 @@ public class FileControl {
             try {
                 //READ AND PASTE OBJECT
                 serializableObject = (T) in.readObject();
-                System.out.println("Serializable loaded from file:");
+                System.out.println("\nSerializable loaded from \"" + filename+".ser\":");
                 System.out.println(serializableObject);
             } finally {
                 //CLEAN UP
@@ -51,6 +51,13 @@ public class FileControl {
             }
 
             return serializableObject;
+
+        } catch(FileNotFoundException e) {
+            System.out.println("\n\"" + filename +".ser\" file not found. Creating...");
+
+            writeSerializableToFile(defaultReturn,filename);
+
+            return defaultReturn;
 
         } catch(IOException | ClassCastException | ClassNotFoundException e) {
             e.printStackTrace();
