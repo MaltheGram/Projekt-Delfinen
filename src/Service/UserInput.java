@@ -174,6 +174,14 @@ public class UserInput {
 
     }
 
+    public static <T> Integer askForIndexFromList(List<T> list) {
+        return textio.newIntInputReader()
+                .withNumberedPossibleValues( getListIndices(list) )
+                .withValueFormatter(index -> list.get(index).toString())
+                .read("Choose from list");
+    }
+
+
     // Competition or training
     public static ResultType askForResultType() {
         return textio.newEnumInputReader(ResultType.class)
