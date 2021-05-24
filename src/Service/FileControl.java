@@ -17,17 +17,16 @@ public class FileControl {
             FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
             ObjectOutputStream o = new ObjectOutputStream(write);
 
-            o.writeObject(serializableObject);
-
-            // TODO: move closing statements to finally, because closing can also go wrong. Example below.
-            //CLEAN UP
-            https://stackoverflow.com/questions/2699209/java-io-ugly-try-finally-block
-            o.close();
-            write.close();
-
-            //PRINT LOADED
-            System.out.println("Serializable added to file:");
-            System.out.println(serializableObject);
+            try {
+                //WRITE & PRINT LOADED
+                o.writeObject(serializableObject);
+                System.out.println("Serializable added to file:");
+                System.out.println(serializableObject);
+            } finally {
+                //CLEANUP
+                o.close();
+                write.close();
+            }
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -38,15 +37,19 @@ public class FileControl {
             //READ FILE
             FileInputStream f = new FileInputStream(new File(filename + ".ser"));
             ObjectInputStream in = new ObjectInputStream(f);
+            T serializableObject = defaultReturn;
 
-            T serializableObject = (T) in.readObject();
+            try {
+                //READ AND PASTE OBJECT
+                serializableObject = (T) in.readObject();
+                System.out.println("Serializable loaded from file:");
+                System.out.println(serializableObject);
+            } finally {
+                //CLEAN UP
+                f.close();
+                in.close();
+            }
 
-            //CLEAN UP
-            f.close();
-            in.close();
-
-            System.out.println("Serializable loaded from file:");
-            System.out.println(serializableObject);
             return serializableObject;
 
         } catch(IOException | ClassCastException | ClassNotFoundException e) {
