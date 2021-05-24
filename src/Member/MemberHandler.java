@@ -17,22 +17,41 @@ import java.util.Arrays;
 import java.util.List;
 
 import DelfinMain.DelfinMain;
-
-
 public class MemberHandler {
 
     public static void addMember(){
+        UserInput.clearConsole();
+        String tmpMember = "";
+        String splitter = "\n" + "-";
+        UserInput.console.println("Create a member by entering user data" + splitter);
 
-            String name = UserInput.askForName();
-            LocalDate birthDate = UserInput.askForBirthdate();
-            String address = UserInput.askForAddress();
-            String phoneNumber = UserInput.askForPhoneNumber();
-            Boolean activeMembership = UserInput.askForActiveMembership();
-            Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
+        String name = UserInput.askForName();
+        tmpMember += "Member name: " + name;
+        UserInput.clearConsole();
+        UserInput.console.println( tmpMember + splitter);
 
-            DelfinMain.listOfMembers.addNewMember(member);
-            UserInput.clearConsole();
-            UserInput.console.println("Member added.");
+        LocalDate birthDate = UserInput.askForBirthdate();
+        tmpMember += "\nDate of birth: " + birthDate;
+        UserInput.clearConsole();
+        UserInput.console.println( tmpMember + splitter);
+
+        String address = UserInput.askForAddress();
+        tmpMember += "\nAddress: " + address;
+        UserInput.clearConsole();
+        UserInput.console.println( tmpMember + splitter);
+
+        String phoneNumber = UserInput.askForPhoneNumber();
+        tmpMember += "\nPhone number: " + address;
+        UserInput.clearConsole();
+        UserInput.console.println( tmpMember + splitter);
+
+        Boolean activeMembership = UserInput.askForActiveMembership();
+
+        Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
+
+        DelfinMain.listOfMembers.addNewMember(member);
+        UserInput.clearConsole();
+        UserInput.console.println("Member added.");
     }
 
 
@@ -41,7 +60,8 @@ public class MemberHandler {
         PresidentMenu.showMemberList();
 
         Member memberToUpdate = UserInput.askForMember();
-        // TODO: maybe print member here
+        UserInput.console.println(memberToUpdate.toString());
+
         String menuText = "What will you update?";
         List<String> menuOptions = Arrays.asList(
                 "Name",
