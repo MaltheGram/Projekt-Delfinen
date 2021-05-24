@@ -27,15 +27,15 @@ public class AccountantMenu {
     public static void runAccountantMenu() {
         isRunning = true;
         UserInput.clearConsole();
-
+        var financeHandler = new FinanceHandler();
         while (isRunning) {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
-                case 0 -> FinanceHandler.makePayment();
-                case 1 -> FinanceHandler.displayAllPayments();
-                case 2 -> FinanceHandler.displayAnnualBudget();
-                case 3 -> FinanceHandler.displayOverduePayments();
+                case 0 -> financeHandler.makePayment();
+                case 1 -> financeHandler.displayAllPayments();
+                case 2 -> financeHandler.displayAnnualBudget();
+                case 3 -> financeHandler.displayOverduePayments();
                 case 4 -> exitMenu();
             }
         }

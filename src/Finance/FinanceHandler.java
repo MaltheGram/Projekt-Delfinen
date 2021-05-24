@@ -6,29 +6,39 @@
  */
 
 package Finance;
+import DelfinMain.DelfinMain;
 import Member.Member;
 import Service.UserInput;
 
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
+    private final PaymentLog paymentLog;
+
+    public FinanceHandler() {
+        paymentLog = new PaymentLog();
+        paymentLog.initialize();
+
+    }
     // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
-    public static void makePayment() {
+    public void makePayment() {
         Member member = UserInput.askForMember();
         Double amount = UserInput.askForPaymentAmount();
 
-        new PaymentLog().writePaymentToLog(new Payment(member, amount));
+        paymentLog.writePaymentToLog(new Payment(member, amount));
     }
 
-    public static void displayAnnualBudget() {
+    public void displayAnnualBudget() {
         // do not print here, do it in FinanceReport instead.
-        new FinanceReport().printAllPayments();
+
     }
 
-    public static void displayAllPayments() {
-        new PaymentLog().fetchOverdueAmounts();
+    public void displayAllPayments() {
+        FinanceReport.printAllPayments(paymentLog.fetchAllPayments());
     }
 
-    public static void displayOverduePayments() {
-        new FinanceReport().printOverduePayments();
+    public void displayOverduePayments() {
+        var allMembers = DelfinMain.listOfMembers.getAllMembers();
+        var overduePayments = paymentLog.fetchOverdueAmounts(allMembers);
+        FinanceReport.printOverduePayments(overduePayments);
     }
 }

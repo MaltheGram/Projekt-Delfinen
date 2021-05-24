@@ -5,16 +5,11 @@
  * DAT21V2-Projekt-Delfinen
  */
 package Finance;
-import DelfinMain.DelfinMain;
 import Member.Member;
 import Service.FileControl;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import Member.MemberList;
+import java.util.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class PaymentLog {
     private List<Payment> payments = new ArrayList<>();
@@ -23,11 +18,14 @@ public class PaymentLog {
     private final String filename = "member_payments.txt";
     private final String completeFilePath = Paths.get(myDocuments, dataDirectory, filename).toFile().toString();
 
+    void initialize() {
+        payments = fetchAllPayments();
+    }
+
     public void writePaymentToLog(Payment payment) {
         payments.add(payment);
         System.out.println(payments);
         FileControl.writeSerializableToFile((ArrayList<Payment>) payments, completeFilePath);
-
     }
 
     boolean hasNoLoggedPayments(Member member) {
@@ -35,8 +33,8 @@ public class PaymentLog {
         return false;
     }
 
-    public Map<Member, Double> fetchOverdueAmounts() {
-        var allMembers = DelfinMain.listOfMembers.getAllMembers();
+    public Map<Member, Double> fetchOverdueAmounts(Collection<Member> allMembers) {
+
         var overduePayments = new HashMap<Member, Double>();
 
         for (var member : allMembers) {
