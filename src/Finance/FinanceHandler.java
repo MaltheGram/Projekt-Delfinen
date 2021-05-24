@@ -20,11 +20,12 @@ public class FinanceHandler {
     }
 
     public static void displayAnnualBudget() {
-        UserInput.console.println(new Budget().toString());
+        // do not print here, do it in FinanceReport instead.
+        new FinanceReport().printAllPayments();
     }
 
     public static void displayAllPayments() {
-        new PaymentLog().displayAllPayments();
+        new PaymentLog().fetchOverdueAmounts();
     }
 
     public static void displayOverduePayments() {

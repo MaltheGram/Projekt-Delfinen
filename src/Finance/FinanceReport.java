@@ -7,24 +7,31 @@
 package Finance;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import Member.Member;
 
 public class FinanceReport {
+
+    void printAllPayments() {
+        printList(new PaymentLog().fetchAllPayments());
+    }
 
     void printPaymentsFromPeriod(LocalDate startDate) {
 
     }
 
-    void printPaymentsAllTime() {
-
-    }
-
     void printOverduePayments() {
-        var paymentLog = new PaymentLog().fetchListOfOverduePayments();
-        // TODO: print overdue payments
+
     }
 
     void printMemberPayments(Member member) {
 
+    }
+
+    private void printList(List<Payment> payments) {
+        for(var payment : payments) {
+            System.out.println(payment.toString());
+        }
     }
 }

@@ -13,6 +13,7 @@ import Service.MemberIdGenerator;
 import java.io.Serializable;
         import java.time.LocalDate;
         import java.time.Period;
+import java.util.Objects;
 
 public class Member implements Serializable {
     private LocalDate birthDate;
@@ -84,5 +85,18 @@ public class Member implements Serializable {
     @Override
     public String toString() {
         return String.format(" %-10s %-15s %-20s %-10s %-10s %-15s\n", name, birthDate, address, isActiveMember, phoneNumber, getMemberId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Member)) return false;
+        Member member = (Member) o;
+        return isActiveMember == member.isActiveMember && Objects.equals(birthDate, member.birthDate) && Objects.equals(name, member.name) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(memberId, member.memberId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(birthDate, name, address, phoneNumber, isActiveMember, memberId);
     }
 }

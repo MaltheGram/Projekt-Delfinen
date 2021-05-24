@@ -7,11 +7,13 @@
 package Finance;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
+
 import Member.Member;
 // TODO: dueDate according to PaymentPlan. Upon Member creation, add empty payments for each deadline
 public class Payment implements Serializable {
 
-    private transient Member member;
+    private Member member;
     private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
     private LocalDate currentDate = LocalDate.now();
@@ -42,6 +44,20 @@ public class Payment implements Serializable {
     }
 
     public String toString() {
-        return member.getMemberId() + ", " + member.getName() + ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
+        return "Member: " + member +  ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Payment)) return false;
+        Payment payment = (Payment) o;
+        return Double.compare(payment.amount, amount) == 0 && Objects.equals(member, payment.member) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(currentDate, payment.currentDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(member, dueDate, amount, currentDate);
     }
 }

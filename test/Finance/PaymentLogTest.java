@@ -10,14 +10,17 @@ class PaymentLogTest {
     void writePaymentToLogTest() {
         Member member = new Member("kes", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true);
         var log = new PaymentLog();
-        log.writePaymentToLog(new Payment(member, 1000));
+        var payment = new Payment(member, 1000);
+        log.writePaymentToLog(payment);
 
-        member = new Member("Guinan", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true);
-        log.writePaymentToLog(new Payment(member, 1600));
+        Member member2 = new Member("Guinan", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true);
+        var payment2 = new Payment(member2, 1600);
+        log.writePaymentToLog(payment2);
 
+        var actual = log.fetchAllPayments();
 
-        // read same file, must contain these payments
-
-
+        assertTrue(actual.contains(payment));
+        assertTrue(actual.contains(payment2));
     }
+
 }
