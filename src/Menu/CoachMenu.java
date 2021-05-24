@@ -9,6 +9,7 @@
 package Menu;
 
 import Competition.ResultHandler;
+import DelfinMain.DelfinMain;
 import Service.UserInput;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +46,9 @@ public class CoachMenu {
     }
 
     private static void addResult() {
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName()
+                + ": with member id: " + Member.getMemberId() + "\n");
+        UserInput.console.println(String.valueOf(listOfIds));
         ResultHandler.addResult();
     }
 

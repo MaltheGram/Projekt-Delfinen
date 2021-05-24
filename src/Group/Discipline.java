@@ -6,7 +6,7 @@ public enum Discipline {
     BACK_CRAWL("Rygcrawl"),
     CRAWL("Crawl"),
     BUTTERFLY("Butterfly"),
-    BREAST_STROKE("Brystsvømning"),
+    BREAST_STROKE("Brystsvømning");
     /*FREESTYLE(""),
     MEDLEY(""),
     MEDLEY_RELAY(""),

@@ -18,17 +18,6 @@ record Result( Member memberID,
                Duration time
 ) {
 
-    private static Result addResult(){
-        UserInput.askForDate();
-        UserInput.askForResultTime();
-
-        return null;
-    }
-
-
-
-
-
 }
 
 

@@ -173,6 +173,7 @@ public class UserInput {
 
     }
 
+    // Competition or training
     public static ResultType askForResultType() {
         return textio.newEnumInputReader(ResultType.class)
                 .read("Enter result type");
@@ -186,10 +187,11 @@ public class UserInput {
     public static Duration askForResultTime() {
         Integer resultInMinutes = textio.newIntInputReader()
                 .withMinVal(0)
-                .read("Enter result");
-        Long resultInSeconds = textio.newLongInputReader()
-                .withMinVal(0L)
-                .read("Result in seconds");
+                .read("Enter x amounts of minutes");
+        Integer resultInSeconds = textio.newIntInputReader()
+                .withMinVal(0)
+                .withMaxVal(59)
+                .read("Enter x amounts of seconds");
 
 
         return Duration.ofMinutes(resultInMinutes).plusSeconds(resultInSeconds);
