@@ -8,6 +8,7 @@ import Service.FileControl;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class MemberList {
 
@@ -34,7 +35,6 @@ public class MemberList {
     }
 
 
-
     public void removeMember(String memberID) {
         this.members.remove(memberID);
         FileControl.writeSerializableToFile(this.members, this.filePath);
@@ -54,13 +54,11 @@ public class MemberList {
     }
 
     public <R> Collection<R> getFieldFromAllMembers(Function<Member, R> methodReference) {
-        return null;
-        //compile error: cannot find symbol method toList() r:60
-        /*return Collections.unmodifiableCollection(
+        return Collections.unmodifiableCollection(
                 members.values().stream()
-                .map(methodReference)
-                .toList()
-        );*/
+                        .map(methodReference)
+                        .collect(Collectors.toList())
+        );
     }
 
     @Override public String toString() {
