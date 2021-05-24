@@ -11,7 +11,7 @@ import Service.UserInput;
 
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
-
+    // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
     public void makePayment(Member member, double amount) {
         new PaymentLog().writePaymentToLog(new Payment(member, amount));
     }

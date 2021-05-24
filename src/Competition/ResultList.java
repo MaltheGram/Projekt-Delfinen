@@ -2,6 +2,7 @@ package Competition;
 
 import Member.Member;
 import Service.FileControl;
+import Service.UserInput;
 
 import java.io.Serializable;
 import java.util.*;
@@ -28,8 +29,8 @@ public class ResultList {
         FileControl.writeSerializableToFile(this.results, this.filePath);
     }
 
-    public void removeResult(String memberID) {
-        // does nothing
+    public void removeResult(Member member, int result) {
+        results.get(member.getMemberId()).remove(result);
     }
 
     public List<Result> getResultsByID(String memberID) {

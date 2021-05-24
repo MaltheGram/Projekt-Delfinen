@@ -6,10 +6,6 @@ import Member.Member;
 import Service.UserInput;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.AbstractMap;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 public class ResultHandler {
 
@@ -32,5 +28,18 @@ public class ResultHandler {
     //TODO: implement manageTeams
     public static void manageTeams() {
         UserInput.console.println("Not implemented yet");
+    }
+
+    public static void removeResult(){
+        Member member = UserInput.askForMember();
+        int listSize = DelfinMain.resultList.getResultsByID(member.getMemberId()).size();
+
+        if (listSize <= 0){
+            UserInput.console.println("List is empty");
+        }
+        else {
+            int listChoice = UserInput.askForIndexFromList(DelfinMain.resultList.getResultsByID(member.getMemberId()));
+            DelfinMain.resultList.removeResult(member, listChoice);
+        }
     }
 }

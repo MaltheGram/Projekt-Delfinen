@@ -9,6 +9,7 @@
 package Menu;
 
 import Competition.ResultHandler;
+import Competition.ResultList;
 import DelfinMain.DelfinMain;
 import Service.UserInput;
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class CoachMenu {
     private static final List<String> menuOptions = Arrays.asList(
             "See leaderboard",
             "Add result",
+            "Remove result",
             "Manage teams",
             "Go back to main menu."
     );
@@ -34,8 +36,9 @@ public class CoachMenu {
             switch (menuChoice) {
                 case 0 -> viewLeaderboards();
                 case 1 -> addResult();
-                case 2 -> manageTeams();
-                case 3 -> exitMenu();
+                case 2 -> removeResult();
+                case 3-> manageTeams();
+                case 4 -> exitMenu();
             }
         }
     }
@@ -52,6 +55,12 @@ public class CoachMenu {
         ResultHandler.addResult();
 
     }
+    private static void removeResult(){
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName()
+                + ": with member id: " + Member.getMemberId() + "\n");
+        UserInput.console.println(String.valueOf(listOfIds));
+        ResultHandler.removeResult();
+    }
 
     // TODO: implement manageTeams
     private static void manageTeams() {
@@ -62,4 +71,5 @@ public class CoachMenu {
         isRunning = false;
         UserInput.clearConsole();
     }
+
 }
