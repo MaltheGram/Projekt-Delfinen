@@ -1,6 +1,8 @@
 package Service;
 
+import Competition.ResultType;
 import DelfinMain.DelfinMain;
+import Group.Discipline;
 import Member.Member;
 import org.beryx.textio.*;
 
@@ -150,5 +152,17 @@ public class UserInput {
                 .withMinVal(0.0)
                 .read("Enter payment amount");
 
+    }
+
+    public static LocalDate askForDate() {
+    }
+
+    public static ResultType askForResultType() {
+    }
+
+    public static Discipline askForDiscipline() {
+    }
+
+    public static Duration askForResultTime() {
     }
 }
