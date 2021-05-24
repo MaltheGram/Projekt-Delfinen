@@ -72,9 +72,14 @@ public class UserInput {
     }
 
     public static Member askForMember() {
-        String memberId = textio.newStringInputReader()
+        List<Member> members = DelfinMain.listOfMembers.getAllMembers().stream().toList();
+        Integer index = textio.newIntInputReader()
+                .withNumberedPossibleValues(getListIndices( members ))
+                .withValueFormatter( i -> members.get(i).getName() )
                 .read("Enter member ID");
+        return members.get(index);
 
+        /*
         Member member = DelfinMain.listOfMembers.getMemberByID(memberId);
         while (member == null){
             System.out.println("Invalid member ID, please try again");
@@ -84,6 +89,8 @@ public class UserInput {
         }
 
         return member;
+
+         */
     }
 
     public static String askForName() {
