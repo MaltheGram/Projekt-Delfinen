@@ -21,7 +21,7 @@ public class ResultHandler {
     }
 
     //TODO: implement viewLeaderboards
-    public static void viewLeaderboards() {
+    public static void displayLeaderboards() {
         UserInput.console.println("Not implemented yet");
     }
 

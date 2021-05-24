@@ -9,7 +9,6 @@
 
 package Member;
 
-import Menu.PresidentMenu;
 import Service.UserInput;
 
 import java.time.*;
@@ -55,9 +54,8 @@ public class MemberHandler {
     }
 
 
-    public static void updateMemberInformation() {
+    public static void updateMember() {
         boolean isRunning = true;
-        PresidentMenu.showMemberList();
 
         Member memberToUpdate = UserInput.askForMember();
         UserInput.console.println(memberToUpdate.toString());
@@ -122,8 +120,6 @@ public class MemberHandler {
     }
 
     public static void removeMember() {
-        PresidentMenu.showMemberList();
-        UserInput.console.println("Input member ID to remove");
         Member memberToRemove = UserInput.askForMember();
 
         Boolean confirmRemoval = UserInput.textio.newBooleanInputReader()
@@ -133,6 +129,15 @@ public class MemberHandler {
             DelfinMain.listOfMembers.removeMember(memberToRemove.getMemberId());
         } else {
             UserInput.console.println("Terminating....");
+        }
+    }
+
+    public static void displayMemberList() {
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
+        if (listOfIds.isEmpty()){
+            UserInput.console.println("There are no members");
+        } else {
+            UserInput.console.println(String.valueOf(listOfIds));
         }
     }
 }

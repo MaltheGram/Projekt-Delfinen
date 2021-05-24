@@ -12,19 +12,22 @@ import Service.UserInput;
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
     // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
-    public void makePayment(Member member, double amount) {
+    public static void makePayment() {
+        Member member = UserInput.askForMember();
+        Double amount = UserInput.askForPaymentAmount();
+
         new PaymentLog().writePaymentToLog(new Payment(member, amount));
     }
 
-    public void displayAnnualBudget() {
+    public static void displayAnnualBudget() {
         UserInput.console.println(new Budget().toString());
     }
 
-    public void displayAllPayments() {
+    public static void displayAllPayments() {
         new PaymentLog().displayAllPayments();
     }
 
-    public void viewOverduePayments() {
+    public static void displayOverduePayments() {
         new FinanceReport().printOverduePayments();
     }
 }

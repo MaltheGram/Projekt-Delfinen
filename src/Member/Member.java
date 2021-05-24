@@ -8,7 +8,6 @@
 
 package Member;
 
-import Menu.PresidentMenu;
 import Service.MemberIdGenerator;
 
 import java.io.Serializable;

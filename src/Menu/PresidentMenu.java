@@ -6,14 +6,8 @@
 
 package Menu;
 
-import DelfinMain.DelfinMain;
-import Finance.FinanceHandler;
-import Member.Member;
 import Member.MemberHandler;
-import Member.MemberList;
-import Service.FileControl;
 import Service.UserInput;
-import org.beryx.textio.TextIO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,34 +31,13 @@ public class PresidentMenu {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
-                case 0 -> AddMember();
-                case 1 -> RemoveMember();
-                case 2 -> UpdateMember();
-                case 3 -> showMemberList();
+                case 0 -> MemberHandler.addMember();
+                case 1 -> MemberHandler.removeMember();
+                case 2 -> MemberHandler.updateMember();
+                case 3 -> MemberHandler.displayMemberList();
                 case 4 -> ExitMenu();
             }
         }
-    }
-
-    private static void AddMember() {
-        MemberHandler.addMember();
-    }
-
-    private static void RemoveMember() {
-        MemberHandler.removeMember();
-    }
-
-    private static void UpdateMember() {
-        MemberHandler.updateMemberInformation();
-    }
-
-    public static void showMemberList(){
-        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
-        if (listOfIds.isEmpty()){
-            UserInput.console.println("There is currently no numbers");
-        }
-        else
-        UserInput.console.println(String.valueOf(listOfIds));
     }
 
     private static void ExitMenu() {

@@ -1,8 +1,6 @@
 package Competition;
 
 
-import Service.UserInput;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;

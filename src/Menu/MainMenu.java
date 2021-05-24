@@ -40,8 +40,7 @@ public class MainMenu {
 
     private static void exitMenu() {
         isRunning = false;
-        UserInput.console.dispose();
-        UserInput.textio.dispose();
+        UserInput.clearConsole();
     }
 }
 

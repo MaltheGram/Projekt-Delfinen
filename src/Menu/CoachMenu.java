@@ -9,8 +9,6 @@
 package Menu;
 
 import Competition.ResultHandler;
-import Competition.ResultList;
-import DelfinMain.DelfinMain;
 import Service.UserInput;
 import java.util.Arrays;
 import java.util.List;
@@ -34,42 +32,17 @@ public class CoachMenu {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
 
             switch (menuChoice) {
-                case 0 -> viewLeaderboards();
-                case 1 -> addResult();
-                case 2 -> removeResult();
-                case 3-> manageTeams();
+                case 0 -> ResultHandler.displayLeaderboards();
+                case 1 -> ResultHandler.addResult();
+                case 2 -> ResultHandler.removeResult();
+                case 3 -> ResultHandler.manageTeams();
                 case 4 -> exitMenu();
             }
         }
-    }
-
-    // TODO: implement viewLeaderboards
-    private static void viewLeaderboards() {
-        ResultHandler.viewLeaderboards();
-    }
-
-    private static void addResult() {
-        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName()
-                + ": with member id: " + Member.getMemberId() + "\n");
-        UserInput.console.println(String.valueOf(listOfIds));
-        ResultHandler.addResult();
-
-    }
-    private static void removeResult(){
-        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName()
-                + ": with member id: " + Member.getMemberId() + "\n");
-        UserInput.console.println(String.valueOf(listOfIds));
-        ResultHandler.removeResult();
-    }
-
-    // TODO: implement manageTeams
-    private static void manageTeams() {
-        ResultHandler.manageTeams();
     }
 
     private static void exitMenu() {
         isRunning = false;
         UserInput.clearConsole();
     }
-
 }

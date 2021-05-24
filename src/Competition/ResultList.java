@@ -2,9 +2,7 @@ package Competition;
 
 import Member.Member;
 import Service.FileControl;
-import Service.UserInput;
 
-import java.io.Serializable;
 import java.util.*;
 
 public class ResultList {
@@ -34,7 +32,7 @@ public class ResultList {
     }
 
     public List<Result> getResultsByID(String memberID) {
-        return this.results.getOrDefault(memberID, new ArrayList<Result>());
+        return this.results.getOrDefault(memberID, new ArrayList<>());
     }
 
     public Collection<List<Result>> getAllResults() {

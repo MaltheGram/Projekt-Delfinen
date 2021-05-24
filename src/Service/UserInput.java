@@ -9,7 +9,6 @@ import org.beryx.textio.*;
 import java.awt.Color;
 import java.time.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /*
@@ -76,21 +75,9 @@ public class UserInput {
         Integer index = textio.newIntInputReader()
                 .withNumberedPossibleValues(getListIndices( members ))
                 .withValueFormatter( i -> members.get(i).getName() )
-                .read("Enter member ID");
+                .read("Select member");
         return members.get(index);
 
-        /*
-        Member member = DelfinMain.listOfMembers.getMemberByID(memberId);
-        while (member == null){
-            System.out.println("Invalid member ID, please try again");
-            memberId = textio.newStringInputReader()
-                    .read("Enter member ID");
-            member = DelfinMain.listOfMembers.getMemberByID(memberId);
-        }
-
-        return member;
-
-         */
     }
 
     public static String askForName() {
