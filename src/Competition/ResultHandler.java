@@ -17,7 +17,7 @@ public class ResultHandler {
         Duration resultTime = UserInput.askForResultTime();
 
 
-        Result result = new Result(date, type, discipline, resultTime );
+        Result result = new Result(member, date, type, discipline, resultTime );
         DelfinMain.resultList.addNewResult(member, result);
     }
 
