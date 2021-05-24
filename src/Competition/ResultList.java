@@ -1,3 +1,12 @@
+/**
+ * @author Malthe Gram
+ * @@author Simon Gredal
+ * 24/05/2021 22.52
+ *
+ * DAT21V2-Projekt-Delfinen
+ *
+ */
+
 package Competition;
 
 import Member.Member;

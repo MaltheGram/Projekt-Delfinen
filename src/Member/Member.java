@@ -11,8 +11,8 @@ package Member;
 import Service.MemberIdGenerator;
 
 import java.io.Serializable;
-        import java.time.LocalDate;
-        import java.time.Period;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public class Member implements Serializable {
