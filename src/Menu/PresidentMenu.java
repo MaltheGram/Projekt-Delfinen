@@ -7,6 +7,7 @@
 package Menu;
 
 import DelfinMain.DelfinMain;
+import Finance.FinanceHandler;
 import Member.Member;
 import Member.MemberHandler;
 import Member.MemberList;
@@ -46,7 +47,7 @@ public class PresidentMenu {
     }
 
     private static void AddMember() {
-       MemberHandler.addMember();
+        MemberHandler.addMember();
     }
 
     private static void RemoveMember() {

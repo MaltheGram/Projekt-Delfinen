@@ -7,6 +7,7 @@
 
 package Finance;
 import Member.Member;
+import Service.UserInput;
 
 // ONLY CONNECT TO THIS CLASS TO INTERACT WITH FINANCE DEPT.
 public class FinanceHandler {
@@ -16,7 +17,7 @@ public class FinanceHandler {
     }
 
     public void displayAnnualBudget() {
-        System.out.println(new Budget().toString());
+        UserInput.console.println(new Budget().toString());
     }
 
     public void viewOverduePayments() {
