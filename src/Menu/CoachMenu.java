@@ -8,6 +8,7 @@
 
 package Menu;
 
+import Competition.ResultHandler;
 import Service.UserInput;
 import java.util.Arrays;
 import java.util.List;
@@ -40,13 +41,7 @@ public class CoachMenu {
 
     // TODO: implement viewLeaderboards
     private static void viewLeaderboards() {
-        UserInput.console.println("Not implemented yet");
-        /*
-        if (input == 1) {
-
-            System.out.println("Leaderboard coming soon");
-        }
-         */
+        ResultHandler.viewLeaderboards();
     }
 
     private static void addResult() {
@@ -55,11 +50,7 @@ public class CoachMenu {
 
     // TODO: implement manageTeams
     private static void manageTeams() {
-        UserInput.console.println("Not implemented yet");
-        /*if (input == 2) {
-
-            System.out.println("Manage teams coming soon");
-        }*/
+        ResultHandler.manageTeams();
     }
 
     private static void exitMenu() {
