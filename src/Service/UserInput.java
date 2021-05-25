@@ -71,6 +71,7 @@ public class UserInput {
     }
 
     public static Member askForMember() {
+        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
         List<Member> members = DelfinMain.listOfMembers.getAllMembers().stream().toList();
         Integer index = textio.newIntInputReader()
                 .withNumberedPossibleValues(getListIndices( members ))

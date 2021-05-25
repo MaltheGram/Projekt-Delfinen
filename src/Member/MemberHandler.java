@@ -57,8 +57,6 @@ public class MemberHandler {
         UserInput.clearConsole();
         boolean isRunning = true;
 
-        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
-
         Member memberToUpdate = UserInput.askForMember();
         UserInput.clearConsole();
 
@@ -128,8 +126,6 @@ public class MemberHandler {
 
     public static void removeMember() {
         UserInput.clearConsole();
-
-        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
 
         Member memberToRemove = UserInput.askForMember();
 
