@@ -75,7 +75,7 @@ public class UserInput {
         Integer index = textio.newIntInputReader()
                 .withNumberedPossibleValues(getListIndices( members ))
                 .withValueFormatter( i -> members.get(i).getName() )
-                .read("Select member");
+                .read("List of members");
         return members.get(index);
 
     }

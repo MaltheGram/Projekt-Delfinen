@@ -20,29 +20,29 @@ public class MemberHandler {
 
     public static void addMember(){
         UserInput.clearConsole();
-        String tmpMember = "";
+        String tmpText = "";
         String splitter = "\n" + "-";
         UserInput.console.println("Create a member by entering user data" + splitter);
 
         String name = UserInput.askForName();
-        tmpMember += "Member name: " + name;
+        tmpText += "Member name: " + name;
         UserInput.clearConsole();
-        UserInput.console.println( tmpMember + splitter);
+        UserInput.console.println( tmpText + splitter);
 
         LocalDate birthDate = UserInput.askForBirthdate();
-        tmpMember += "\nDate of birth: " + birthDate;
+        tmpText += "\nDate of birth: " + birthDate;
         UserInput.clearConsole();
-        UserInput.console.println( tmpMember + splitter);
+        UserInput.console.println( tmpText + splitter);
 
         String address = UserInput.askForAddress();
-        tmpMember += "\nAddress: " + address;
+        tmpText += "\nAddress: " + address;
         UserInput.clearConsole();
-        UserInput.console.println( tmpMember + splitter);
+        UserInput.console.println( tmpText + splitter);
 
         String phoneNumber = UserInput.askForPhoneNumber();
-        tmpMember += "\nPhone number: " + phoneNumber;
+        tmpText += "\nPhone number: " + phoneNumber;
         UserInput.clearConsole();
-        UserInput.console.println( tmpMember + splitter);
+        UserInput.console.println( tmpText + splitter);
 
         Boolean activeMembership = UserInput.askForActiveMembership();
 
@@ -57,9 +57,11 @@ public class MemberHandler {
         UserInput.clearConsole();
         boolean isRunning = true;
 
+        String splitter = "\n" + "-";
+        UserInput.console.println("Select a member by entering member ID" + splitter);
+
         Member memberToUpdate = UserInput.askForMember();
         UserInput.clearConsole();
-        UserInput.console.println(memberToUpdate.toString());
 
         String menuText = "What will you update?";
         List<String> menuOptions = Arrays.asList(
@@ -73,6 +75,10 @@ public class MemberHandler {
         );
 
         while (isRunning) {
+            UserInput.clearConsole();
+            UserInput.console.println("Select a which member data to update" + splitter);
+            UserInput.console.println("Member data expanded:");
+            UserInput.console.println(memberToUpdate.toString());
 
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
             switch (menuChoice) {
@@ -123,6 +129,9 @@ public class MemberHandler {
 
     public static void removeMember() {
         UserInput.clearConsole();
+
+        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
+
         Member memberToRemove = UserInput.askForMember();
 
         Boolean confirmRemoval = UserInput.textio.newBooleanInputReader()

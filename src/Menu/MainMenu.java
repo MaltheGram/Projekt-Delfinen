@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainMenu {
     private static Boolean isRunning = true;
-    private static final String menuText = "Welcome to “Delfinen” system menu!";
+    private static final String menuText =  "Welcome to “Delfinen” system menu!";
     private static final List<String> menuOptions = Arrays.asList(
             "See president options.",
             "See accountant options",
