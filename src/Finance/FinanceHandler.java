@@ -17,15 +17,15 @@ public class FinanceHandler {
     public FinanceHandler() {
         paymentLog = new PaymentLog();
         paymentLog.initialize();
-
     }
+
     // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
     public void makePayment() {
         UserInput.clearConsole();
         Member member = UserInput.askForMember();
         Double amount = UserInput.askForPaymentAmount();
 
-        paymentLog.writePaymentToLog(new Payment(member, amount));
+        paymentLog.writePaymentToLog(member, new Payment(member.getMemberId(), amount));
     }
 
     public void displayAnnualBudget() {
@@ -35,13 +35,14 @@ public class FinanceHandler {
 
     public void displayAllPayments() {
         UserInput.clearConsole();
-        FinanceReport.printAllPayments(paymentLog.fetchAllPayments());
+        FinanceReport.printAllPayments(paymentLog.fetchAllPaymentsMap().values());
     }
 
     public void displayOverduePayments() {
         UserInput.clearConsole();
         var allMembers = DelfinMain.listOfMembers.getAllMembers();
-        var overduePayments = paymentLog.fetchOverdueAmounts(allMembers);
+        //var overduePayments = paymentLog.fetchOverdueAmounts(allMembers);
+        var overduePayments = paymentLog.fetchOverduePaymentAmounts(allMembers);
         FinanceReport.printOverduePayments(overduePayments);
     }
 }

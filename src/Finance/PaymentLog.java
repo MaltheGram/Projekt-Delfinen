@@ -12,62 +12,49 @@ import java.util.*;
 
 
 public class PaymentLog {
-    private List<Payment> payments = new ArrayList<>();
-    private final String myDocuments = System.getenv("USERPROFILE") + "\\Documents\\";
-    private final String dataDirectory = "delfinen_finance";
-    private final String filename = "member_payments.txt";
-    private final String completeFilePath = Paths.get(myDocuments, dataDirectory, filename).toFile().toString();
+    private Map<Member, List<Payment>> paymentsMap = new HashMap<>();
+    private MembershipFeeCalc feeCalc = new MembershipFeeCalc();
+    private final String fileName = "member_payments";
+    private final String filePath = Paths.get(fileName).toFile().toString();
 
     void initialize() {
-        payments = fetchAllPayments();
+        paymentsMap = fetchAllPaymentsMap();
     }
 
-    public void writePaymentToLog(Payment payment) {
-        payments.add(payment);
-        System.out.println(payments);
-        FileControl.writeSerializableToFile((ArrayList<Payment>) payments, completeFilePath);
-    }
-
-    boolean hasNoLoggedPayments(Member member) {
-        for (var payment : payments) {
-            if (payment.getMember().equals(member)) {
-                return false;
-            }
+    public void writePaymentToLog(Member member, Payment payment) {
+        if (paymentsMap.containsKey(member)) {
+            paymentsMap.get(member).add(payment);
+        } else {
+            var list = new ArrayList<Payment>();
+            list.add(payment);
+            paymentsMap.put(member, list);
         }
-        return true;
+        FileControl.writeSerializableToFile((HashMap<Member, List<Payment>>) paymentsMap, filePath);
     }
 
-    public Map<Member, Double> fetchOverdueAmounts(Collection<Member> allMembers) {
-        var overduePayments = new HashMap<Member, Double>();
-
-        for (var member : allMembers) {
-            if (hasNoLoggedPayments(member)) {
-                overduePayments.put(member,0.0);
+    public Map<Member, Balance> fetchOverduePaymentAmounts(Collection<Member> members) {
+        var totals = new HashMap<Member, Balance>();
+        for (var member : members) {
+            if (!paymentsMap.containsKey(member)) {
+                totals.put(member, new Balance(feeCalc.determinePrice(member), 0.0));
             } else {
-                if (feeNotFullyPaid(member)) {
-                    overduePayments.put(member, calculateBalance(member));
-                }
+                var fee = feeCalc.determinePrice(member);
+                var paid = calculateBalance(paymentsMap.get(member));
+                totals.put(member, new Balance(fee, paid));
             }
         }
-        return overduePayments;
+        return totals;
     }
 
-    private boolean feeNotFullyPaid(Member member) {
-        return calculateBalance(member) < new MembershipFeeCalc().determinePrice(member);
-    }
-
-    private Double calculateBalance(Member member) {
+    private Double calculateBalance(List<Payment> payments) {
         var total = 0.0;
-
         for (var payment : payments) {
-            if (payment.getMember().equals(member)) {
-                total += payment.getAmount();
-            }
+            total += payment.getAmount();
         }
         return total;
     }
 
-    public List<Payment> fetchAllPayments() {
-        return FileControl.readSerializableFromFile(completeFilePath, new ArrayList<>());
+    public Map<Member, List<Payment>> fetchAllPaymentsMap() {
+        return FileControl.readSerializableFromFile(filePath, new HashMap<>());
     }
 }

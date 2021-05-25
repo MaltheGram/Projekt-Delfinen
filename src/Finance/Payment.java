@@ -10,16 +10,16 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import Member.Member;
-// TODO: dueDate according to PaymentPlan. Upon Member creation, add empty payments for each deadline
+// TODO: Remove member from payment, use payment hashmap's key value (Member)
 public class Payment implements Serializable {
 
-    private Member member;
+    private String memberID;
     private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
     private LocalDate currentDate = LocalDate.now();
 
-    Payment(Member member, double amount) {
-        this.member = member;
+    Payment(String memberID, double amount) {
+        this.memberID = memberID;
         this.amount = amount;
     }
 
@@ -31,8 +31,8 @@ public class Payment implements Serializable {
         return this.currentDate;
     }
 
-    public Member getMember() {
-        return this.member;
+    public String getMemberID() {
+        return this.memberID;
     }
 
     public LocalDate getDueDate() {
@@ -43,21 +43,24 @@ public class Payment implements Serializable {
         this.dueDate = dueDate;
     }
 
-    public String toString() {
-        return "Member: " + member +  ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
+    public String toString() {
+        return "MemberID: " + getMemberID() +  ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Payment)) return false;
         Payment payment = (Payment) o;
-        return Double.compare(payment.amount, amount) == 0 && Objects.equals(member, payment.member) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(currentDate, payment.currentDate);
+        return Double.compare(payment.amount, amount) == 0 && Objects.equals(memberID, payment.memberID) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(currentDate, payment.currentDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(member, dueDate, amount, currentDate);
+        return Objects.hash(memberID, dueDate, amount, currentDate);
     }
 }

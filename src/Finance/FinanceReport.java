@@ -8,17 +8,16 @@
 package Finance;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import Member.Member;
 import Service.UserInput;
 
 public class FinanceReport {
 
-    static void printAllPayments(List<Payment> payments) {
+    static void printAllPayments(Collection<List<Payment>> payments) {
         for(var payment : payments) {
             UserInput.console.println(payment.toString());
-            // System.out.println(payment.toString());
         }
     }
 
@@ -26,9 +25,8 @@ public class FinanceReport {
 
     }
 
-    static void printOverduePayments(Map<Member, Double> overduePayments) {
+    static void printOverduePayments(Map<Member, Balance> overduePayments) {
         UserInput.console.println(overduePayments.toString());
-        //System.out.println(overduePayments);
     }
 
     void printMemberPayments(Member member) {
