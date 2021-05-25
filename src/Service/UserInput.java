@@ -80,7 +80,6 @@ public class UserInput {
                 .withValueFormatter( i -> members.get(i).getName() )
                 .read("List of members");
         return members.get(index);
-
     }
 
     public static String askForName() {

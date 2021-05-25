@@ -84,8 +84,12 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return "Member data: " + getName() + ", " + "," + getAddress() + ", "
-                + getBirthDate() + "," + getPhoneNumber() + ", " + isActiveMember() + "\n";
+        return "Name: " + getName() + "\nAddress: " + getAddress() + "\nBirthdate: "
+                + getBirthDate() + "\nPhone number: " + getPhoneNumber() + "\nMembership active: " + isActiveMember() + "\n";
+
+        //can we delete the old tostring? what is the meaning of life?
+        //return "Member data: " + getName() + ", " + "," + getAddress() + ", "
+        //        + getBirthDate() + "," + getPhoneNumber() + ", " + isActiveMember() + "\n";
     }
 
     @Override
