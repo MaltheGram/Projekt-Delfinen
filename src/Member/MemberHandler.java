@@ -57,8 +57,7 @@ public class MemberHandler {
         UserInput.clearConsole();
         boolean isRunning = true;
 
-        String splitter = "\n" + "-";
-        UserInput.console.println("Select a member by entering member ID" + splitter);
+        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
 
         Member memberToUpdate = UserInput.askForMember();
         UserInput.clearConsole();
@@ -76,7 +75,7 @@ public class MemberHandler {
 
         while (isRunning) {
             UserInput.clearConsole();
-            UserInput.console.println("Select a which member data to update" + splitter);
+            UserInput.console.println("Select a which member data to update" + "\n" + "-");
             UserInput.console.println("Member data expanded:");
             UserInput.console.println(memberToUpdate.toString());
 
