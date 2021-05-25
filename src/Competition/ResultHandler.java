@@ -47,7 +47,15 @@ public class ResultHandler {
                 .sorted(Comparator.comparing(Result::getTime))
                 .collect(Collectors.toList());
 
+        List<Result> competitionBreastLeaderboard = listOfResults.stream()
+                .filter( result -> result.getType() == ResultType.COMPETITION )
+                .filter( result -> result.getDiscipline() == Discipline.BREAST_STROKE )
+                .sorted(Comparator.comparing(Result::getTime))
+                .collect(Collectors.toList());
+
+        //TODO: Should be printed side be side
         UserInput.console.println( competitionCrawlLeaderboard.toString() );
+        UserInput.console.println( competitionBreastLeaderboard.toString() );
     }
 
     //TODO: implement manageTeams
