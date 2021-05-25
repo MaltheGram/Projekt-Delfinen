@@ -68,7 +68,8 @@ public class ResultHandler implements Serializable {
         List<String> menuOptions = Arrays.asList(
                 "Create new team",
                 "Add members to team",
-                "Show list of teams"
+                "Show list of teams",
+                "Go back"
         );
 
         Integer menuChoice = UserInput.askForMenuChoice(menuText,menuOptions);
@@ -76,7 +77,8 @@ public class ResultHandler implements Serializable {
         switch (menuChoice) {
         case 0 -> Team.TeamCreation();
         case 1 -> Team.addMemberToTeam();
-        case 2 -> Team.showTeamList();
+        case 2 -> Team.showListOfTeams();
+        case 3 -> CoachMenu.runCoachMenu();
 
         }
     }

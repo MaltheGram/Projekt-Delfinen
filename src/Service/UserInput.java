@@ -30,7 +30,7 @@ public class UserInput {
 
     private static <T> List<Integer> getListIndices(List<T> list) {
         List<Integer> indices = new ArrayList<>();
-        for (int i = 0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             indices.add(i);
         }
         return indices;
@@ -38,24 +38,24 @@ public class UserInput {
 
     public static Integer askForMenuChoice(String menuText, List<String> menuOptions) {
         return textio.newIntInputReader()
-                .withNumberedPossibleValues( getListIndices(menuOptions) )
+                .withNumberedPossibleValues(getListIndices(menuOptions))
                 .withValueFormatter(menuOptions::get)
                 .read(menuText);
     }
 
     public static LocalDate askForBirthdate() {
-        Year birthYear = Year.of( textio.newIntInputReader()
+        Year birthYear = Year.of(textio.newIntInputReader()
                 .withMinVal(LocalDate.now().getYear() - 150)
                 .withMaxVal(LocalDate.now().getYear())
                 .read("Enter birth year")
         );
-        YearMonth birthMonth = birthYear.atMonth( textio.newEnumInputReader(Month.class)
+        YearMonth birthMonth = birthYear.atMonth(textio.newEnumInputReader(Month.class)
                 .read("Enter birth month")
         );
 
-        return birthMonth.atDay( textio.newIntInputReader()
+        return birthMonth.atDay(textio.newIntInputReader()
                 .withMinVal(1)
-                .withMaxVal( birthMonth.lengthOfMonth() )
+                .withMaxVal(birthMonth.lengthOfMonth())
                 .read("Enter birth day")
         );
     }
@@ -76,8 +76,8 @@ public class UserInput {
         UserInput.console.println("Select a member" + "\n" + "-");
         List<Member> members = DelfinMain.listOfMembers.getAllMembers().stream().toList();
         Integer index = textio.newIntInputReader()
-                .withNumberedPossibleValues(getListIndices( members ))
-                .withValueFormatter( i -> members.get(i).getName() )
+                .withNumberedPossibleValues(getListIndices(members))
+                .withValueFormatter(i -> members.get(i).getName())
                 .read("List of members");
         return members.get(index);
     }
@@ -126,19 +126,19 @@ public class UserInput {
 
         console.println(
                 """
-                                        ,-._
-                                      _.-'  '--.
-                                    .'      _  -`\\_
-                                   / .----.`_.'----'
-                                   ;/     `
-                                  /_;
-                """);
+                                                ,-._
+                                              _.-'  '--.
+                                            .'      _  -`\\_
+                                           / .----.`_.'----'
+                                           ;/     `
+                                          /_;
+                        """);
         console.getProperties().setPromptColor(Color.BLUE);
         console.println(
                 """
-                               ._      ._      ._      ._
-                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
-                """
+                                       ._      ._      ._      ._
+                                   _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
+                        """
         );
         console.getProperties().setPromptColor(Color.DARK_GRAY);
         console.setBookmark("CLEAR");
@@ -154,25 +154,25 @@ public class UserInput {
 
         console.println(
                 """
-                                        ,-._
-                                      _.-'  '--.
-                                    .'      _  -`\\_
-                                   / .----.`_.'----'
-                                   ;/     `
-                                  /_;
-                """);
+                                                ,-._
+                                              _.-'  '--.
+                                            .'      _  -`\\_
+                                           / .----.`_.'----'
+                                           ;/     `
+                                          /_;
+                        """);
         console.getProperties().setPromptColor(Color.WHITE);
         console.println(
                 """
-                               ._      ._      ._      ._
-                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
-                """
+                                       ._      ._      ._      ._
+                                   _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
+                        """
         );
         console.getProperties().setPromptColor(Color.WHITE);
         console.setBookmark("CLEAR");
     }
 
-    public static void setupConsole(){
+    public static void setupConsole() {
         console.setBookmark("START");
         console.getProperties().setPaneBackgroundColor(Color.BLACK);
         console.getProperties().setInputBackgroundColor(Color.BLACK);
@@ -183,12 +183,12 @@ public class UserInput {
 
         String menuText = "Choose light mode or dark mode";
         List<String> lightOrDarkMode = Arrays.asList(
-               "Light Mode",
-               "Dark Mode"
-                );
+                "Light Mode",
+                "Dark Mode"
+        );
 
-        int chooseMode = askForMenuChoice(menuText,lightOrDarkMode);
-                
+        int chooseMode = askForMenuChoice(menuText, lightOrDarkMode);
+
         switch (chooseMode) {
             case 0 -> lightMode();
             default -> darkMode();
@@ -204,7 +204,7 @@ public class UserInput {
 
     public static LocalDate askForDate() {
         Year resultYear = Year.of(textio.newIntInputReader()
-                .withMinVal(LocalDate.now().getYear()-150)
+                .withMinVal(LocalDate.now().getYear() - 150)
                 .withMaxVal(LocalDate.now().getYear())
                 .withDefaultValue(LocalDate.now().getYear())
                 .read("Enter result year")
@@ -217,7 +217,7 @@ public class UserInput {
 
         return resultMonth.atDay(textio.newIntInputReader()
                 .withMinVal(1)
-                .withMaxVal(resultMonth.lengthOfMonth() )
+                .withMaxVal(resultMonth.lengthOfMonth())
                 .withDefaultValue(LocalDate.now().getDayOfMonth())
                 .read("Enter date of the result")
         );
@@ -225,7 +225,7 @@ public class UserInput {
 
     public static <T> Integer askForIndexFromList(List<T> list) {
         return textio.newIntInputReader()
-                .withNumberedPossibleValues( getListIndices(list) )
+                .withNumberedPossibleValues(getListIndices(list))
                 .withValueFormatter(index -> list.get(index).toString())
                 .read("Choose from list");
     }
@@ -259,4 +259,17 @@ public class UserInput {
         return textio.newStringInputReader()
                 .read("Enter team name");
     }
+
+    public static Team askForAllTeams() {
+
+        UserInput.console.println("Select a team" + "\n" + "-");
+        List<Team> teams = DelfinMain.listOfTeams.getAllTeams().stream().toList();
+        Integer index = textio.newIntInputReader()
+                .withNumberedPossibleValues(getListIndices(teams))
+                .withValueFormatter(i -> teams.get(i).getName())
+                .read("List of teams");
+        return teams.get(index);
+    }
 }
+
+
