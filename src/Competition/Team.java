@@ -13,10 +13,14 @@ import Member.Member;
 import Service.FileControl;
 import Service.UserInput;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Team {
-    private static final ArrayList<Member> LIST_OF_MEMBERS_ON_TEAM = new ArrayList<>();
+    //public static final ArrayList<Member> LIST_OF_MEMBERS_ON_TEAM = new ArrayList<>();
+    public static final List<Team> LIST_OF_MEMBERS_ON_TEAM = new ArrayList<>();
     private String name;
 
     public Team(String name) {
@@ -24,25 +28,29 @@ public class Team {
     }
     // TODO: FIX HVIS JEG FÅR OVERSKUD
 
-    public static void TeamCreation() {
+    public static void TeamCreation(){
         String teamName = UserInput.askForTeamName();
         Team team = new Team(teamName);
+        LIST_OF_MEMBERS_ON_TEAM.add(team);
 
-        FileControl.writeSerializableToFile(teamName,"teamNames");
+        FileControl.writeSerializableToFile((ArrayList<Team>)LIST_OF_MEMBERS_ON_TEAM,"teamNames");
+        UserInput.console.println("Team successfully created.");
 
     }
 
     public static void addMemberToTeam(){
-
+          /*  FileControl.readSerializableFromFile("teamNames",LIST_OF_MEMBERS_ON_TEAM);
             UserInput.askForTeamName();
             Member memberToAdd = UserInput.askForMember();
-
             LIST_OF_MEMBERS_ON_TEAM.add(memberToAdd);
+
+           */
 
     }
 
     public static void showTeamList(){
-        UserInput.console.println(LIST_OF_MEMBERS_ON_TEAM.toString());
+        FileControl.readSerializableFromFile("teamNames",(ArrayList<Team>)LIST_OF_MEMBERS_ON_TEAM);
+
     }
 
     public String getName() {

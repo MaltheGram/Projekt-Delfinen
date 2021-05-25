@@ -1,6 +1,7 @@
 package Service;
 
 import Competition.ResultType;
+import Competition.Team;
 import DelfinMain.DelfinMain;
 import Group.Discipline;
 import Member.Member;
@@ -254,9 +255,10 @@ public class UserInput {
                 .plusMillis((long) (resultInSeconds * 1000));
     }
 
+    // Coach settings
+
     public static String askForTeamName(){
         return textio.newStringInputReader()
                 .read("Enter team name");
     }
-
 }

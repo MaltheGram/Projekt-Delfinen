@@ -15,12 +15,14 @@ import Group.Discipline;
 import Member.Member;
 import Menu.CoachMenu;
 import Service.UserInput;
+
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
 
 
-public class ResultHandler {
+public class ResultHandler implements Serializable {
 
     public static void addResult() {
         UserInput.clearConsole();
@@ -66,7 +68,7 @@ public class ResultHandler {
         List<String> menuOptions = Arrays.asList(
                 "Create new team",
                 "Add members to team",
-                "Show list of members on team"
+                "Show list of teams"
         );
 
         Integer menuChoice = UserInput.askForMenuChoice(menuText,menuOptions);
