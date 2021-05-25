@@ -9,6 +9,7 @@ import org.beryx.textio.*;
 import java.awt.Color;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -71,7 +72,7 @@ public class UserInput {
     }
 
     public static Member askForMember() {
-        UserInput.console.println("Select a member by entering member ID" + "\n" + "-");
+        UserInput.console.println("Select a member" + "\n" + "-");
         List<Member> members = DelfinMain.listOfMembers.getAllMembers().stream().toList();
         Integer index = textio.newIntInputReader()
                 .withNumberedPossibleValues(getListIndices( members ))
@@ -115,7 +116,7 @@ public class UserInput {
         console.resetToBookmark("CLEAR");
     }
 
-    public static void setupConsole() {
+    public static void lightMode() {
         console.getProperties().setPaneBackgroundColor(Color.WHITE);
         console.getProperties().setInputBackgroundColor(Color.WHITE);
         console.getProperties().setPromptBackgroundColor(Color.WHITE);
@@ -141,6 +142,57 @@ public class UserInput {
         );
         console.getProperties().setPromptColor(Color.DARK_GRAY);
         console.setBookmark("CLEAR");
+    }
+    public static void darkMode() {
+        console.getProperties().setPaneBackgroundColor(Color.BLACK);
+        console.getProperties().setInputBackgroundColor(Color.BLACK);
+        console.getProperties().setPromptBackgroundColor(Color.BLACK);
+
+        console.getProperties().setPromptColor(Color.WHITE);
+        console.getProperties().setInputColor(Color.WHITE);
+
+        console.println(
+                """
+                                        ,-._
+                                      _.-'  '--.
+                                    .'      _  -`\\_
+                                   / .----.`_.'----'
+                                   ;/     `
+                                  /_;
+                """);
+        console.getProperties().setPromptColor(Color.WHITE);
+        console.println(
+                """
+                               ._      ._      ._      ._
+                           _.-._)`\\_.-._)`\\_.-._)`\\_.-._)`\\_.-._
+                """
+        );
+        console.getProperties().setPromptColor(Color.WHITE);
+        console.setBookmark("CLEAR");
+    }
+
+    public static void setupConsole(){
+        console.setBookmark("START");
+        console.getProperties().setPaneBackgroundColor(Color.BLACK);
+        console.getProperties().setInputBackgroundColor(Color.BLACK);
+        console.getProperties().setPromptBackgroundColor(Color.BLACK);
+
+        console.getProperties().setPromptColor(Color.WHITE);
+        console.getProperties().setInputColor(Color.WHITE);
+
+        String menuText = "Choose light mode or dark mode";
+        List<String> lightOrDarkMode = Arrays.asList(
+               "Light Mode",
+               "Dark Mode"
+                );
+
+        int chooseMode = askForMenuChoice(menuText,lightOrDarkMode);
+                
+        switch (chooseMode) {
+            case 0 -> lightMode();
+            default -> darkMode();
+        }
+        console.resetToBookmark("START");
     }
 
     public static Double askForPaymentAmount() {

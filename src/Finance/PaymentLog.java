@@ -42,7 +42,7 @@ public class PaymentLog {
 
         for (var member : allMembers) {
             if (hasNoLoggedPayments(member)) {
-                overduePayments.put(member, 0.0);
+                overduePayments.put(member,0.0);
             } else {
                 if (feeNotFullyPaid(member)) {
                     overduePayments.put(member, calculateBalance(member));

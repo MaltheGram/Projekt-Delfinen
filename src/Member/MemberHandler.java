@@ -67,13 +67,13 @@ public class MemberHandler {
                 "Birthdate",
                 "Phone number",
                 "Membership status",
-                "Competition status",
+                "Competition status - WIP",
                 "Go back to president menu"
         );
 
         while (isRunning) {
             UserInput.clearConsole();
-            UserInput.console.println("Select a which member data to update" + "\n" + "-");
+            UserInput.console.println("Select which member data to update" + "\n" + "-");
             UserInput.console.println("Member data expanded:");
             UserInput.console.println(memberToUpdate.toString());
 
@@ -142,7 +142,8 @@ public class MemberHandler {
 
     public static void displayMemberList() {
         UserInput.clearConsole();
-        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
+        var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: "
+                + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
         if (listOfIds.isEmpty()){
             UserInput.console.println("There are no members");
         } else {
