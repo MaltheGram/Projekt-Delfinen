@@ -201,26 +201,27 @@ public class UserInput {
         return textio.newDoubleInputReader()
                 .withMinVal(0.0)
                 .read("Enter payment amount");
-
     }
 
     public static LocalDate askForDate() {
         Year resultYear = Year.of(textio.newIntInputReader()
-                .withMinVal(LocalDate.now().getYear())
+                .withMinVal(LocalDate.now().getYear()-150)
                 .withMaxVal(LocalDate.now().getYear())
+                .withDefaultValue(LocalDate.now().getYear())
                 .read("Enter result year")
         );
 
         YearMonth resultMonth = resultYear.atMonth(textio.newEnumInputReader(Month.class)
+                .withDefaultValue(LocalDate.now().getMonth())
                 .read("Enter result month")
         );
 
         return resultMonth.atDay(textio.newIntInputReader()
                 .withMinVal(1)
                 .withMaxVal(resultMonth.lengthOfMonth() )
+                .withDefaultValue(LocalDate.now().getDayOfMonth())
                 .read("Enter date of the result")
         );
-
     }
 
     public static <T> Integer askForIndexFromList(List<T> list) {
@@ -229,7 +230,6 @@ public class UserInput {
                 .withValueFormatter(index -> list.get(index).toString())
                 .read("Choose from list");
     }
-
 
     // Competition or training
     public static ResultType askForResultType() {
@@ -249,7 +249,6 @@ public class UserInput {
         Double resultInSeconds = textio.newDoubleInputReader()
                 .withMinVal(0.0)
                 .read("Enter x amounts of seconds");
-
 
         return Duration.ofMinutes(resultInMinutes)
                 .plusMillis((long) (resultInSeconds * 1000));
