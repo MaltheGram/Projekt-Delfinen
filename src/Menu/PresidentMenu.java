@@ -41,8 +41,8 @@ public class PresidentMenu {
     }
 
     private static void ExitMenu() {
-        isRunning = false;
         UserInput.clearConsole();
+        isRunning = false;
     }
 }
 

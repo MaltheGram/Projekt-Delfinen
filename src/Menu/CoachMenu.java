@@ -25,8 +25,8 @@ public class CoachMenu {
     );
 
     public static void runCoachMenu() {
-        isRunning = true;
         UserInput.clearConsole();
+        isRunning = true;
 
         while (isRunning) {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
@@ -42,7 +42,7 @@ public class CoachMenu {
     }
 
     private static void exitMenu() {
-        isRunning = false;
         UserInput.clearConsole();
+        isRunning = false;
     }
 }

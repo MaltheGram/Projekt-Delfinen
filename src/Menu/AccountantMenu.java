@@ -25,8 +25,8 @@ public class AccountantMenu {
     );
 
     public static void runAccountantMenu() {
-        isRunning = true;
         UserInput.clearConsole();
+        isRunning = true;
         var financeHandler = new FinanceHandler();
         while (isRunning) {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);

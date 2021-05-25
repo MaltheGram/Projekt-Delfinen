@@ -21,6 +21,7 @@ public class FinanceHandler {
     }
     // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
     public void makePayment() {
+        UserInput.clearConsole();
         Member member = UserInput.askForMember();
         Double amount = UserInput.askForPaymentAmount();
 
@@ -33,10 +34,12 @@ public class FinanceHandler {
     }
 
     public void displayAllPayments() {
+        UserInput.clearConsole();
         FinanceReport.printAllPayments(paymentLog.fetchAllPayments());
     }
 
     public void displayOverduePayments() {
+        UserInput.clearConsole();
         var allMembers = DelfinMain.listOfMembers.getAllMembers();
         var overduePayments = paymentLog.fetchOverdueAmounts(allMembers);
         FinanceReport.printOverduePayments(overduePayments);

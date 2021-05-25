@@ -23,8 +23,8 @@ public class MainMenu {
     );
 
     public static void runMenu() {
-        isRunning = true;
         UserInput.clearConsole();
+        isRunning = true;
 
         while (isRunning) {
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
@@ -39,8 +39,8 @@ public class MainMenu {
     }
 
     private static void exitMenu() {
-        isRunning = false;
         UserInput.clearConsole();
+        isRunning = false;
     }
 }
 

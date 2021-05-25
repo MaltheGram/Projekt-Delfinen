@@ -53,11 +53,12 @@ public class MemberHandler {
         UserInput.console.println("Member added.");
     }
 
-
     public static void updateMember() {
+        UserInput.clearConsole();
         boolean isRunning = true;
 
         Member memberToUpdate = UserInput.askForMember();
+        UserInput.clearConsole();
         UserInput.console.println(memberToUpdate.toString());
 
         String menuText = "What will you update?";
@@ -117,9 +118,11 @@ public class MemberHandler {
 
             DelfinMain.listOfMembers.updateMember(memberToUpdate);
         }
+            UserInput.clearConsole();
     }
 
     public static void removeMember() {
+        UserInput.clearConsole();
         Member memberToRemove = UserInput.askForMember();
 
         Boolean confirmRemoval = UserInput.textio.newBooleanInputReader()
@@ -130,9 +133,11 @@ public class MemberHandler {
         } else {
             UserInput.console.println("Terminating....");
         }
+            UserInput.clearConsole();
     }
 
     public static void displayMemberList() {
+        UserInput.clearConsole();
         var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: " + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
         if (listOfIds.isEmpty()){
             UserInput.console.println("There are no members");
