@@ -38,6 +38,7 @@ public class ResultList {
 
     public void removeResult(Member member, int result) {
         results.get(member.getMemberId()).remove(result);
+        FileControl.writeSerializableToFile(this.results,this.filePath);
     }
 
     public List<Result> getResultsByID(String memberID) {

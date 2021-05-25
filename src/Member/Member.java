@@ -84,7 +84,8 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return String.format(" %-10s %-15s %-20s %-10s %-10s %-15s\n", name, birthDate, address, isActiveMember, phoneNumber, getMemberId());
+        return "Member data: " + getName() + ", " + "," + getAddress() + ", "
+                + getBirthDate() + "," + getPhoneNumber() + ", " + isActiveMember() + "\n";
     }
 
     @Override
