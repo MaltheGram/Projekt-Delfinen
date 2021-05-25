@@ -29,19 +29,19 @@ public class FinanceHandler {
     }
 
     public void displayAnnualBudget() {
-        // do not print here, do it in FinanceReport instead.
+        var budget = new Budget();
+        FinanceReport.printAnnualBudget(budget);
 
     }
 
     public void displayAllPayments() {
         UserInput.clearConsole();
-        FinanceReport.printAllPayments(paymentLog.fetchAllPaymentsMap().values());
+        FinanceReport.printAllPayments(paymentLog.fetchAllPaymentsMap());
     }
 
     public void displayOverduePayments() {
         UserInput.clearConsole();
         var allMembers = DelfinMain.listOfMembers.getAllMembers();
-        //var overduePayments = paymentLog.fetchOverdueAmounts(allMembers);
         var overduePayments = paymentLog.fetchOverduePaymentAmounts(allMembers);
         FinanceReport.printOverduePayments(overduePayments);
     }

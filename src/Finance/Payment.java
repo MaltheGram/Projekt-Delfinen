@@ -9,14 +9,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import Member.Member;
 // TODO: Remove member from payment, use payment hashmap's key value (Member)
 public class Payment implements Serializable {
 
     private String memberID;
     private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
-    private LocalDate currentDate = LocalDate.now();
+    private final LocalDate paidDate = LocalDate.now();
 
     Payment(String memberID, double amount) {
         this.memberID = memberID;
@@ -27,8 +26,8 @@ public class Payment implements Serializable {
         return this.amount;
     }
 
-    public LocalDate getCurrentDate() {
-        return this.currentDate;
+    public LocalDate getPaidDate() {
+        return this.paidDate;
     }
 
     public String getMemberID() {
@@ -47,20 +46,28 @@ public class Payment implements Serializable {
         this.amount = amount;
     }
 
-    public String toString() {
-        return "MemberID: " + getMemberID() +  ", " + getDueDate() + ", " + getCurrentDate() + ", " + getAmount(); // add amount to pay = membership fee
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Payment)) return false;
         Payment payment = (Payment) o;
-        return Double.compare(payment.amount, amount) == 0 && Objects.equals(memberID, payment.memberID) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(currentDate, payment.currentDate);
+        return Double.compare(payment.amount, amount) == 0 && Objects.equals(memberID, payment.memberID) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(paidDate, payment.paidDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(memberID, dueDate, amount, currentDate);
+        return Objects.hash(memberID, dueDate, amount, paidDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "memberID='" + memberID + '\'' +
+                ", dueDate=" + dueDate +
+                ", amount=" + amount +
+                ", currentDate=" + paidDate +
+                '}';
     }
 }
