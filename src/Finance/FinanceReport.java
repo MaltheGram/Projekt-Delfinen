@@ -1,7 +1,6 @@
 /*
  * @author He "Holy Warrior" Engelund
- * tweaks by @author Malthe
- * 20/05/2021 18:53
+ * 25/05/2021 22:16
  *
  * DAT21V2-Projekt-Delfinen
  */
