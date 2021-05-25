@@ -1,6 +1,6 @@
 /*
  * @author He "Holy Warrior" Engelund
- * 20/05/2021 18:53
+ * 25/05/2021 22:16
  *
  * DAT21V2-Projekt-Delfinen
  */
@@ -14,21 +14,60 @@ import java.util.Collection;
 
 
 public class Budget {
+    private MembershipFeeCalc calc = new MembershipFeeCalc();
     private Collection<Member> members = new MemberList("memberlist").getAllMembers();
+    private int nrPassive;
+    private int nrJuniors;
+    private int nrSeniors;
+    private int nrPensionists;
 
-    private double calculateAnnualBudget() {
+    public Budget() {
+        initialize();
+    }
+
+    private void initialize() {
+        for (var member : members) {
+            if(!member.isActiveMember()) {
+                nrPassive ++;
+            } else {
+                if(calc.isJunior(member)) {
+                    nrJuniors ++;
+                }
+                if(calc.isSenior(member)) {
+                    nrSeniors ++;
+                }
+                if(calc.isPensionist(member)) {
+                    nrPensionists ++;
+                }
+            }
+        }
+    }
+
+    Double calculateAnnualBudget() {
+
         var total = 0.0;
 
         for (var member : members) {
-            total += new MembershipFeeCalc().determinePrice(member);
+            total += calc.determinePrice(member);
         }
         return total;
     }
 
+    public Double calculatePassiveTotal() {
+        return nrPassive * calc.getPassiveFee();
+    }
+
+    public Double calculateJuniorTotal() {
+        return nrJuniors * calc.getJuniorFee();
+    }
+
+    public Double calculateSeniorTotal() {
+        return nrSeniors * calc.getSeniorFee();
+    }
+
+    public Double calculatePensionistTotal() {
+        return nrPensionists * calc.getPensionistFee();
+    }
     // TODO: calculate budget part that comes from each member type, add to toString method
 
-    @Override
-    public String toString() {
-        return "Total annual income: " + calculateAnnualBudget();
-    }
 }

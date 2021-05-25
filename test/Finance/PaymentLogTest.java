@@ -1,3 +1,9 @@
+/*
+ * @author He "Holy Warrior" Engelund
+ * 25/05/2021 22:13
+ *
+ * DAT21V2-Projekt-Delfinen
+ */
 package Finance;
 import Member.Member;
 import org.junit.jupiter.api.BeforeEach;

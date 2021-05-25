@@ -6,6 +6,8 @@ public class MembershipFeeCalc {
     private double juniorFee = 1000;
     private double seniorFee = 1600;
     private double pensionistFee = seniorFee * 0.75;
+    private final int juniorAge = 18;
+    private final int pensionistAge = 60;
 
     public double getPassiveFee() {
         return passiveFee;
@@ -40,17 +42,29 @@ public class MembershipFeeCalc {
     }
 
     public double determinePrice(Member member) {
-        int age = member.getAge();
+
         if(!member.isActiveMember()) {
             return passiveFee;
         }
-        if (age < 18) {
+        if (isJunior(member)) {
             return juniorFee;
         }
-        if (age >= 18 && age < 60) {
+        if (isSenior(member)) {
             return seniorFee;
         } else {
             return pensionistFee;
         }
+    }
+
+    public boolean isSenior(Member member) {
+        return member.getAge() >= juniorAge && member.getAge() < pensionistAge;
+    }
+
+    public boolean isJunior(Member member) {
+        return member.getAge() < juniorAge;
+    }
+
+    public boolean isPensionist(Member member) {
+        return member.getAge() >= pensionistAge;
     }
 }
