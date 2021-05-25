@@ -1,15 +1,48 @@
+/**
+ * @author Malthe
+ * @author Frederik
+ * 25/05/2021 13.44
+ *
+ * DAT21V2-Projekt-Delfinen
+ *
+ */
+
 package Competition;
 
-
-import java.io.*;
+import Member.Member;
+import Service.FileControl;
+import Service.UserInput;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Team {
+    private static final ArrayList<Member> LIST_OF_MEMBERS_ON_TEAM = new ArrayList<>();
     private String name;
 
     public Team(String name) {
         this.name = name;
+    }
+    // TODO: FIX HVIS JEG FÅR OVERSKUD
+
+    public static void TeamCreation() {
+        String teamName = UserInput.askForTeamName();
+        Team team = new Team(teamName);
+
+        FileControl.writeSerializableToFile(teamName,"teamNames");
+
+    }
+
+    public static void addMemberToTeam(){
+
+            UserInput.askForTeamName();
+            Member memberToAdd = UserInput.askForMember();
+
+            LIST_OF_MEMBERS_ON_TEAM.add(memberToAdd);
+
+    }
+
+    public static void showTeamList(){
+        UserInput.console.println(LIST_OF_MEMBERS_ON_TEAM.toString());
     }
 
     public String getName() {
@@ -20,17 +53,8 @@ public class Team {
         this.name = name;
     }
 
-    private static void TeamCreation() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("list"));
-
-        ArrayList<String> crawlteam = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader("list"))) {
-            while (br.ready()) {
-                crawlteam.add(br.readLine());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        @Override
+        public String toString() {
+            return "Team name: " + getName();
         }
-    }
 }

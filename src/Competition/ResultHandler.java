@@ -14,12 +14,11 @@ import DelfinMain.DelfinMain;
 import Group.Discipline;
 import Member.Member;
 import Menu.CoachMenu;
-import Menu.MainMenu;
 import Service.UserInput;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class ResultHandler {
 
@@ -59,10 +58,25 @@ public class ResultHandler {
 
     }
 
-    //TODO: implement manageTeams
+
     public static void manageTeams() {
         UserInput.clearConsole();
-        UserInput.console.println("Not implemented yet");
+        UserInput.console.println("WORK IN PROGRESS");
+        String menuText = "What would you like to do?";
+        List<String> menuOptions = Arrays.asList(
+                "Create new team",
+                "Add members to team",
+                "Show list of members on team"
+        );
+
+        Integer menuChoice = UserInput.askForMenuChoice(menuText,menuOptions);
+
+        switch (menuChoice) {
+        case 0 -> Team.TeamCreation();
+        case 1 -> Team.addMemberToTeam();
+        case 2 -> Team.showTeamList();
+
+        }
     }
 
     public static void removeResult(){

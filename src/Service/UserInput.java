@@ -143,6 +143,7 @@ public class UserInput {
         console.getProperties().setPromptColor(Color.DARK_GRAY);
         console.setBookmark("CLEAR");
     }
+
     public static void darkMode() {
         console.getProperties().setPaneBackgroundColor(Color.BLACK);
         console.getProperties().setInputBackgroundColor(Color.BLACK);
@@ -252,4 +253,10 @@ public class UserInput {
         return Duration.ofMinutes(resultInMinutes)
                 .plusMillis((long) (resultInSeconds * 1000));
     }
+
+    public static String askForTeamName(){
+        return textio.newStringInputReader()
+                .read("Enter team name");
+    }
+
 }

@@ -72,3 +72,4 @@ public class LeaderboardHandler {
         UserInput.console.println( backCrawlLeaderboard.toString());
     }
 }
+

@@ -70,7 +70,7 @@ public class Result implements Serializable {
     public String toString() {
         long s = time.getSeconds();
         String timeFormatted = String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
-        return "Result data: " + getDate() + ", " +  getDiscipline()
+        return "Result data: " + member.getName() + ", " + getDate() + ", " +  getDiscipline()
                 + ", " + timeFormatted + ", " + getType() + "\n";
     }
 }
