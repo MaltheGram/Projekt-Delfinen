@@ -74,7 +74,6 @@ public class MemberHandler {
         while (isRunning) {
             UserInput.clearConsole();
             UserInput.console.println("Select which member data to update" + "\n" + "-");
-            UserInput.console.println("Member data expanded:");
             UserInput.console.println(memberToUpdate.toString());
 
             Integer menuChoice = UserInput.askForMenuChoice(menuText, menuOptions);
