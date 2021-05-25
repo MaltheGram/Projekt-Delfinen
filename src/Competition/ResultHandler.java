@@ -16,6 +16,8 @@ import Member.Member;
 import Service.UserInput;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ResultHandler {
 
@@ -35,7 +37,17 @@ public class ResultHandler {
     //TODO: implement viewLeaderboards
     public static void displayLeaderboards() {
         UserInput.clearConsole();
-        UserInput.console.println("Not implemented yet");
+
+        List<Result> listOfResults = new ArrayList<>();
+        DelfinMain.resultList.getAllResults().forEach(listOfResults::addAll);
+
+        List<Result> competitionCrawlLeaderboard = listOfResults.stream()
+                .filter( result -> result.getType() == ResultType.COMPETITION )
+                .filter( result -> result.getDiscipline() == Discipline.CRAWL )
+                .sorted(Comparator.comparing(Result::getTime))
+                .collect(Collectors.toList());
+
+        UserInput.console.println( competitionCrawlLeaderboard.toString() );
     }
 
     //TODO: implement manageTeams
