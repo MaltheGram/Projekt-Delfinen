@@ -65,18 +65,13 @@ public class Result implements Serializable {
     public void setTime(Duration time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Result data: " + getDate() + ", " +  getDiscipline()
+                + ", " + getTime() + ", " + getType() + "\n";
+    }
 }
-
-
-
-/*record Result( Member memberID,
-               LocalDate date,
-               ResultType type,
-               Discipline discipline,
-               Duration time
-) implements Serializable {
-
- */
 
 
 
