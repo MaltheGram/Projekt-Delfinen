@@ -11,8 +11,8 @@ public class DelfinMain {
     public static ResultList resultList = new ResultList("resultlist");
 
     public static void main(String[] args) {
-        UserInput.setupConsole();
-        //UserInput.lightMode();
+       // UserInput.setupConsole();
+        UserInput.lightMode();
         MainMenu.runMenu();
         UserInput.textio.dispose();
     }

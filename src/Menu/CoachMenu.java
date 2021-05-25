@@ -17,7 +17,7 @@ public class CoachMenu {
     private static Boolean isRunning = true;
     private static final String menuText = "Welcome to Coach menu!";
     private static final List<String> menuOptions = Arrays.asList(
-            "See leaderboard - WIP",
+            "See leaderboard",
             "Add result",
             "Remove result",
             "Manage teams - WIP",

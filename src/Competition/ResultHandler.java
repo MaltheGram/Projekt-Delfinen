@@ -13,6 +13,8 @@ package Competition;
 import DelfinMain.DelfinMain;
 import Group.Discipline;
 import Member.Member;
+import Menu.CoachMenu;
+import Menu.MainMenu;
 import Service.UserInput;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -34,20 +36,27 @@ public class ResultHandler {
         UserInput.clearConsole();
     }
 
-    //TODO: implement viewLeaderboards
     public static void displayLeaderboards() {
         UserInput.clearConsole();
+        final String MENU_TEXT = "Choose discipline leaderboard to show";
+        final List<String> MENU_OPTIONS = Arrays.asList(
+                "See crawl leaderboard",
+                "See back crawl leaderboard",
+                "See butterfly leaderboard",
+                "See breaststroke leaderboard",
+                "Go back"
+        );
 
-        List<Result> listOfResults = new ArrayList<>();
-        DelfinMain.resultList.getAllResults().forEach(listOfResults::addAll);
+        Integer menuChoice = UserInput.askForMenuChoice(MENU_TEXT,MENU_OPTIONS);
 
-        List<Result> competitionCrawlLeaderboard = listOfResults.stream()
-                .filter( result -> result.getType() == ResultType.COMPETITION )
-                .filter( result -> result.getDiscipline() == Discipline.CRAWL )
-                .sorted(Comparator.comparing(Result::getTime))
-                .collect(Collectors.toList());
+        switch (menuChoice){
+            case 0 -> LeaderboardHandler.crawlLeaderboard();
+            case 1 -> LeaderboardHandler.backCrawlLeaderboard();
+            case 2 -> LeaderboardHandler.butterflyLeaderboard();
+            case 3 -> LeaderboardHandler.breastStrokeLeaderboard();
+            case 4 -> CoachMenu.runCoachMenu();
+        }
 
-        UserInput.console.println( competitionCrawlLeaderboard.toString() );
     }
 
     //TODO: implement manageTeams
