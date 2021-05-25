@@ -82,6 +82,7 @@ public class ResultHandler implements Serializable {
     }
 
     public static void removeResult(){
+        //TODO: if user has no results, disallow access
         UserInput.clearConsole();
         Member member = UserInput.askForMember();
         int listSize = DelfinMain.resultList.getResultsByID(member.getMemberId()).size();

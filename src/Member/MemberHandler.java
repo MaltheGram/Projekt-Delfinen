@@ -124,6 +124,7 @@ public class MemberHandler {
     }
 
     public static void removeMember() {
+        //TODO: if there is no members, disallow access
         UserInput.clearConsole();
 
         Member memberToRemove = UserInput.askForMember();
