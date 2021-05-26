@@ -67,6 +67,10 @@ public class UserInput {
                 .read("Active membership?");
     }
 
+    public static Boolean askForCompetitiveStatus() {
+        return textio.newBooleanInputReader().read("Competitive swimmer?");
+    }
+
     public static String askForPhoneNumber() {
         return textio.newStringInputReader()
                 .withMinLength(8)

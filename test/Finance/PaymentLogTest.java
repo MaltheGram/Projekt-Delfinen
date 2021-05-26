@@ -23,9 +23,9 @@ class PaymentLogTest {
     @BeforeEach
     void setup() {
         CUT = new PaymentLog();
-        member1 = new Member("kes", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true);
+        member1 = new Member("kes", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true, true);
         payment1 = new Payment(member1.getMemberId(), 900);
-        member2 = new Member("Guinan", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true);
+        member2 = new Member("Guinan", LocalDate.parse("2019-04-04"), "Enterprise deck 12", "12345678", true, false);
         payment2 = new Payment(member2.getMemberId(), 1600);
     }
 
@@ -65,7 +65,7 @@ class PaymentLogTest {
     void fetchOverduePaymentAmounts() {
         CUT.writePaymentToLog(member1, payment1);
         CUT.writePaymentToLog(member2, payment2);
-        var member3 = new Member("Picard", LocalDate.parse("2020-04-04"), "Enterprise deck 12", "12345678", true);
+        var member3 = new Member("Picard", LocalDate.parse("2020-04-04"), "Enterprise deck 12", "12345678", true, true);
         var actual = CUT.fetchOverduePaymentAmounts(Arrays.asList(member1, member2, member3));
         assertTrue(actual.containsKey(member1));
         assertTrue(actual.containsKey(member2));
