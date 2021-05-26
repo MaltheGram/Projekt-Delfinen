@@ -66,6 +66,7 @@ public class ResultHandler implements Serializable {
         String menuText = "What would you like to do?";
         List<String> menuOptions = Arrays.asList(
                 "Create new team",
+                "Remove team",
                 "Add members to team - WIP",
                 "Show list of teams",
                 "Go back"
@@ -75,9 +76,10 @@ public class ResultHandler implements Serializable {
 
         switch (menuChoice) {
         case 0 -> Team.TeamCreation();
-        case 1 -> Team.addMemberToTeam();
-        case 2 -> Team.showListOfTeams();
-        case 3 -> CoachMenu.runCoachMenu();
+        case 1 -> Team.removeTeam();
+        case 2 -> Team.addMemberToTeam();
+        case 3 -> Team.showListOfTeams();
+        case 4 -> CoachMenu.runCoachMenu();
 
         }
     }

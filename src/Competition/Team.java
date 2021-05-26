@@ -11,14 +11,10 @@ package Competition;
 
 import DelfinMain.DelfinMain;
 import Member.Member;
-import Service.FileControl;
 import Service.UserInput;
-
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -37,8 +33,24 @@ public class Team implements Serializable {
         Team team = new Team(teamName);
         DelfinMain.listOfTeams.addNewTeam(team);
         UserInput.console.println("Team successfully created.");
-
     }
+
+    public static void removeTeam(){
+        UserInput.clearConsole();
+        Team teamToRemove = UserInput.askForAllTeams();
+
+        Boolean confirmRemoval = UserInput.textio.newBooleanInputReader()
+                .read("Confirm removal of team: " + teamToRemove.getName());
+
+        if (confirmRemoval){
+            DelfinMain.listOfTeams.removeTeam(teamToRemove.getName());
+        } else {
+            UserInput.console.println("Terminating....");
+        }
+            UserInput.clearConsole();
+    }
+
+
 
     public static List<Member> getListOfMembers() {
         return LIST_OF_MEMBERS_IN_TEAM;

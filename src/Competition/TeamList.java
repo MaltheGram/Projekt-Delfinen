@@ -13,6 +13,7 @@ import Member.Member;
 import Service.FileControl;
 import Service.UserInput;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,6 +32,12 @@ public class TeamList {
     public void addNewTeam(Team team){
         this.teams.put(team.getName(), team);
         FileControl.writeSerializableToFile(this.teams,this.filePath);
+    }
+
+    public void removeTeam(String teamName){
+        this.teams.remove(teamName);
+        FileControl.writeSerializableToFile(this.teams, this.filePath);
+
     }
 
     public Set<String> getTeams(){
