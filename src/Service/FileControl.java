@@ -14,19 +14,15 @@ public class FileControl {
     public static <T extends Serializable> void writeSerializableToFile(T serializableObject, String filename){
         try {
             //WRITE FILE
-            FileOutputStream write = new FileOutputStream(new File(filename + ".ser"));
-            ObjectOutputStream o = new ObjectOutputStream(write);
+            FileOutputStream write = new FileOutputStream(filename + ".ser");
 
-            try {
+            try (write; ObjectOutputStream o = new ObjectOutputStream(write)) {
                 //WRITE & PRINT LOADED
                 o.writeObject(serializableObject);
                 System.out.println("\nSerializable added to file \"" + filename + ".ser\"");
                 System.out.println(serializableObject);
-            } finally {
-                //CLEANUP
-                o.close();
-                write.close();
             }
+            //CLEANUP
 
         }  catch(Exception e) {
             e.printStackTrace();
@@ -35,7 +31,7 @@ public class FileControl {
     public static <T extends Serializable> T readSerializableFromFile(String filename, T defaultReturn) {
         try {
             //READ FILE
-            FileInputStream f = new FileInputStream(new File(filename + ".ser"));
+            FileInputStream f = new FileInputStream(filename + ".ser");
             ObjectInputStream in = new ObjectInputStream(f);
             T serializableObject = defaultReturn;
 

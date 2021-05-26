@@ -9,9 +9,7 @@
 package Competition;
 
 
-import Member.Member;
 import Service.FileControl;
-import Service.UserInput;
 
 import java.util.Collection;
 import java.util.Collections;

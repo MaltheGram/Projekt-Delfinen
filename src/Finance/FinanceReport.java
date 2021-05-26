@@ -22,11 +22,11 @@ public class FinanceReport {
     }
 
     public static String printMemberPayments(Member member, List<Payment> list) {
-        var report = "Payments of "+ member.getName() + "\n";
+        StringBuilder report = new StringBuilder("Payments of " + member.getName() + "\n");
         for (var payment : list) {
-            report += formatPayment(payment) + "\n";
+            report.append(formatPayment(payment)).append("\n");
         }
-        return report;
+        return report.toString();
     }
 
 
@@ -59,8 +59,7 @@ public class FinanceReport {
         for(var entry : map.entrySet()) {
             var owed = entry.getValue().calculateOwed();
 
-            if (owed < 0) {
-            } else {
+            if (owed > 0) {
                 UserInput.console.println(entry.getKey().getName() + " overdue amount: " + owed);
             }
         }
