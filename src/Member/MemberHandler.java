@@ -46,7 +46,9 @@ public class MemberHandler {
 
         Boolean activeMembership = UserInput.askForActiveMembership();
 
-        Member member = new Member(name, birthDate, address, phoneNumber, activeMembership);
+        Boolean competitiveSwimmer = UserInput.askForCompetitiveStatus();
+
+        Member member = new Member(name, birthDate, address, phoneNumber, activeMembership, competitiveSwimmer);
 
         DelfinMain.listOfMembers.addNewMember(member);
         UserInput.clearConsole();
@@ -67,7 +69,7 @@ public class MemberHandler {
                 "Birthdate",
                 "Phone number",
                 "Membership status",
-                "Competition status - WIP",
+                "Competitive status",
                 "Go back to president menu"
         );
 
@@ -110,7 +112,10 @@ public class MemberHandler {
                     UserInput.clearConsole();
                 }
                 case 5 -> {
-                    // TODO competition status
+                    UserInput.console.println("New competition status\n_______________");
+                    Boolean newCompetitionStatus = UserInput.askForCompetitiveStatus();
+                    memberToUpdate.setIsCompetitive(newCompetitionStatus);
+                    UserInput.clearConsole();
                 }
                 case 6 -> {
                     isRunning = false;
@@ -143,7 +148,7 @@ public class MemberHandler {
     public static void displayMemberList() {
         UserInput.clearConsole();
         var listOfIds = DelfinMain.listOfMembers.getFieldFromAllMembers(Member -> Member.getName() + ": with member id: "
-                + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + "\n");
+                + Member.getMemberId() + ". Is member active: " + Member.isActiveMember() + ". Is member competitive: " + Member.getIsCompetitive() + "\n");
         if (listOfIds.isEmpty()){
             UserInput.console.println("There are no members");
         } else {
