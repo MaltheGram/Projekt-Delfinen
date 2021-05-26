@@ -6,6 +6,8 @@ import DelfinMain.DelfinMain;
 import Group.Discipline;
 import Member.Member;
 import org.beryx.textio.*;
+import org.beryx.textio.swing.SwingTextTerminal;
+import org.beryx.textio.swing.SwingTextTerminalProvider;
 
 import java.awt.Color;
 import java.time.*;
@@ -24,8 +26,8 @@ import java.util.List;
  */
 public class UserInput {
 
-    public static final TextIO textio = TextIoFactory.getTextIO();
-    public static final TextTerminal<?> console = TextIoFactory.getTextTerminal();
+    public static final TextIO textio = new TextIO(new SwingTextTerminalProvider().getTextTerminal());
+    public static final TextTerminal<?> console = textio.getTextTerminal();
     private static final String REGEXLETTERS = "(?i).*[a-z].";
 
     private static <T> List<Integer> getListIndices(List<T> list) {
