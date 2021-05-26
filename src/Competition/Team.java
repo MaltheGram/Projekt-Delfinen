@@ -11,14 +11,10 @@ package Competition;
 
 import DelfinMain.DelfinMain;
 import Member.Member;
-import Service.FileControl;
 import Service.UserInput;
-
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
