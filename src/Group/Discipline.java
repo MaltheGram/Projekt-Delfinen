@@ -5,10 +5,10 @@ import java.io.Serializable;
 public enum Discipline implements Serializable {
     // only first four are must have
 
-    BACK_CRAWL("Rygcrawl"),
+    BACK_CRAWL("Back crawl"),
     CRAWL("Crawl"),
     BUTTERFLY("Butterfly"),
-    BREAST_STROKE("Brystsvømning");
+    BREAST_STROKE("Breast stroke");
     /*FREESTYLE(""),
     MEDLEY(""),
     MEDLEY_RELAY(""),
