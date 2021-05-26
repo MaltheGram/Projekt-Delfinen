@@ -41,31 +41,44 @@ class FileControlTest {
     @Test
     void readSerializableFromEmptyFile() {
         //method acts differently based on if it finds preexisting file, here is both
-        //if there is no file, generates file and returns new hashmap
-        var serializable =FileControl.readSerializableFromFile(filename, new HashMap<>());
-        assertTrue(serializable.isEmpty());
 
-        //file now exists, reads file
-        var serializable2 =FileControl.readSerializableFromFile(filename, new HashMap<>());
-        assertTrue(serializable2.isEmpty());
+        //first iteration: no file exists, creates file and loads with premade serializable
+        //second iteration: file exists, reads file and loads serializable
+        for(int i = 0; i < 2; ++i) {
+            var serializable =FileControl.readSerializableFromFile(filename, new HashMap<>());
+            assertTrue(serializable.isEmpty());
+        }
+
     }
     @Test
     void ReadAndWriteSerializableFromFileTest() {
+        //delete all files beforehand
+        cleanUp();
+
         HashMap serializableObjectEmpty = new HashMap<>();
         HashMap serializableObjectData = new HashMap<String,String>();
         serializableObjectData.put("hej","farvel");
 
-        FileControl.writeSerializableToFile(serializableObjectData,filename2);
+        //first iteration: filename/filename2 does not exist, writeSerializableToFile creates new files.
+        //second iteration: filename/filename2 does exist, writing overwrites old file
+        for(int i = 0; i < 2; ++i) {
+            //write map with data
+            FileControl.writeSerializableToFile(serializableObjectData,filename2);
 
-        //if files exist, file data is returned, if not, serializableObjectEmpty is returned
-        HashMap<String,String> readObject = (HashMap<String, String>) FileControl.readSerializableFromFile(filename2,serializableObjectEmpty);
-        HashMap<String,String> readObject2 = (HashMap<String, String>) FileControl.readSerializableFromFile(filename,serializableObjectEmpty);
+            //read it
+            HashMap<String,String> readObject = (HashMap<String, String>) FileControl.readSerializableFromFile(filename2,serializableObjectEmpty);
 
-        assertFalse(readObject.isEmpty());
-        assertTrue(readObject.size()==1);
+            assertFalse(readObject.isEmpty());
+            assertTrue(readObject.size()==1);
 
-        assertTrue(readObject2.isEmpty());
+            //write map without data
+            FileControl.writeSerializableToFile(serializableObjectEmpty,filename);
 
+            //read it
+            HashMap<String,String> readObject2 = (HashMap<String, String>) FileControl.readSerializableFromFile(filename,serializableObjectEmpty);
+
+            assertTrue(readObject2.isEmpty());
+        }
     }
 
     @AfterAll
