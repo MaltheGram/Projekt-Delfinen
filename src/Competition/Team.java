@@ -45,9 +45,12 @@ public class Team implements Serializable {
     }
     public static void addMemberToTeam() {
         UserInput.clearConsole();
-        Team targetTeam = UserInput.askForAllTeams();
+        UserInput.console.println("Not implemented yet.");
+        /*Team targetTeam = UserInput.askForAllTeams();
         Member memberToAdd = UserInput.askForMember();
         targetTeam.getListOfMembers().add(memberToAdd);
+
+         */
 
     }
 

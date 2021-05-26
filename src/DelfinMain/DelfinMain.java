@@ -14,11 +14,10 @@ import java.util.List;
 public class DelfinMain {
 
     public static MemberList listOfMembers = new MemberList("memberlist");
-    public static ResultList resultList = new ResultList("resultlist");
+    public static ResultList listOfResults = new ResultList("resultlist");
     public static TeamList listOfTeams = new TeamList("teamNames");
 
     public static void main(String[] args) {
-       // UserInput.setupConsole();
         UserInput.lightMode();
         MainMenu.runMenu();
         UserInput.textio.dispose();

@@ -271,5 +271,3 @@ public class UserInput {
         return teams.get(index);
     }
 }
-
-

@@ -16,7 +16,6 @@ import Service.UserInput;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class LeaderboardHandler {
 
     private static List<Result> makeLeaderboard(ResultType type, Discipline discipline) {
         List<Result> listOfResults = new ArrayList<>();
-        DelfinMain.resultList.getAllResults().forEach(listOfResults::addAll);
+        DelfinMain.listOfResults.getAllResults().forEach(listOfResults::addAll);
 
         return listOfResults.stream()
                 .filter( result -> result.getType() == type )

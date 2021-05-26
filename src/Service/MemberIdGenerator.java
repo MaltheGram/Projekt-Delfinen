@@ -5,12 +5,12 @@ import java.util.Random;
 
 public class MemberIdGenerator {
 
-    private final Integer ranmdomId;
+    private final Integer randomId;
     private final String hexStringId;
 
     public MemberIdGenerator(){
-        this.ranmdomId = generateRandom();
-        this.hexStringId = Integer.toHexString(ranmdomId);
+        this.randomId = generateRandom();
+        this.hexStringId = Integer.toHexString(randomId);
 
 }
 
@@ -24,6 +24,6 @@ public class MemberIdGenerator {
 
     @Override
     public String toString() {
-        return ranmdomId + hexStringId;
+        return randomId + hexStringId;
     }
 }

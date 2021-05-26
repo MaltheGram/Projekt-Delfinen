@@ -33,7 +33,7 @@ public class ResultHandler implements Serializable {
         Duration resultTime = UserInput.askForResultTime();
 
         Result result = new Result(member, date, type, discipline, resultTime );
-        DelfinMain.resultList.addNewResult(member, result);
+        DelfinMain.listOfResults.addNewResult(member, result);
         UserInput.clearConsole();
     }
 
@@ -60,14 +60,13 @@ public class ResultHandler implements Serializable {
 
     }
 
-
     public static void manageTeams() {
         UserInput.clearConsole();
         UserInput.console.println("WORK IN PROGRESS");
         String menuText = "What would you like to do?";
         List<String> menuOptions = Arrays.asList(
                 "Create new team",
-                "Add members to team",
+                "Add members to team - WIP",
                 "Show list of teams",
                 "Go back"
         );
@@ -87,7 +86,7 @@ public class ResultHandler implements Serializable {
         //TODO: if user has no results, disallow access
         UserInput.clearConsole();
         Member member = UserInput.askForMember();
-        int listSize = DelfinMain.resultList.getResultsByID(member.getMemberId()).size();
+        int listSize = DelfinMain.listOfResults.getResultsByID(member.getMemberId()).size();
 
         if (listSize <= 0){
             UserInput.clearConsole();
@@ -95,8 +94,8 @@ public class ResultHandler implements Serializable {
         }
         else {
             UserInput.clearConsole();
-            int listChoice = UserInput.askForIndexFromList(DelfinMain.resultList.getResultsByID(member.getMemberId()));
-            DelfinMain.resultList.removeResult(member, listChoice);
+            int listChoice = UserInput.askForIndexFromList(DelfinMain.listOfResults.getResultsByID(member.getMemberId()));
+            DelfinMain.listOfResults.removeResult(member, listChoice);
         }
     }
 }
