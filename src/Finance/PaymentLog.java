@@ -13,7 +13,7 @@ import java.util.*;
 
 public class PaymentLog {
     private Map<Member, List<Payment>> paymentsMap = new HashMap<>();
-    private MembershipFeeCalc feeCalc = new MembershipFeeCalc();
+    private final MembershipFeeCalc feeCalc = new MembershipFeeCalc();
     private final String fileName = "member_payments";
     private final String filePath = Paths.get(fileName).toFile().toString();
 

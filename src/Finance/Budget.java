@@ -13,8 +13,8 @@ import java.util.Collection;
 
 
 public class Budget {
-    private MembershipFeeCalc calc = new MembershipFeeCalc();
-    private Collection<Member> members = new MemberList("memberlist").getAllMembers();
+    private final MembershipFeeCalc calc = new MembershipFeeCalc();
+    private final Collection<Member> members = new MemberList("memberlist").getAllMembers();
     private int nrPassive;
     private int nrJuniors;
     private int nrSeniors;

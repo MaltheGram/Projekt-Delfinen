@@ -88,15 +88,12 @@ public class Member implements Serializable {
                 + getBirthDate() + "\nPhone number: " + getPhoneNumber() + "\nMembership active: " + isActiveMember() + "\n";
 
         //can we delete the old tostring? what is the meaning of life?
-        //return "Member data: " + getName() + ", " + "," + getAddress() + ", "
-        //        + getBirthDate() + "," + getPhoneNumber() + ", " + isActiveMember() + "\n";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Member)) return false;
-        Member member = (Member) o;
+        if (!(o instanceof Member member)) return false;
         return isActiveMember == member.isActiveMember && Objects.equals(birthDate, member.birthDate) && Objects.equals(name, member.name) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(memberId, member.memberId);
     }
 

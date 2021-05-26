@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class Payment implements Serializable {
 
-    private String memberID;
+    private final String memberID;
     private LocalDate dueDate = new DueDate().getFirstDeadline();
     private double amount;
     private final LocalDate paidDate = LocalDate.now();
@@ -61,8 +61,7 @@ public class Payment implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Payment)) return false;
-        Payment payment = (Payment) o;
+        if (!(o instanceof Payment payment)) return false;
         return Double.compare(payment.amount, amount) == 0 && Objects.equals(memberID, payment.memberID) && Objects.equals(dueDate, payment.dueDate) && Objects.equals(paidDate, payment.paidDate);
     }
 

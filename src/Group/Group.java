@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 // not to be implemented first iteration!
 public class Group {
-    private String name;
-    private Discipline discipline;
-    private ArrayList<Member> groupMembers = new ArrayList<>();
+    private final String name;
+    private final Discipline discipline;
+    private final ArrayList<Member> groupMembers = new ArrayList<>();
     // keep this info saved in a file (
 
     Group(String name, Discipline discipline) {
