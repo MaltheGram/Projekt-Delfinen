@@ -14,14 +14,16 @@ import Member.Member;
 import Service.FileControl;
 import Service.UserInput;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class Team implements Serializable {
-    public static final List<Member> LIST_OF_MEMBERS_IN_TEAM = new ArrayList<>();
+    public static List<Member> LIST_OF_MEMBERS_IN_TEAM = new ArrayList<>();
     private String name;
 
     public Team(String name) {
@@ -38,12 +40,14 @@ public class Team implements Serializable {
 
     }
 
+    public static List<Member> getListOfMembers() {
+        return LIST_OF_MEMBERS_IN_TEAM;
+    }
     public static void addMemberToTeam() {
         UserInput.clearConsole();
-        UserInput.askForAllTeams();
+        Team targetTeam = UserInput.askForAllTeams();
         Member memberToAdd = UserInput.askForMember();
-        LIST_OF_MEMBERS_IN_TEAM.add(memberToAdd);
-
+        targetTeam.getListOfMembers().add(memberToAdd);
 
     }
 
