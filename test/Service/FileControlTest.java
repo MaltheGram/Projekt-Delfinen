@@ -1,14 +1,6 @@
 /*
- * @author Malthe
- * 26/05/2021, 14.11
- *
- * DAT21V2-Projekt-Delfinen
- *
- */
-
-/*
- * @author Malthe
- * 26/05/2021, 12.09
+ * @author Mark "Massive Legend" Larsen
+ * 19/05/2021 11.24
  *
  * DAT21V2-Projekt-Delfinen
  *
@@ -65,6 +57,7 @@ class FileControlTest {
 
         FileControl.writeSerializableToFile(serializableObjectData,filename2);
 
+        //if files exist, file data is returned, if not, serializableObjectEmpty is returned
         HashMap<String,String> readObject = (HashMap<String, String>) FileControl.readSerializableFromFile(filename2,serializableObjectEmpty);
         HashMap<String,String> readObject2 = (HashMap<String, String>) FileControl.readSerializableFromFile(filename,serializableObjectEmpty);
 
