@@ -8,3 +8,6 @@ In some menus you cannot exit witout giving a propper input to the system. IE in
 without closing the program. 
 
 In "makePayment" it's possible to pay more than you're suppposed to. If you need to pay 1600 DKK, it's possible to pay 40000.
+
+
+ATM choosing whether to go with light or dark mode conflicts with clearing console. Temp. solution: Only have light mode.
