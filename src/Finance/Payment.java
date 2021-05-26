@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-// TODO: Remove member from payment, use payment hashmap's key value (Member)
 public class Payment implements Serializable {
 
     private String memberID;
@@ -50,6 +49,16 @@ public class Payment implements Serializable {
 
 
     @Override
+    public String toString() {
+        return "Payment{" +
+                "memberID='" + memberID + '\'' +
+                ", dueDate=" + dueDate +
+                ", amount=" + amount +
+                ", currentDate=" + paidDate +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Payment)) return false;
@@ -60,15 +69,5 @@ public class Payment implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(memberID, dueDate, amount, paidDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "memberID='" + memberID + '\'' +
-                ", dueDate=" + dueDate +
-                ", amount=" + amount +
-                ", currentDate=" + paidDate +
-                '}';
     }
 }

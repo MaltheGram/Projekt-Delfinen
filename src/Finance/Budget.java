@@ -8,7 +8,6 @@
 package Finance;
 import Member.Member;
 import Member.MemberList;
-import Service.UserInput;
 
 import java.util.Collection;
 
@@ -36,7 +35,7 @@ public class Budget {
                 if(calc.isSenior(member)) {
                     nrSeniors ++;
                 }
-                if(calc.isPensionist(member)) {
+                if(calc.isPensioner(member)) {
                     nrPensionists ++;
                 }
             }
@@ -66,7 +65,7 @@ public class Budget {
     }
 
     public Double calculatePensionistTotal() {
-        return nrPensionists * calc.getPensionistFee();
+        return nrPensionists * calc.getPensionerFee();
     }
     // TODO: calculate budget part that comes from each member type, add to toString method
 

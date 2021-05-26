@@ -5,9 +5,24 @@ public class MembershipFeeCalc {
     private double passiveFee = 500;
     private double juniorFee = 1000;
     private double seniorFee = 1600;
-    private double pensionistFee = seniorFee * 0.75;
+    private double pensionerFee = seniorFee * 0.75; // 1200
     private final int juniorAge = 18;
-    private final int pensionistAge = 60;
+    private final int pensionerAge = 60;
+
+    public double determinePrice(Member member) {
+
+        if(!member.isActiveMember()) {
+            return passiveFee;
+        }
+        if (isJunior(member)) {
+            return juniorFee;
+        }
+        if (isSenior(member)) {
+            return seniorFee;
+        } else {
+            return pensionerFee;
+        }
+    }
 
     public double getPassiveFee() {
         return passiveFee;
@@ -33,38 +48,23 @@ public class MembershipFeeCalc {
         this.seniorFee = seniorFee;
     }
 
-    public double getPensionistFee() {
-        return pensionistFee;
+    public double getPensionerFee() {
+        return pensionerFee;
     }
 
-    public void setPensionistFee(double pensionistFee) {
-        this.pensionistFee = pensionistFee;
-    }
-
-    public double determinePrice(Member member) {
-
-        if(!member.isActiveMember()) {
-            return passiveFee;
-        }
-        if (isJunior(member)) {
-            return juniorFee;
-        }
-        if (isSenior(member)) {
-            return seniorFee;
-        } else {
-            return pensionistFee;
-        }
+    public void setPensionerFee(double pensionerFee) {
+        this.pensionerFee = pensionerFee;
     }
 
     public boolean isSenior(Member member) {
-        return member.getAge() >= juniorAge && member.getAge() < pensionistAge;
+        return member.getAge() >= juniorAge && member.getAge() < pensionerAge;
     }
 
     public boolean isJunior(Member member) {
         return member.getAge() < juniorAge;
     }
 
-    public boolean isPensionist(Member member) {
-        return member.getAge() >= pensionistAge;
+    public boolean isPensioner(Member member) {
+        return member.getAge() >= pensionerAge;
     }
 }

@@ -39,14 +39,14 @@ public class PaymentLog {
                 totals.put(member, new Balance(feeCalc.determinePrice(member), 0.0));
             } else {
                 var fee = feeCalc.determinePrice(member);
-                var paid = calculateBalance(paymentsMap.get(member));
+                var paid = calculatePaid(paymentsMap.get(member));
                 totals.put(member, new Balance(fee, paid));
             }
         }
         return totals;
     }
 
-    private Double calculateBalance(List<Payment> payments) {
+    private Double calculatePaid(List<Payment> payments) {
         var total = 0.0;
         for (var payment : payments) {
             total += payment.getAmount();

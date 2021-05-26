@@ -19,7 +19,6 @@ public class FinanceHandler {
         paymentLog.initialize();
     }
 
-    // TODO: MAKE SURE YOU CANNOT PAY MORE THAN YOU'RE SUPPOSED TO! IF WE GOT TIME
     public void makePayment() {
         UserInput.clearConsole();
         Member member = UserInput.askForMember();
@@ -31,12 +30,20 @@ public class FinanceHandler {
     public void displayAnnualBudget() {
         var budget = new Budget();
         FinanceReport.printAnnualBudget(budget);
-
     }
 
     public void displayAllPayments() {
         UserInput.clearConsole();
-        FinanceReport.printAllPayments(paymentLog.fetchAllPaymentsMap());
+        var all = paymentLog.fetchAllPaymentsMap();
+        if (all.isEmpty()) {
+            FinanceReport.printNoPaymentsFound();
+            return;
+        }
+        FinanceReport.printAllPayments(all);
+    }
+
+    public void displayIndividualPayments(Member member) {
+        // print payments of individual member, use FinanceReport.printMemberPayments method
     }
 
     public void displayOverduePayments() {

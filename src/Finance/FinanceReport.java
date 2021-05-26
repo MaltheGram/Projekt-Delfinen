@@ -21,13 +21,14 @@ public class FinanceReport {
         }
     }
 
-    private static String printMemberPayments(Member member, List<Payment> list) {
+    public static String printMemberPayments(Member member, List<Payment> list) {
         var report = "Payments of "+ member.getName() + "\n";
         for (var payment : list) {
             report += formatPayment(payment) + "\n";
         }
         return report;
     }
+
 
     private static String formatPayment(Payment payment) {
         return String.format("amount:%.2f payment date:%s ", payment.getAmount(), payment.getPaidDate());
@@ -46,13 +47,22 @@ public class FinanceReport {
         UserInput.console.println(builder.toString());
     }
 
+    public static void printNoPaymentsFound() {
+        UserInput.console.println("No payments have been registered.\n");
+    }
+
     void printPaymentsFromPeriod(LocalDate startDate) {
 
     }
 
-    static void printOverduePayments(Map<Member, Balance> overduePayments) {
-        for(var entry : overduePayments.entrySet()) {
-            UserInput.console.println(entry.getKey().getName() + " overdue amount: " + entry.getValue().calculateOwed());
+    static void printOverduePayments(Map<Member, Balance> map) {
+        for(var entry : map.entrySet()) {
+            var owed = entry.getValue().calculateOwed();
+
+            if (owed < 0) {
+            } else {
+                UserInput.console.println(entry.getKey().getName() + " overdue amount: " + owed);
+            }
         }
     }
 
